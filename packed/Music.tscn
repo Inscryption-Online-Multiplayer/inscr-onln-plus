@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/Music.gd" type="Script" id=2]
+
+[node name="Music" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="SelectionBox" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -127.0
+margin_top = -40.0
+margin_right = 127.0
+margin_bottom = 42.0
+
+[node name="Rows" type="VBoxContainer" parent="SelectionBox"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 252.0
+margin_bottom = 130.0
+custom_constants/separation = 5
+
+[node name="Label" type="Label" parent="SelectionBox/Rows"]
+margin_right = 250.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 250, 0 )
+text = "Music Setting
+"
+align = 1
+autowrap = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SelectionBox/Rows"]
+margin_top = 34.0
+margin_right = 250.0
+margin_bottom = 51.0
+
+[node name="Label" type="Label" parent="SelectionBox/Rows/HBoxContainer2"]
+margin_top = 2.0
+margin_right = 111.0
+margin_bottom = 15.0
+text = "Background Music: "
+
+[node name="OptionButton" type="OptionButton" parent="SelectionBox/Rows/HBoxContainer2"]
+margin_left = 111.0
+margin_right = 250.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="Volumn" type="HBoxContainer" parent="SelectionBox/Rows"]
+margin_top = 56.0
+margin_right = 250.0
+margin_bottom = 72.0
+
+[node name="Label" type="Label" parent="SelectionBox/Rows/Volumn"]
+margin_top = 1.0
+margin_right = 82.0
+margin_bottom = 14.0
+text = "Music Volume: "
+
+[node name="HSlider" type="HSlider" parent="SelectionBox/Rows/Volumn"]
+margin_left = 82.0
+margin_right = 250.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -80.0
+max_value = 10.0
+value = -10.0
+
+[node name="Spacer" type="Label" parent="SelectionBox/Rows"]
+margin_top = 77.0
+margin_right = 250.0
+margin_bottom = 106.0
+text = "
+"
+
+[node name="Button" type="HBoxContainer" parent="SelectionBox/Rows"]
+margin_top = 111.0
+margin_right = 250.0
+margin_bottom = 128.0
+
+[node name="Save" type="Button" parent="SelectionBox/Rows/Button"]
+margin_right = 32.0
+margin_bottom = 17.0
+text = "Save"
+
+[node name="Spacer" type="Control" parent="SelectionBox/Rows/Button"]
+margin_left = 32.0
+margin_right = 216.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="Close" type="Button" parent="SelectionBox/Rows/Button"]
+margin_left = 216.0
+margin_right = 250.0
+margin_bottom = 17.0
+text = "Close"
+
+[connection signal="pressed" from="SelectionBox/Rows/Button/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="SelectionBox/Rows/Button/Close" to="." method="_on_Close_pressed"]

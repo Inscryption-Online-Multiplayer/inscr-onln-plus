@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
 [ext_resource path="res://gfx/sigils/Orange Mox.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://packed/ThemeEditor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://packed/DeckEdit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://packed/Music.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.5 )
@@ -122,63 +123,69 @@ custom_constants/separation = 35
 alignment = 1
 
 [node name="HostBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 88.0
+margin_top = 62.0
 margin_right = 450.0
-margin_bottom = 118.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Host Game"
 
 [node name="JoinBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 153.0
+margin_top = 127.0
 margin_right = 450.0
-margin_bottom = 183.0
+margin_bottom = 157.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Join Game"
 
 [node name="DeckEditorBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 218.0
+margin_top = 192.0
 margin_right = 450.0
-margin_bottom = 248.0
+margin_bottom = 222.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Deck Editor"
 
 [node name="SelectVersionBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 283.0
+margin_top = 257.0
 margin_right = 450.0
-margin_bottom = 313.0
+margin_bottom = 287.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Select Ruleset"
 
 [node name="ThemeEditorBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 348.0
+margin_top = 322.0
 margin_right = 450.0
-margin_bottom = 378.0
+margin_bottom = 352.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Theme Editor"
 
-[node name="LogFolder" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 413.0
+[node name="SoundBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
+margin_top = 387.0
 margin_right = 450.0
-margin_bottom = 443.0
+margin_bottom = 404.0
+text = "Sound Settings"
+
+[node name="LogFolder" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
+margin_top = 439.0
+margin_right = 450.0
+margin_bottom = 469.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Open Game Directory"
 
 [node name="DiscordBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 478.0
+margin_top = 504.0
 margin_right = 450.0
-margin_bottom = 508.0
+margin_bottom = 534.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
@@ -190,8 +197,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -512.0
-margin_top = -61.0
+margin_top = -55.0
 margin_right = 512.0
+margin_bottom = 6.0
 text = "Thanks to the Daniel Mullins Games Discord,
 The Inscryption Multiplayer Discord,
 and everyone else who made this project possible
@@ -201,7 +209,8 @@ valign = 2
 
 [node name="Title" type="Label" parent="TitleScreen"]
 anchor_right = 1.0
-margin_bottom = 13.0
+margin_top = -10.0
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 5 )
 text = "
 Inscryption Multiplayer"
@@ -214,7 +223,6 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="LobbyHost" type="PanelContainer" parent="TitleScreen"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -692,6 +700,9 @@ visible = false
 margin_top = -205.5
 margin_bottom = 205.5
 
+[node name="Music" parent="." instance=ExtResource( 8 )]
+visible = false
+
 [node name="CardFight" parent="." instance=ExtResource( 3 )]
 visible = false
 
@@ -714,6 +725,7 @@ align = 2
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DeckEditorBtn" to="TitleScreen" method="_on_DeckEditorBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SelectVersionBtn" to="TitleScreen" method="_on_SelectVersionBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/ThemeEditorBtn" to="TitleScreen" method="_on_ThemeEditorBtn_pressed"]
+[connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SoundBtn" to="TitleScreen" method="_on_MusicBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/LogFolder" to="TitleScreen" method="_on_LogFolder_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DiscordBtn" to="TitleScreen" method="_on_DiscordBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/LobbyHost/Rows/Buttons/Host" to="TitleScreen" method="_on_Host_pressed"]

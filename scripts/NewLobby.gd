@@ -4,6 +4,7 @@ extends Node
 onready var themeEditor = get_node("../ThemeEditor")
 onready var deckEditor = get_node("../DeckEdit")
 onready var cardFight = get_node("../CardFight")
+onready var musicSetting = get_node("../Music")
 onready var hostUnameBox = $LobbyHost/Rows/Nickname/LineEdit
 onready var joinUnameBox = $LobbyJoin/Rows/Nickname/LineEdit
 onready var lobbyList: ItemList = $InLobby/Rows/PlayerList
@@ -145,6 +146,9 @@ func init_fight(go_first: bool):
 	cardFight.init_match(oppId, go_first)
 
 # UI Callbacks
+func _on_MusicBtn_pressed():
+	musicSetting.visible =!musicSetting.visible
+	
 func _on_DiscordBtn_pressed():
 	OS.shell_open("https://discord.gg/wXS2FpJpCt")
 
@@ -447,4 +451,7 @@ remote func _player_status(status: Dictionary):
 	
 remote func _start_match(go_first: bool):
 	init_fight(go_first)
+
+
+
 
