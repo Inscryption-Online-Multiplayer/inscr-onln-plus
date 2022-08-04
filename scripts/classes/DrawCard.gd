@@ -4,22 +4,11 @@ var card_data = {}
 
 var paperTheme = preload("res://themes/papertheme.tres")
 
-func load_texture(userPath, gamePath):
-	var path = userPath
-	var tex = ImageTexture.new()
-	var img = Image.new()
-	img.load(path)
-	tex.create_from_image(img,0)
-	
-	if not File.new().file_exists(path):
-		tex = load(gamePath)
-		
-	return tex
+
 func draw_from_data(cdat):
 	card_data = cdat
-
 	$VBoxContainer/Label.text = card_data.name
-	$VBoxContainer/Portrait.texture = load_texture(
+	$VBoxContainer/Portrait.texture = TextureLoader.new().load_texture(
 		"user://asset/texture/pixport/%s.png"%[card_data.name], 
 		"res://gfx/pixport/%s.png"%[card_data.name]
 	)
@@ -197,13 +186,13 @@ func draw_sigils():
 		if "sigils" in card_data:
 			if "active" in card_data:
 				$VBoxContainer/HBoxContainer/ActiveSigil.visible = true
-				$VBoxContainer/HBoxContainer/ActiveSigil/TextureRect.texture = load_texture(
+				$VBoxContainer/HBoxContainer/ActiveSigil/TextureRect.texture = TextureLoader.new().load_texture(
 					"user://asset/texture/sigils/%s.png"%[card_data.sigils[0]], 
 					"res://gfx/sigils/%s.png"%[card_data.sigils[0]]
 				)
 				$VBoxContainer/HBoxContainer/Sigil.visible = false
 			else:
-				$VBoxContainer/HBoxContainer/Sigil.texture = load_texture(
+				$VBoxContainer/HBoxContainer/Sigil.texture = TextureLoader.new().load_texture(
 					"user://asset/texture/sigils/%s.png"%[card_data.sigils[0]], 
 					"res://gfx/sigils/%s.png"%[card_data.sigils[0]]
 				)
@@ -213,7 +202,7 @@ func draw_sigils():
 			if len(card_data.sigils) > 1:
 				$VBoxContainer/HBoxContainer/Sigil2.visible = true
 				$VBoxContainer/HBoxContainer/Spacer3.visible = true
-				$VBoxContainer/HBoxContainer/Sigil2.texture = load_texture(
+				$VBoxContainer/HBoxContainer/Sigil2.texture = TextureLoader.new().load_texture(
 					"user://asset/texture/sigils/%s.png"%[card_data.sigils[1]], 
 					"res://gfx/sigils/%s.png"%[card_data.sigils[1]]
 				)

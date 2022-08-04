@@ -146,7 +146,7 @@ func init_fight(go_first: bool):
 	cardFight.init_match(oppId, go_first)
 
 # UI Callbacks
-func _on_MusicBtn_pressed():
+func _on_SoundBtn_pressed():
 	musicSetting.visible =!musicSetting.visible
 	
 func _on_DiscordBtn_pressed():
@@ -451,7 +451,3 @@ remote func _player_status(status: Dictionary):
 	
 remote func _start_match(go_first: bool):
 	init_fight(go_first)
-
-
-
-

@@ -1,6 +1,7 @@
 extends Control
 onready var optionBox =  get_node("SelectionBox/Rows/HBoxContainer2/OptionButton")
 onready var slider = get_node("SelectionBox/Rows/Volumn/HSlider")
+onready var mute = get_node("SelectionBox/Rows/HBoxContainer/CheckBox")
 
 func _ready():
 	optionBox.add_item("Act 2 Grimora Theme.wav")
@@ -36,5 +37,8 @@ func _on_Save_pressed():
 		a = load(path%["res://sfx",optionBox.text])
 		
 	MusicController.setVolume(slider.value)
+	if mute.pressed:
+		MusicController.setVolume(-80)
+	
 	
 	MusicController.play(a)

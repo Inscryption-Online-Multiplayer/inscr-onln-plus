@@ -14,32 +14,14 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/sound/GDScriptAudioImport.gd"
 }, {
-"base": "HBoxContainer",
-"class": "ContributorClass",
+"base": "Node",
+"class": "TextureLoader",
 "language": "GDScript",
-"path": "res://addons/github-integration/scripts/ContributorClass.gd"
-}, {
-"base": "PanelContainer",
-"class": "GistItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/GistItem.gd"
-}, {
-"base": "HBoxContainer",
-"class": "InvitationItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/InvitationItem.gd"
-}, {
-"base": "PanelContainer",
-"class": "RepositoryItem",
-"language": "GDScript",
-"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
+"path": "res://scripts/TextureLoader.gd"
 } ]
 _global_script_class_icons={
 "AudioLoader": "",
-"ContributorClass": "",
-"GistItem": "",
-"InvitationItem": "",
-"RepositoryItem": ""
+"TextureLoader": ""
 }
 
 [application]
@@ -55,10 +37,6 @@ TunnelHandler="*res://scripts/singletons/TunnelHandler.gd"
 GameOptions="*res://scripts/singletons/GameOptions.gd"
 NetworkManager="*res://scripts/singletons/NetworkManager.gd"
 MusicController="*res://MusicController.tscn"
-PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
-IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
-UserData="*res://addons/github-integration/scripts/user_data.gd"
-RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
 
 [debug]
 
@@ -82,7 +60,7 @@ version_control/plugin_name="GitAPI"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/github-integration/plugin.cfg", "res://addons/multirun/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
 
 [gdnative]
 

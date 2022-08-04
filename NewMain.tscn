@@ -123,69 +123,72 @@ custom_constants/separation = 35
 alignment = 1
 
 [node name="HostBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 62.0
+margin_top = 55.0
 margin_right = 450.0
-margin_bottom = 92.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Host Game"
 
 [node name="JoinBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 127.0
+margin_top = 120.0
 margin_right = 450.0
-margin_bottom = 157.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Join Game"
 
 [node name="DeckEditorBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 192.0
+margin_top = 185.0
 margin_right = 450.0
-margin_bottom = 222.0
+margin_bottom = 215.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Deck Editor"
 
 [node name="SelectVersionBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 257.0
+margin_top = 250.0
 margin_right = 450.0
-margin_bottom = 287.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Select Ruleset"
 
 [node name="ThemeEditorBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 322.0
+margin_top = 315.0
 margin_right = 450.0
-margin_bottom = 352.0
+margin_bottom = 345.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Theme Editor"
 
 [node name="SoundBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 387.0
+margin_top = 380.0
 margin_right = 450.0
-margin_bottom = 404.0
-text = "Sound Settings"
+margin_bottom = 410.0
+rect_min_size = Vector2( 0, 30 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Sound Setting"
 
 [node name="LogFolder" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 439.0
+margin_top = 445.0
 margin_right = 450.0
-margin_bottom = 469.0
+margin_bottom = 475.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Open Game Directory"
 
 [node name="DiscordBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 504.0
+margin_top = 510.0
 margin_right = 450.0
-margin_bottom = 534.0
+margin_bottom = 540.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
 enabled_focus_mode = 0
@@ -223,6 +226,7 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 1 )
 
 [node name="LobbyHost" type="PanelContainer" parent="TitleScreen"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -453,7 +457,6 @@ margin_left = 221.0
 margin_right = 241.0
 margin_bottom = 20.0
 focus_mode = 0
-disabled = true
 enabled_focus_mode = 0
 flat = true
 
@@ -725,7 +728,7 @@ align = 2
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DeckEditorBtn" to="TitleScreen" method="_on_DeckEditorBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SelectVersionBtn" to="TitleScreen" method="_on_SelectVersionBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/ThemeEditorBtn" to="TitleScreen" method="_on_ThemeEditorBtn_pressed"]
-[connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SoundBtn" to="TitleScreen" method="_on_MusicBtn_pressed"]
+[connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SoundBtn" to="TitleScreen" method="_on_SoundBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/LogFolder" to="TitleScreen" method="_on_LogFolder_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DiscordBtn" to="TitleScreen" method="_on_DiscordBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/LobbyHost/Rows/Buttons/Host" to="TitleScreen" method="_on_Host_pressed"]
