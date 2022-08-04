@@ -38,5 +38,4 @@ Same as portrait and sigils. You open the game file create a folder name asset i
 - Multiple Theme select
 - Remember name and quick host
 - Ability to load gif for texture (load gif for card portrait and sigil texture)
-- another default music that just a rick roll
 - Added support for .ogg when looking for music
