@@ -28,7 +28,7 @@ It should be the same as changing portrait, the only diffent is it in the folder
 
 ### How to add Custom music
 
-Same as portrait and sigils. You open the game file create a folder name asset if you haven't. Create a folder name sound in it and another music inside of sound. Then you will put you music file there, the file name will be the option name in the game. It support both .wave and .mp3 (haven't test .mp3 but i should work. .ogg will be added I just forgot to add it)
+Same as portrait and sigils. You open the game file create a folder name asset if you haven't. Create a folder name sound in it and another music inside of sound. Then you will put you music file there, the file name will be the option name in the game. It support both .wave and .mp3 (haven't test .mp3 but i should work. .ogg is weird godot don;t seem to be able to load it)
 
 #### TODO
 
@@ -38,5 +38,4 @@ Same as portrait and sigils. You open the game file create a folder name asset i
 - Multiple Theme select
 - Remember name and quick host
 - Ability to load gif for texture (load gif for card portrait and sigil texture)
-- Added support for .ogg when looking for music
 - ~~Add in a rick roll~~
