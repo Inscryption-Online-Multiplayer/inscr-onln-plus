@@ -1,13 +1,10 @@
 TODO:
-Display wins in game
-Fix deck folder not auto-creating
-Prompt to download ruleset on first launch
 
 Low priority:
 Allow user to use their opponent's ruleset
 Save each ruleset in a different file "rules/" directory?
 Starter decks
 Side deck format and ruleset customisability
-Spectating
 Do something with HandManager (move hand functions there from CardFight)
 Sometimes extra cards drawn at the start of the round (high ping?)
+Spectating / Replays
