@@ -11,7 +11,7 @@ This project is just a fork of the original one with a few customization feature
 
 # Feature:
 
-- Changing portrait of card
+- [Changing portrait of card](How-to-change-card-portrait)
 - Changing sigil texture
 - Custom music player
 
