@@ -4,7 +4,7 @@ extends Node
 onready var themeEditor = get_node("../ThemeEditor")
 onready var deckEditor = get_node("../DeckEdit")
 onready var cardFight = get_node("../CardFight")
-onready var musicSetting = get_node("../Music")
+onready var plusSettings = get_node("../PlusSettings")
 onready var hostUnameBox = $LobbyHost/Rows/Nickname/LineEdit
 onready var joinUnameBox = $LobbyJoin/Rows/Nickname/LineEdit
 onready var lobbyList: ItemList = $InLobby/Rows/PlayerList
@@ -14,9 +14,27 @@ var readyIcon = preload("res://gfx/sigils/Green Mox.png")
 
 var lobby_data = {"players": {}, "spectators": []}
 
+var defaultSaveData = {
+	"name":"",
+	"pfp_client":"Default",
+	"pfp_server": "Cat",
+	"music":"Act 2 Grimora Theme.wav",
+	"volumn":-10,
+	"muted":false
+}
 # Godot Handlers
 func _ready():
-
+	
+	var dir = Directory.new()
+	dir.open("user://")
+	dir.make_dir_recursive("asset/sound/music")
+	dir.make_dir_recursive("asset/texture/pixport")
+	dir.make_dir_recursive("asset/texture/sigils")
+	dir.make_dir_recursive("asset/texture/pfps")
+	
+	if !dir.file_exists("saveData.json"):
+		Save.new().saveSaveFile(defaultSaveData)
+	
 	randomize()
 
 	# Signals
@@ -29,15 +47,6 @@ func _ready():
 	get_node("../VersionLabel").text = CardInfo.VERSION
 	get_node("../RulesetLabel").text = CardInfo.ruleset
 
-	# Register profile pictures
-#	var dTest = Directory.new()
-#	dTest.open("res://gfx/portraits")
-#	dTest.list_dir_begin()
-#	var fName = dTest.get_next()
-#	while fName != "":
-#		if not dTest.current_is_dir() and fName.ends_with(".png"):
-#			pfpsel.add_item(fName.split(".png")[0])
-#		fName = dTest.get_next()
 
 	yield(get_tree().create_timer(0.1), "timeout")
 	
@@ -139,16 +148,28 @@ func init_fight(go_first: bool):
 	# Usernames and profile pictures
 	cardFight.get_node("PlayerInfo/MyInfo/Username").text = lobby_data.players[myId].name + " (" + str(lobby_data.players[myId].wins) + " wins)"
 	cardFight.get_node("PlayerInfo/TheirInfo/Username").text = lobby_data.players[oppId].name + " (" + str(lobby_data.players[oppId].wins) + " wins)"
-	cardFight.get_node("PlayerInfo/MyInfo/Pfp").texture = load("res://gfx/portraits/" + lobby_data.players[myId].pfp + ".png")
+	
+	var save = Save.new().loadSaveFile()
+	
+	#if save.pfp_client.to_lower != "default":
+	cardFight.get_node("PlayerInfo/MyInfo/Pfp").texture = TextureLoader.new().load_texture(
+		"user://asset/texture/pfps/%s"%[save.pfp_client],
+		"res://gfx/portraits/" + lobby_data.players[myId].pfp + ".png"
+	)
+	print("user://asset/texture/pfps/%s"%[save.pfp_client])
+		
+		
 	cardFight.get_node("PlayerInfo/TheirInfo/Pfp").texture = load("res://gfx/portraits/" + lobby_data.players[oppId].pfp + ".png")
 
 	cardFight.visible = true
 	cardFight.init_match(oppId, go_first)
+	
+	
+	save.name = lobby_data.players[myId].name
+	save.pfp_server = lobby_data.players[myId].pfp
+	Save.new().saveSaveFile(save)
 
 # UI Callbacks
-func _on_SoundBtn_pressed():
-	musicSetting.visible =!musicSetting.visible
-	
 func _on_DiscordBtn_pressed():
 	OS.shell_open("https://discord.gg/wXS2FpJpCt")
 
@@ -163,12 +184,18 @@ func _on_DeckEditorBtn_pressed():
 	deckEditor.populate_deck_list()
 	deckEditor.get_node("HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel").select($InLobby/Rows/DeckOptions/Deck.selected)
 	deckEditor.load_deck()
+
+func _on_PlusBtn_pressed():
+	plusSettings.visible = !plusSettings.visible
+	
 func _on_HostBtn_pressed():
 	$LobbyHost.visible = true
+	$LobbyHost/Rows/Nickname/LineEdit.text =Save.new().loadSaveFile().name
 	$Blocker.visible = true
 
 func _on_JoinBtn_pressed():
 	$LobbyJoin.visible = true
+	$LobbyJoin/Rows/Nickname/LineEdit.text = Save.new().loadSaveFile().name
 	$Blocker.visible = true
 
 func _on_CancelHost_pressed():
@@ -207,7 +234,7 @@ func _on_Host_pressed():
 		lobby_data.spectators = [1]
 	
 	if $LobbyHost/Rows/HostType/Type.selected == 0:
-		$LoadingScreen.visible = true		
+		$LoadingScreen.visible = true
 		$LoadingScreen/AnimationPlayer.play("progress")
 		# Open a tunnel
 		TunnelHandler.start_tunnel()
@@ -227,6 +254,11 @@ func _on_Host_pressed():
 		lobby_data.is_ip = true
 
 		update_lobby()
+		
+	var temp = Save.new().loadSaveFile()
+	temp.name = get_node("./LobbyHost/Rows/Nickname/LineEdit").text
+	Save.new().saveSaveFile(temp)
+
 
 
 func _on_LobbyQuit_pressed():
@@ -245,7 +277,6 @@ func _on_ErrorOk_pressed():
 
 
 func _on_Join_pressed():
-
 	# Check params
 	var url = $LobbyJoin/Rows/Address/IPInput.text
 	
@@ -265,7 +296,16 @@ func _on_Join_pressed():
 	$LoadingScreen.visible = true
 	$LoadingScreen/AnimationPlayer.play("progressjoin")
 	$LobbyJoin.visible = false
+
 	$Blocker.visible = true
+	var save = Save.new().loadSaveFile()
+	
+	# load the pfp saved
+	$InLobby/Rows/ProfilePic/Pic.text = save.pfp_server
+
+	save.name = get_node("./LobbyJoin/Rows/Nickname/LineEdit").text
+	Save.new().saveSaveFile(save)
+	
 
 func _on_PasteButton_pressed():
 	$LobbyJoin/Rows/Address/IPInput.text = OS.clipboard

@@ -72,9 +72,7 @@ align = 2
 [node name="DrawPiles" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 2 )
 
 [node name="YourDecks" type="HBoxContainer" parent="DrawPiles"]
 anchor_left = 1.0
@@ -95,6 +93,7 @@ margin_right = 85.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 85, 123 )
 focus_mode = 0
+theme = ExtResource( 2 )
 button_mask = 3
 enabled_focus_mode = 0
 text = "Deck"
@@ -117,6 +116,7 @@ margin_right = 180.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 85, 123 )
 focus_mode = 0
+theme = ExtResource( 2 )
 button_mask = 3
 enabled_focus_mode = 0
 text = "Side"
@@ -148,6 +148,7 @@ margin_right = 85.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 85, 123 )
 focus_mode = 0
+theme = ExtResource( 2 )
 disabled = true
 button_mask = 3
 enabled_focus_mode = 0
@@ -159,6 +160,7 @@ margin_right = 180.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 85, 123 )
 focus_mode = 0
+theme = ExtResource( 2 )
 disabled = true
 button_mask = 3
 enabled_focus_mode = 0
@@ -299,6 +301,7 @@ margin_left = 512.0
 margin_right = 512.0
 mouse_filter = 2
 size_flags_horizontal = 4
+theme = ExtResource( 2 )
 
 [node name="PlayerHand" type="HBoxContainer" parent="HandsContainer/Hands"]
 margin_left = 512.0
@@ -308,6 +311,7 @@ margin_bottom = 568.0
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
+theme = ExtResource( 2 )
 
 [node name="LeftSideUI" type="VBoxContainer" parent="."]
 anchor_bottom = 1.0
@@ -315,9 +319,6 @@ margin_left = 5.0
 margin_right = 145.0
 mouse_filter = 2
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AdvantageLabel" type="Label" parent="LeftSideUI"]
 margin_top = 172.0

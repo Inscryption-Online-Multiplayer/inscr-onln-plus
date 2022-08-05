@@ -18,7 +18,7 @@ func _enter_tree():
 	panel2 = _add_toolbar_button("_loaddir_pressed", icon_load, icon_load)
 	panel1 = _add_toolbar_button("_multirun_pressed", icon_transition, icon_transition_auto)
 	
-	_add_setting("debug/multirun/number_of_windows", TYPE_INT, 2)
+	_add_setting("debug/multirun/number_of_windows", TYPE_INT, 3)
 	_add_setting("debug/multirun/window_distance", TYPE_INT, 1270)
 	_add_setting("debug/multirun/add_custom_args", TYPE_BOOL, true)
 	_add_setting("debug/multirun/first_window_args", TYPE_STRING, "listen")

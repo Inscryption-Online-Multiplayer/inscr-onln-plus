@@ -1,0 +1,262 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/sound/Music.gd" type="Script" id=2]
+[ext_resource path="res://scripts/texture/Texture.gd" type="Script" id=3]
+
+[node name="PlusSettings" type="TabContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -259.0
+margin_top = -151.0
+margin_right = 259.0
+margin_bottom = 151.0
+theme = ExtResource( 1 )
+tab_align = 0
+
+[node name="Sound" type="Tabs" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 25.0
+margin_right = -2.0
+margin_bottom = -2.0
+script = ExtResource( 2 )
+
+[node name="Rows" type="VBoxContainer" parent="Sound"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 5
+
+[node name="Label" type="Label" parent="Sound/Rows"]
+margin_right = 514.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 250, 0 )
+text = "Sound Settings
+"
+align = 1
+autowrap = true
+
+[node name="BgMusicSelect" type="HBoxContainer" parent="Sound/Rows"]
+margin_top = 34.0
+margin_right = 514.0
+margin_bottom = 51.0
+
+[node name="Label" type="Label" parent="Sound/Rows/BgMusicSelect"]
+margin_top = 2.0
+margin_right = 111.0
+margin_bottom = 15.0
+text = "Background Music: "
+
+[node name="Spacer" type="Control" parent="Sound/Rows/BgMusicSelect"]
+margin_left = 111.0
+margin_right = 290.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="Sound/Rows/BgMusicSelect"]
+margin_left = 290.0
+margin_right = 470.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="ReloadBtn" type="Button" parent="Sound/Rows/BgMusicSelect"]
+margin_left = 470.0
+margin_right = 514.0
+margin_bottom = 17.0
+text = "Reload"
+
+[node name="Volumn" type="HBoxContainer" parent="Sound/Rows"]
+margin_top = 56.0
+margin_right = 514.0
+margin_bottom = 72.0
+
+[node name="Label" type="Label" parent="Sound/Rows/Volumn"]
+margin_top = 1.0
+margin_right = 82.0
+margin_bottom = 14.0
+text = "Music Volume: "
+
+[node name="Spacer" type="Control" parent="Sound/Rows/Volumn"]
+margin_left = 82.0
+margin_right = 298.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="Sound/Rows/Volumn"]
+margin_left = 298.0
+margin_right = 514.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -30.0
+max_value = 10.0
+value = -10.0
+
+[node name="Mute" type="HBoxContainer" parent="Sound/Rows"]
+margin_top = 77.0
+margin_right = 514.0
+margin_bottom = 97.0
+
+[node name="Label" type="Label" parent="Sound/Rows/Mute"]
+margin_top = 3.0
+margin_right = 74.0
+margin_bottom = 16.0
+text = "Mute Music:  "
+
+[node name="CheckBox" type="CheckBox" parent="Sound/Rows/Mute"]
+margin_left = 74.0
+margin_right = 94.0
+margin_bottom = 20.0
+
+[node name="OpenDir" type="HBoxContainer" parent="Sound/Rows"]
+margin_top = 102.0
+margin_right = 514.0
+margin_bottom = 119.0
+
+[node name="Label" type="Label" parent="Sound/Rows/OpenDir"]
+margin_top = 2.0
+margin_right = 133.0
+margin_bottom = 15.0
+text = "Open Music Directory:  "
+
+[node name="Button" type="Button" parent="Sound/Rows/OpenDir"]
+margin_left = 133.0
+margin_right = 165.0
+margin_bottom = 17.0
+text = "Open"
+
+[node name="Spacer" type="Control" parent="Sound/Rows"]
+margin_top = 124.0
+margin_right = 514.0
+margin_bottom = 253.0
+size_flags_vertical = 3
+
+[node name="Button" type="HBoxContainer" parent="Sound/Rows"]
+margin_top = 258.0
+margin_right = 514.0
+margin_bottom = 275.0
+
+[node name="Save" type="Button" parent="Sound/Rows/Button"]
+margin_right = 32.0
+margin_bottom = 17.0
+text = "Save Sound"
+
+[node name="Spacer" type="Control" parent="Sound/Rows/Button"]
+margin_left = 32.0
+margin_right = 480.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="Close" type="Button" parent="Sound/Rows/Button"]
+margin_left = 480.0
+margin_right = 514.0
+margin_bottom = 17.0
+text = "Close"
+
+[node name="Texture" type="Tabs" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 25.0
+margin_right = -2.0
+margin_bottom = -2.0
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Texture"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Texture/VBoxContainer"]
+margin_right = 514.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 250, 0 )
+text = "Texture Settings
+"
+align = 1
+autowrap = true
+
+[node name="CustomPortrait" type="HBoxContainer" parent="Texture/VBoxContainer"]
+margin_top = 29.0
+margin_right = 514.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="Texture/VBoxContainer/CustomPortrait"]
+margin_top = 2.0
+margin_right = 178.0
+margin_bottom = 15.0
+text = "Custom Portrait (Client Side): "
+
+[node name="Spacer" type="Control" parent="Texture/VBoxContainer/CustomPortrait"]
+margin_left = 178.0
+margin_right = 324.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="Texture/VBoxContainer/CustomPortrait"]
+margin_left = 324.0
+margin_right = 470.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="reload" type="Button" parent="Texture/VBoxContainer/CustomPortrait"]
+margin_left = 470.0
+margin_right = 514.0
+margin_bottom = 17.0
+text = "Reload"
+
+[node name="OpenDir" type="HBoxContainer" parent="Texture/VBoxContainer"]
+margin_top = 46.0
+margin_right = 514.0
+margin_bottom = 63.0
+
+[node name="Label" type="Label" parent="Texture/VBoxContainer/OpenDir"]
+margin_top = 2.0
+margin_right = 150.0
+margin_bottom = 15.0
+text = "Open Texture Directory:  "
+
+[node name="OpenDir" type="Button" parent="Texture/VBoxContainer/OpenDir"]
+margin_left = 150.0
+margin_right = 182.0
+margin_bottom = 17.0
+text = "Open"
+
+[node name="Spacer" type="Control" parent="Texture/VBoxContainer"]
+margin_top = 63.0
+margin_right = 514.0
+margin_bottom = 258.0
+size_flags_vertical = 3
+
+[node name="Button" type="HBoxContainer" parent="Texture/VBoxContainer"]
+margin_top = 258.0
+margin_right = 514.0
+margin_bottom = 275.0
+
+[node name="Save" type="Button" parent="Texture/VBoxContainer/Button"]
+margin_right = 83.0
+margin_bottom = 17.0
+text = "Save Texture"
+
+[node name="Spacer" type="Control" parent="Texture/VBoxContainer/Button"]
+margin_left = 83.0
+margin_right = 480.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+
+[node name="Close" type="Button" parent="Texture/VBoxContainer/Button"]
+margin_left = 480.0
+margin_right = 514.0
+margin_bottom = 17.0
+text = "Close"
+
+[connection signal="pressed" from="Sound/Rows/BgMusicSelect/ReloadBtn" to="Sound" method="_on_ReloadBtn_pressed"]
+[connection signal="pressed" from="Sound/Rows/OpenDir/Button" to="Sound" method="_on_Button_pressed"]
+[connection signal="pressed" from="Sound/Rows/Button/Save" to="Sound" method="_on_Save_pressed"]
+[connection signal="pressed" from="Sound/Rows/Button/Close" to="Sound" method="_on_Close_pressed"]
+[connection signal="pressed" from="Texture/VBoxContainer/CustomPortrait/reload" to="Texture" method="_on_reload_pressed"]
+[connection signal="pressed" from="Texture/VBoxContainer/OpenDir/OpenDir" to="Texture" method="_on_OpenDir_pressed"]
+[connection signal="pressed" from="Texture/VBoxContainer/Button/Save" to="Texture" method="_on_Save_pressed"]
+[connection signal="pressed" from="Texture/VBoxContainer/Button/Close" to="Texture" method="_on_Close_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
 [ext_resource path="res://gfx/sigils/Orange Mox.png" type="Texture" id=2]
@@ -7,7 +7,23 @@
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://packed/ThemeEditor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://packed/DeckEdit.tscn" type="PackedScene" id=7]
-[ext_resource path="res://packed/Music.tscn" type="PackedScene" id=8]
+[ext_resource path="res://PlusSettings.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0980392, 0.807843, 0.407843, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.164706, 0.596078, 0.788235, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.5 )
@@ -101,6 +117,7 @@ theme = ExtResource( 1 )
 [node name="TitleScreen" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="Menu" type="PanelContainer" parent="TitleScreen"]
@@ -167,14 +184,16 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Theme Editor"
 
-[node name="SoundBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
+[node name="PlusBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
 margin_top = 380.0
 margin_right = 450.0
 margin_bottom = 410.0
 rect_min_size = Vector2( 0, 30 )
 focus_mode = 0
+custom_styles/hover = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 enabled_focus_mode = 0
-text = "Sound Setting"
+text = "Inscryption Multiplayer Plus Settings"
 
 [node name="LogFolder" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
 margin_top = 445.0
@@ -200,9 +219,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -512.0
-margin_top = -55.0
+margin_top = -50.0
 margin_right = 512.0
-margin_bottom = 6.0
+margin_bottom = 11.0
 text = "Thanks to the Daniel Mullins Games Discord,
 The Inscryption Multiplayer Discord,
 and everyone else who made this project possible
@@ -212,8 +231,8 @@ valign = 2
 
 [node name="Title" type="Label" parent="TitleScreen"]
 anchor_right = 1.0
-margin_top = -10.0
-margin_bottom = 51.0
+margin_top = -15.0
+margin_bottom = 46.0
 custom_fonts/font = ExtResource( 5 )
 text = "
 Inscryption Multiplayer"
@@ -703,7 +722,7 @@ visible = false
 margin_top = -205.5
 margin_bottom = 205.5
 
-[node name="Music" parent="." instance=ExtResource( 8 )]
+[node name="PlusSettings" parent="." instance=ExtResource( 8 )]
 visible = false
 
 [node name="CardFight" parent="." instance=ExtResource( 3 )]
@@ -728,7 +747,7 @@ align = 2
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DeckEditorBtn" to="TitleScreen" method="_on_DeckEditorBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SelectVersionBtn" to="TitleScreen" method="_on_SelectVersionBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/ThemeEditorBtn" to="TitleScreen" method="_on_ThemeEditorBtn_pressed"]
-[connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/SoundBtn" to="TitleScreen" method="_on_SoundBtn_pressed"]
+[connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/PlusBtn" to="TitleScreen" method="_on_PlusBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/LogFolder" to="TitleScreen" method="_on_LogFolder_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DiscordBtn" to="TitleScreen" method="_on_DiscordBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/LobbyHost/Rows/Buttons/Host" to="TitleScreen" method="_on_Host_pressed"]

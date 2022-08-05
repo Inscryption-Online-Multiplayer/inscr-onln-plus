@@ -110,12 +110,18 @@ func apply_theme():
 	paperTheme.set_color("font_color", "Label", theme_data.text_colour)
 	paperTheme.set_color("font_color", "LineEdit", theme_data.text_colour)
 	paperTheme.set_color("default_color", "RichTextLabel", theme_data.text_colour)
+	paperTheme.set_color("font_color_bg", "TabContainer", theme_data.text_colour)
 	
 	# Sigil Colours
 	sigilMat.set_shader_param("u_replacement_color", Color(theme_data.pixart_colour))
 	
 	# Accessibility icons
 	GameOptions.enable_accessibility_icons = theme_data.show_accessibility_icons
+	
+	# Tab Color
+	paperTheme.get_stylebox("panel", "TabContainer").bg_color = theme_data.background_colour
+	paperTheme.get_stylebox("tab_bg", "TabContainer").bg_color = theme_data.background_colour
+	paperTheme.get_stylebox("tab_fg", "TabContainer").bg_color = theme_data.buttons.pressed.background
 	
 	save_theme()
 

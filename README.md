@@ -13,10 +13,11 @@ This project is just a fork of the original one with a few customization feature
 # Feature:
 
 <!-- no toc -->
-
-- [How to change card portrait](#how-to-change-card-portrait)
-- [How to change sigil texture](#how-to-change-sigil-texture)
-- [How to add Custom music](#how-to-add-custom-music)
+- [Custom cards portrait](#how-to-change-card-portrait)
+- [Custom sigils portrait](#how-to-change-sigil-texture)
+- [Music Player with some default music](#how-to-add-custom-music)
+- [Custom Pfps in fight]()
+- [Save file for name, music setting, etc. so you don't have to input in every instance]()
 
 ### How to change card portrait
 
@@ -33,10 +34,7 @@ Same as portrait and sigils. You open the game file create a folder name asset i
 #### TODO
 
 - Asset pack
-- put all the cosmetic button/setting in to one button 
-- Custom pfp
 - Multiple Theme select
 - Remember name and quick host
 - Ability to load gif for texture (load gif for card portrait and sigil texture)
-- another default music that just a rick roll
 - Added support for .ogg when looking for music
