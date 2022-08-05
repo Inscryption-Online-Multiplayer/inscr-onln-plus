@@ -17,7 +17,6 @@ theme = ExtResource( 1 )
 tab_align = 0
 
 [node name="Sound" type="Tabs" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -69,24 +68,24 @@ margin_right = 514.0
 margin_bottom = 17.0
 text = "Reload"
 
-[node name="Volumn" type="HBoxContainer" parent="Sound/Rows"]
+[node name="Volume" type="HBoxContainer" parent="Sound/Rows"]
 margin_top = 56.0
 margin_right = 514.0
 margin_bottom = 72.0
 
-[node name="Label" type="Label" parent="Sound/Rows/Volumn"]
+[node name="Label" type="Label" parent="Sound/Rows/Volume"]
 margin_top = 1.0
 margin_right = 82.0
 margin_bottom = 14.0
 text = "Music Volume: "
 
-[node name="Spacer" type="Control" parent="Sound/Rows/Volumn"]
+[node name="Spacer" type="Control" parent="Sound/Rows/Volume"]
 margin_left = 82.0
 margin_right = 298.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="Sound/Rows/Volumn"]
+[node name="HSlider" type="HSlider" parent="Sound/Rows/Volume"]
 margin_left = 298.0
 margin_right = 514.0
 margin_bottom = 16.0
@@ -140,12 +139,12 @@ margin_right = 514.0
 margin_bottom = 275.0
 
 [node name="Save" type="Button" parent="Sound/Rows/Button"]
-margin_right = 32.0
+margin_right = 72.0
 margin_bottom = 17.0
 text = "Save Sound"
 
 [node name="Spacer" type="Control" parent="Sound/Rows/Button"]
-margin_left = 32.0
+margin_left = 72.0
 margin_right = 480.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
@@ -157,6 +156,7 @@ margin_bottom = 17.0
 text = "Close"
 
 [node name="Texture" type="Tabs" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0

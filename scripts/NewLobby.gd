@@ -19,7 +19,7 @@ var defaultSaveData = {
 	"pfp_client":"Default",
 	"pfp_server": "Cat",
 	"music":"Act 2 Grimora Theme.wav",
-	"volumn":-10,
+	"volume":-10,
 	"muted":false
 }
 # Godot Handlers

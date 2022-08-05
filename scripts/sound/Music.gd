@@ -1,6 +1,6 @@
 extends Control
 onready var optionBox =  get_node("Rows/BgMusicSelect/OptionButton")
-onready var slider = get_node("Rows/Volumn/HSlider")
+onready var slider = get_node("Rows/Volume/HSlider")
 onready var mute = get_node("Rows/Mute/CheckBox")
 
 
@@ -8,7 +8,7 @@ onready var mute = get_node("Rows/Mute/CheckBox")
 func _ready():
 	reload()
 	var saveData = load("res://scripts/Save.gd").new().loadSaveFile()
-	slider.value = saveData.volumn
+	slider.value = saveData.volume
 	mute.pressed = saveData.muted
 	optionBox.text = saveData.music
 	
@@ -37,7 +37,7 @@ func _on_Save_pressed():
 	MusicController.play(a)
 
 	saveData.muted = mute.pressed
-	saveData.volumn = slider.value
+	saveData.volume = slider.value
 	saveData.music = optionBox.text
 	
 	save.saveSaveFile(saveData)
@@ -49,7 +49,7 @@ func reload():
 	optionBox.add_item("Act 2 Mag Theme.wav")
 	optionBox.add_item("Royal Phase 3 Theme.wav")
 	optionBox.add_item("Trapper And Trader theme.wav")
-	optionBox.add_item("P03 Favorite Song.mp3")
+	optionBox.add_item("P03's Favorite Song.mp3")
 	
 	#https://docs.godotengine.org/en/stable/classes/class_file.html
 	var dir = Directory.new()
