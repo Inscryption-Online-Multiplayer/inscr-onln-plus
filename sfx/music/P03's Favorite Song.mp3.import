@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/P03's Favorite Song.mp3-6b2b6a2e31877b3496b5ea2a88bb6ffe.mp3str"
+
+[deps]
+
+source_file="res://sfx/music/P03's Favorite Song.mp3"
+dest_files=[ "res://.import/P03's Favorite Song.mp3-6b2b6a2e31877b3496b5ea2a88bb6ffe.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
