@@ -22,6 +22,7 @@ This project is just a fork of the original one with a few customization feature
 
 ### How to change card portrait
 
+<<<<<<< HEAD
 Just click on the "Open Game Directory" button and it should bring up the game folder. Now you just need to make a folder a call `asset` then `texture` inside, and inside another one call `pixport`. And inside that `pixport` folder is where you gonna put all the card texture. Card texture is 41x28 pixels, and it support color. The card portrait file name will need to match whatever texture it supplying for. For example if I want to make a texture for `49er` then I will make a file name `49er.png` in the `pixport` folder (`texture/pixport/49er`, everything is case sensitive). If no file supply then it gonna use the default art
 
 ### How to change sigil texture
@@ -35,6 +36,17 @@ Same as portrait and sigils, only different is the pfp is in the `pfps` folder (
 ### How to add Custom music
 
 Same as portrait and sigils. You open the game file create a folder name `asset` if you haven't. Create a folder name `sound` in it and another `music` inside of `sound`. Then you will put you music file there, the file name will be the option name in the game. It support both `.wav` and `.mp3` (`.ogg` is weird and godot don't seem to load it correctly so it not supported)
+=======
+Just click on the "Open Game Directory" button and it should bring up the game folder. Now you just need to make a folder a call `asset` then `texture` inside, and inside another one call `pixport`. And inside that `pixport` folder is where you gonna put all the card texture. Card texture is 41x28 pixels .png or .jpeg file, and it support color. The card portrait file name will need to match whatever texture it supplying for. For example if I want to make a texture for `49er` then I will make a file name `49er.png` in the pixport folder (`texture/pixport/49er`, everything is case sensitive). If no file supply then it gonna use the default art
+
+### How to change sigil texture
+
+It should be the same as changing portrait, the only diffent is it in the folder `sigils` instead of `pixport`. Sigil texture is 16x16 .png or .jpeg file, and it support color. So if I want to change the `Airborne` sigil then I put the texture in `asset/texture/sigils` with the name `Airborne.png` (everything is case sensitive). If no file supply then it gonna use the default art.
+
+### How to add Custom music
+
+Same as portrait and sigils. You open the game file create a folder name `asset` if you haven't. Create a folder name `sound` in it and another folder `music` inside of `sound`. Then you will put you music file there, the file name will be the option name in the game. It support both .wave and .mp3 (.ogg is weird godot don;t seem to be able to load it)
+>>>>>>> 1ac9810360b5f85d72fa04b522f052e21cc6b9b7
 
 #### TODO
 
@@ -43,3 +55,4 @@ Same as portrait and sigils. You open the game file create a folder name `asset`
 - Remember name and quick host
 - Ability to load gif for texture (load gif for card portrait and sigil texture)
 - Added support for .ogg when looking for music
+- ~~Add in a rick roll~~
