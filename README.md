@@ -2,11 +2,11 @@
 
 ## From the original project
 
-A LAN Multiplayer fangame replicating the gameplay of Inscryption's act 2 made in the godot engine by 107zxz.
-
-Available at https://107zxz.itch.io/inscryption-multiplayer-godot
-
-Source code is available under MIT license for anyone to use
+> A LAN Multiplayer fangame replicating the gameplay of Inscryption's act 2 made in the godot engine by 107zxz.
+>
+> Available at https://107zxz.itch.io/inscryption-multiplayer-godot
+> 
+> Source code is available under MIT license for anyone to use
 
 This project is just a fork of the original one with a few customization feature and prob some quality of life one. This fork doesn't change any game play feature just aesthetic. Everything is client side meaning only you can see these changes and you can use this fork to play with normal version of the game
 
