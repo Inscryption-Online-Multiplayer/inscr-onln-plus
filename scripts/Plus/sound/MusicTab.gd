@@ -3,21 +3,19 @@ onready var optionBox =  get_node("Rows/BgMusicSelect/OptionButton")
 onready var slider = get_node("Rows/Volume/HSlider")
 onready var mute = get_node("Rows/Mute/CheckBox")
 
-
-
 func _ready():
 	reload()
-	var saveData = load("res://scripts/Save.gd").new().loadSaveFile()
-	slider.value = saveData.volume
-	mute.pressed = saveData.muted
-	optionBox.text = saveData.music
+	var saveData = Save.new().loadSaveFile()
+	slider.value = saveData.musicSetting.volume
+	mute.pressed = saveData.musicSetting.muted
+	optionBox.text = saveData.musicSetting.music
 	
 		
 func _on_Close_pressed():
 	get_parent().visible = false
 
 func _on_Save_pressed():
-	var save = load("res://scripts/Save.gd").new()
+	var save = Save.new()
 	var saveData = save.loadSaveFile()
 	
 	var path = "%s/music/%s"
@@ -36,9 +34,9 @@ func _on_Save_pressed():
 	
 	MusicController.play(a)
 
-	saveData.muted = mute.pressed
-	saveData.volume = slider.value
-	saveData.music = optionBox.text
+	saveData.musicSetting.muted = mute.pressed
+	saveData.musicSetting.volume = slider.value
+	saveData.musicSetting.music = optionBox.text
 	
 	save.saveSaveFile(saveData)
 

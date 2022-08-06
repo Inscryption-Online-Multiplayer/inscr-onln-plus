@@ -12,22 +12,28 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "AudioLoader",
 "language": "GDScript",
-"path": "res://scripts/sound/GDScriptAudioImport.gd"
+"path": "res://scripts/Plus/sound/GDScriptAudioImport.gd"
 }, {
 "base": "Node",
 "class": "Save",
 "language": "GDScript",
-"path": "res://scripts/Save.gd"
+"path": "res://scripts/Plus/Save.gd"
 }, {
 "base": "Node",
 "class": "TextureLoader",
 "language": "GDScript",
-"path": "res://scripts/texture/TextureLoader.gd"
+"path": "res://scripts/Plus/texture/TextureLoader.gd"
+}, {
+"base": "Node",
+"class": "keyBind",
+"language": "GDScript",
+"path": "res://scripts/Plus/KeyBind.gd"
 } ]
 _global_script_class_icons={
 "AudioLoader": "",
 "Save": "",
-"TextureLoader": ""
+"TextureLoader": "",
+"keyBind": ""
 }
 
 [application]
@@ -76,6 +82,82 @@ singletons=[  ]
 
 texture={
 "flags/filter": false
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_home={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_end={
+"deadzone": 0.5,
+"events": [  ]
+}
+quick_host={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+draw_main={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+draw_side={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+close={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]

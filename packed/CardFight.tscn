@@ -539,9 +539,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
+margin_left = -153.0
 margin_top = -37.5
-margin_right = 100.0
+margin_right = 153.0
 margin_bottom = 37.5
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -565,7 +565,7 @@ __meta__ = {
 }
 
 [node name="WinLabel" type="Label" parent="WinScreen/Panel/VBoxContainer"]
-margin_top = 275.0
+margin_top = 276.0
 margin_right = 1024.0
 margin_bottom = 289.0
 text = "You Win!"
@@ -578,7 +578,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="WinScreen/Panel/VBoxContainer"]
 margin_top = 307.0
 margin_right = 1024.0
-margin_bottom = 325.0
+margin_bottom = 324.0
 custom_constants/separation = 40
 alignment = 1
 __meta__ = {
@@ -586,20 +586,70 @@ __meta__ = {
 }
 
 [node name="RematchBtn" type="Button" parent="WinScreen/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 429.0
-margin_right = 522.0
-margin_bottom = 18.0
+margin_left = 435.0
+margin_right = 521.0
+margin_bottom = 17.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Rematch (0/2)"
 
 [node name="QuitBtn" type="Button" parent="WinScreen/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 562.0
-margin_right = 594.0
-margin_bottom = 18.0
+margin_left = 561.0
+margin_right = 588.0
+margin_bottom = 17.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Quit"
+
+[node name="AreYouSureAboutThat" type="VBoxContainer" parent="WinScreen/Panel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="WinLabel" type="Label" parent="WinScreen/Panel/AreYouSureAboutThat"]
+margin_top = 276.0
+margin_right = 1024.0
+margin_bottom = 289.0
+text = "Are you sure you want to surrender?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WinScreen/Panel/AreYouSureAboutThat"]
+margin_top = 307.0
+margin_right = 1024.0
+margin_bottom = 324.0
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Button" parent="WinScreen/Panel/AreYouSureAboutThat/HBoxContainer"]
+margin_left = 435.0
+margin_right = 521.0
+margin_bottom = 17.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Yes"
+
+[node name="No" type="Button" parent="WinScreen/Panel/AreYouSureAboutThat/HBoxContainer"]
+margin_left = 561.0
+margin_right = 588.0
+margin_bottom = 17.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "No"
 
 [connection signal="button_down" from="DrawPiles/YourDecks/Deck" to="." method="draw_maindeck"]
 [connection signal="button_down" from="DrawPiles/YourDecks/SideDeck" to="." method="draw_sidedeck"]
@@ -609,3 +659,5 @@ text = "Quit"
 [connection signal="pressed" from="RightSideUI/ForfeitButton" to="." method="surrender"]
 [connection signal="pressed" from="WinScreen/Panel/VBoxContainer/HBoxContainer/RematchBtn" to="." method="request_rematch"]
 [connection signal="pressed" from="WinScreen/Panel/VBoxContainer/HBoxContainer/QuitBtn" to="." method="quit_match"]
+[connection signal="pressed" from="WinScreen/Panel/AreYouSureAboutThat/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="WinScreen/Panel/AreYouSureAboutThat/HBoxContainer/No" to="." method="_on_No_pressed"]

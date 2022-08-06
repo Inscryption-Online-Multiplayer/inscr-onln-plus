@@ -14,17 +14,10 @@ var readyIcon = preload("res://gfx/sigils/Green Mox.png")
 
 var lobby_data = {"players": {}, "spectators": []}
 
-var defaultSaveData = {
-	"name":"",
-	"pfp_client":"Default",
-	"pfp_server": "Cat",
-	"music":"Act 2 Grimora Theme.wav",
-	"volume":-10,
-	"muted":false
-}
 # Godot Handlers
 func _ready():
-	
+	keyBind.new().createKeyBindJson()
+	keyBind.new().reloadKeyBind()
 	var dir = Directory.new()
 	dir.open("user://")
 	dir.make_dir_recursive("asset/sound/music")
@@ -32,8 +25,7 @@ func _ready():
 	dir.make_dir_recursive("asset/texture/sigils")
 	dir.make_dir_recursive("asset/texture/pfps")
 	
-	if !dir.file_exists("saveData.json"):
-		Save.new().saveSaveFile(defaultSaveData)
+	Save.new().createSave()
 	
 	randomize()
 
@@ -56,6 +48,36 @@ func _ready():
 		if option == "join":
 			debug_join()
 
+func _process(_delta):
+	if themeEditor.visible == false and deckEditor.visible == false and cardFight.visible == false and plusSettings.visible == false and $LobbyJoin.visible == false and  $LobbyHost.visible == false:
+		if Input.is_action_just_pressed("quick_host"):
+			$Blocker.visible = true
+			hostUnameBox.text = Save.new().loadSaveFile().name
+			_on_Host_pressed()
+			
+	if Input.is_action_just_pressed("close"):
+		if themeEditor.visible:
+			themeEditor.visible = false 
+			themeEditor.save()
+			
+		elif plusSettings.visible:
+			plusSettings.visible = false
+			plusSettings.get_node("General")._on_Save_pressed()
+			plusSettings.get_node("Sound")._on_Save_pressed()
+			plusSettings.get_node("Texture")._on_Save_pressed()
+			
+		elif deckEditor.visible:
+			deckEditor._on_ExitButton_pressed()
+			deckEditor.save_deck()
+			
+		$LobbyJoin.visible = false 
+		$LobbyHost.visible = false
+		$Blocker.visible = false
+		
+
+		
+
+		
 # Methods
 func debug_host():
 	$LobbyHost/Rows/HostType/Type.selected = 1
@@ -190,7 +212,7 @@ func _on_PlusBtn_pressed():
 	
 func _on_HostBtn_pressed():
 	$LobbyHost.visible = true
-	$LobbyHost/Rows/Nickname/LineEdit.text =Save.new().loadSaveFile().name
+	hostUnameBox.text =Save.new().loadSaveFile().name
 	$Blocker.visible = true
 
 func _on_JoinBtn_pressed():

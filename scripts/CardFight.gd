@@ -88,7 +88,18 @@ var sarcophagus_counter = 0
 # Network match state
 var want_rematch = false
 
+var inFight = false
+
+func _process(_delta):
+	if !$WaitingBlocker.visible and inFight:
+		if Input.is_action_just_pressed("draw_main"):
+			draw_maindeck()
+		elif Input.is_action_just_pressed("draw_side"):
+			draw_sidedeck()
+	pass
+
 func init_match(opp_id: int, do_go_first: bool):
+	inFight = true
 	print("Starting match...")
 	
 	opponent = opp_id
@@ -180,6 +191,7 @@ func init_match(opp_id: int, do_go_first: bool):
 	
 	
 	$WaitingBlocker.visible = not go_first
+	print(handManager)
 
 
 # Gameplay functions
@@ -598,15 +610,13 @@ func request_rematch():
 	want_rematch = true
 	rpc_id(opponent, "_rematch_requested")
 	$WinScreen/Panel/VBoxContainer/HBoxContainer/RematchBtn.text = "Rematch (1/2)"
+	inFight = false
 
 func surrender():
 	$WinScreen/Panel/VBoxContainer/WinLabel.text = "You Surrendered!"
+	$WinScreen/Panel/VBoxContainer.visible = false
+	$WinScreen/Panel/AreYouSureAboutThat.visible = true
 	$WinScreen.visible = true
-	
-	rpc_id(opponent, "_opponent_surrendered")
-	
-	# Document Result
-	get_node("/root/Main/TitleScreen").count_loss(opponent)
 
 func quit_match():
 	# Tell opponent I surrendered
@@ -614,6 +624,8 @@ func quit_match():
 	
 	visible = false
 	get_node("/root/Main/TitleScreen").update_lobby()
+	
+	inFight = false
 
 ## REMOTE
 remote func _opponent_quit():
@@ -678,3 +690,18 @@ remote func add_remote_bones(bone_no):
 func _ready():
 	for slot in playerSlots.get_children():
 		slot.connect("pressed", self, "play_card", [slot])
+
+
+func _on_Yes_pressed():
+	rpc_id(opponent, "_opponent_surrendered")
+	
+	# Document Result
+	get_node("/root/Main/TitleScreen").count_loss(opponent)
+	inFight = false
+	
+	$WinScreen/Panel/VBoxContainer.visible = true
+	$WinScreen/Panel/AreYouSureAboutThat.visible = false
+
+
+func _on_No_pressed():
+	$WinScreen.visible = false
