@@ -1,5 +1,9 @@
 # Inscryption Multiplayer [Godot]
 
+**Cus of the new update 0.1.2 there gonna be some problem when playing with the normal version so keep that in mind**
+![image](https://user-images.githubusercontent.com/89868169/183252145-03db7bca-cf75-4eaf-be29-485f9903b6ae.png)
+
+
 ## From the original project
 
 > A LAN Multiplayer fangame replicating the gameplay of Inscryption's act 2 made in the godot engine by 107zxz.
