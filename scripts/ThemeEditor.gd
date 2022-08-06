@@ -48,7 +48,8 @@ const default_theme_data = {
 			"background": "#99936d"
 		}
 	},
-	"show_accessibility_icons": false
+	"show_accessibility_icons": false,
+	"show_card_tooltips": true
 }
 
 var theme_data = default_theme_data
@@ -117,6 +118,10 @@ func apply_theme():
 	
 	# Accessibility icons
 	GameOptions.enable_accessibility_icons = theme_data.show_accessibility_icons
+	GameOptions.show_card_tooltips = theme_data.show_card_tooltips
+	
+	# Reload deck editor
+	get_node("/root/Main/DeckEdit").search()
 	
 	# Tab Color
 	paperTheme.get_stylebox("panel", "TabContainer").bg_color = theme_data.background_colour
@@ -150,13 +155,13 @@ func apply_controls():
 	theme_data.buttons.pressed.border = $"Options/Button Border Pressed/LineEdit".text
 
 	theme_data.show_accessibility_icons = $"Options/Accessibility icons/CheckBox".pressed
+	theme_data.show_card_tooltips = $"Options/Card Tooltips/CheckBox".pressed
 
 func save_theme():
 	
-	var theme_path = "user://theme.json"
 	
 	var sFile = File.new()
-	sFile.open(theme_path, File.WRITE)
+	sFile.open(CardInfo.theme_path, File.WRITE)
 	sFile.store_line(to_json(theme_data))
 	sFile.close()
 
@@ -187,16 +192,18 @@ func update_controls():
 	if not "show_accessibility_icons" in theme_data:
 		theme_data["show_accessibility_icons"] = false
 	
+	if not "show_card_tooltips" in theme_data:
+		theme_data.show_card_tooltips = true
+	
 	$"Options/Accessibility icons/CheckBox".pressed = theme_data.show_accessibility_icons
+	$"Options/Card Tooltips/CheckBox".pressed = theme_data.show_card_tooltips
 
 func attempt_load_theme():
 	
-	var theme_path = "user://theme.json"
-	
 	var tFile = File.new()
-	if tFile.file_exists(theme_path):
+	if tFile.file_exists(CardInfo.theme_path):
 		print("Found theme.json!")
-		tFile.open(theme_path, File.READ)
+		tFile.open(CardInfo.theme_path, File.READ)
 		if parse_json(tFile.get_as_text()):
 			theme_data = parse_json(tFile.get_as_text())
 			

@@ -1,6 +1,10 @@
 extends Node
 
+<<<<<<< HEAD
 const VERSION = "Plus 1.2"
+=======
+const VERSION = "0.1.3"
+>>>>>>> adab0953f207f22c8332d8e65c809b36c79aaeef
 
 var all_data = {}
 var ruleset = "undefined ruleset"
@@ -10,6 +14,7 @@ var working_sigils = []
 
 var deck_path = OS.get_user_data_dir() + "/decks/undef/"
 var rules_path = OS.get_user_data_dir() + "/gameInfo.json"
+var theme_path = OS.get_user_data_dir() + "/theme.json"
 var tunnellog_path = OS.get_user_data_dir() + "/lhrlog.txt"
 
 func _enter_tree():
