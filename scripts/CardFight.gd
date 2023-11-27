@@ -310,6 +310,7 @@ func draw_maindeck():
 			$DrawPiles/YourDecks/Deck.visible = false
 		
 		starve_check()
+	
 
 func draw_sidedeck():
 	if state == GameStates.DRAWPILE:
@@ -379,8 +380,6 @@ func starve_check(soft_rpc = true):
 	return false
 
 func draw_card(card, source = $DrawPiles/YourDecks/Deck, do_rpc = true):
-	
-	
 	var nCard = cardPrefab.instance()
 	
 	source.add_child(nCard)
@@ -436,7 +435,13 @@ func draw_card(card, source = $DrawPiles/YourDecks/Deck, do_rpc = true):
 	# Hand tenta
 	for card in slotManager.all_friendly_cards():
 		card.calculate_buffs()
-
+	
+	if GameOptions.options.plus.cardNumber:
+		# reload the hand number
+		var hand = $HandsContainer/Hands/PlayerHand.get_children()
+		for i in range(hand.size()):
+			hand[i].get_child(0).text = str(i + 1)
+		
 	return nCard
 
 func play_card(slot: Node):
@@ -1117,13 +1122,18 @@ func start_turn():
 remote func add_remote_bones(bone_no):
 	add_opponent_bones(bone_no)
 
-func _input(_event):
+func _input(event):
+	if event is InputEventMouse or not $".".visible: return
 	if Input.is_action_just_released("endTurn"):
 		end_turn()
 	elif Input.is_action_just_released("drawMain") and $DrawPiles/YourDecks/Deck.visible:
 		draw_maindeck()
 	elif Input.is_action_just_released("drawSide") and $DrawPiles/YourDecks/SideDeck.visible:
 		draw_sidedeck()
+	elif Input.is_action_just_released("quickSelect") and GameOptions.options.plus.cardNumber:
+		var index = event.scancode - 49
+		var hand = $HandsContainer/Hands/PlayerHand.get_children()
+		if index < hand.size(): hand[event.scancode - 49]._on_Button_pressed()
 
 func showWin():
 	$WinScreen.visible = true

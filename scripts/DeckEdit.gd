@@ -43,6 +43,7 @@ func _on_ExitButton_pressed():
 	visible = false
 	get_node("/root/Main/TitleScreen").populate_deck_list()
 	get_node("/root/Main/TitleScreen").select_deck(selector_de.selected)
+	get_node("/root/Main/TitleScreen/Blocker").visible = false # close the blocker
 
 func apply_custom_background():
 	$CustomBG.texture = CardInfo.background_texture

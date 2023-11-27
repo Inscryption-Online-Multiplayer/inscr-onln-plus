@@ -584,6 +584,15 @@ __meta__ = {
 "_edit_vertical_guides_": [ 128.229 ]
 }
 
+[node name="Number" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = -50.0
+margin_bottom = -36.0
+size_flags_vertical = 3
+theme_type_variation = "ScoreFont"
+align = 1
+valign = 1
+
 [node name="CardBody" parent="." instance=ExtResource( 15 )]
 margin_left = 0.0
 margin_top = 0.0

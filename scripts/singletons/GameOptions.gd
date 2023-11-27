@@ -29,6 +29,8 @@ var options = {
 		"autoReady": false,
 		"autoRematch": false,
 		"surrenderConfirm": true,
+		"quickSelect": false,
+		"cardNumber": false,
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
