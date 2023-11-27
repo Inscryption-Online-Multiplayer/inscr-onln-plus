@@ -978,6 +978,7 @@ func request_rematch():
 	$WinScreen/Panel/VBoxContainer/HBoxContainer/RematchBtn.text = "Rematch (1/2)"
 
 func surrender():
+	$surrenderConfirm.visible = false
 	
 	save_replay()
 	
@@ -1128,3 +1129,13 @@ func showWin():
 	$WinScreen.visible = true
 	if GameOptions.options.plus.autoRematch:
 		request_rematch()
+
+
+func _on_ForfeitButton_pressed():
+	if GameOptions.options.plus.surrenderConfirm:
+		$surrenderConfirm.visible = true
+	else:
+		surrender()
+
+func _on_noSurrender_pressed():
+	$surrenderConfirm.visible = false
