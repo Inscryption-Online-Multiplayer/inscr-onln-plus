@@ -1,0 +1,59 @@
+[
+    {
+        "entry": {
+            "text": [
+                "...",
+                "Hmph.",
+                "It truly has been ages.",
+                "This is my [color=#540d1d]darkroom[/color].",
+                "I've had to work down here since I lost my camera.",
+
+                "...",
+
+                "I wonder what the others are doing.",
+                
+                "Speaking of which, would you mind helping me?",
+
+                "One of my recent photos was... damaged.",
+                "If you repair it for me, I will [color=#24c8de]reward[/color] you.",
+                "[jigsaw]"
+            ],
+            "delays": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        "puzzdone": {
+            "text": [
+                "Thank you.",
+                "As promised, your [color=#24c8de]boon[/color].",
+                "Using it, you may [color=red]sacrifice[/color] one of your candles",
+                "To gain a [color=grey]greater smoke[/color].",
+                "I hope I shall see you again."
+            ],
+            "delays": [
+                1,
+                1,
+                1,
+                1
+            ],
+            "redir": "res://packed/RulesetPickerProto.tscn"
+        },
+        "commsintro": {
+            "text": [
+                "...",
+                "Too much interference..."
+            ],
+            "redir": "res://packed/RulesetPickerProto.tscn"
+        }
+    }
+]

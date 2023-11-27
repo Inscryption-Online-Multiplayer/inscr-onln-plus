@@ -1,0 +1,436 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/backuptheme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/UI/ThemeEditor.gd" type="Script" id=2]
+
+[node name="ThemeEditor" type="WindowDialog"]
+visible = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -555.0
+margin_right = 600.0
+theme = ExtResource( 1 )
+window_title = "Theme Editor"
+script = ExtResource( 2 )
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 3
+
+[node name="border_colour" type="HBoxContainer" parent="Options"]
+margin_right = 600.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="Options/border_colour"]
+margin_top = 2.0
+margin_right = 98.0
+margin_bottom = 26.0
+text = "Borders: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/border_colour"]
+margin_left = 98.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="background_colour" type="HBoxContainer" parent="Options"]
+margin_top = 31.0
+margin_right = 600.0
+margin_bottom = 59.0
+
+[node name="Label" type="Label" parent="Options/background_colour"]
+margin_top = 2.0
+margin_right = 143.0
+margin_bottom = 26.0
+text = "Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/background_colour"]
+margin_left = 143.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="edit_background_colour" type="HBoxContainer" parent="Options"]
+margin_top = 62.0
+margin_right = 600.0
+margin_bottom = 90.0
+
+[node name="Label" type="Label" parent="Options/edit_background_colour"]
+margin_top = 2.0
+margin_right = 234.0
+margin_bottom = 26.0
+text = "Editbox Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/edit_background_colour"]
+margin_left = 234.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="text_colour" type="HBoxContainer" parent="Options"]
+margin_top = 93.0
+margin_right = 600.0
+margin_bottom = 121.0
+
+[node name="Label" type="Label" parent="Options/text_colour"]
+margin_top = 2.0
+margin_right = 65.0
+margin_bottom = 26.0
+text = "Text: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/text_colour"]
+margin_left = 65.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="pixart_colour" type="HBoxContainer" parent="Options"]
+margin_top = 124.0
+margin_right = 600.0
+margin_bottom = 152.0
+
+[node name="Label" type="Label" parent="Options/pixart_colour"]
+margin_top = 2.0
+margin_right = 110.0
+margin_bottom = 26.0
+text = "Pixel Art: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/pixart_colour"]
+margin_left = 110.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="cards-common-normal" type="HBoxContainer" parent="Options"]
+margin_top = 155.0
+margin_right = 600.0
+margin_bottom = 183.0
+
+[node name="Label" type="Label" parent="Options/cards-common-normal"]
+margin_top = 2.0
+margin_right = 297.0
+margin_bottom = 26.0
+text = "Common Card Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/cards-common-normal"]
+margin_left = 297.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="cards-rare-normal" type="HBoxContainer" parent="Options"]
+margin_top = 186.0
+margin_right = 600.0
+margin_bottom = 214.0
+
+[node name="Label" type="Label" parent="Options/cards-rare-normal"]
+margin_top = 2.0
+margin_right = 263.0
+margin_bottom = 26.0
+text = "Rare Card Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/cards-rare-normal"]
+margin_left = 263.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="cards-nosac-normal" type="HBoxContainer" parent="Options"]
+margin_top = 217.0
+margin_right = 600.0
+margin_bottom = 245.0
+
+[node name="Label" type="Label" parent="Options/cards-nosac-normal"]
+margin_top = 2.0
+margin_right = 377.0
+margin_bottom = 26.0
+text = "Unsacrificeable Card Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/cards-nosac-normal"]
+margin_left = 377.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="cards-rns-normal" type="HBoxContainer" parent="Options"]
+margin_top = 248.0
+margin_right = 600.0
+margin_bottom = 276.0
+
+[node name="Label" type="Label" parent="Options/cards-rns-normal"]
+margin_top = 2.0
+margin_right = 438.0
+margin_bottom = 26.0
+text = "Rare Unsacrificeable Card Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/cards-rns-normal"]
+margin_left = 438.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="cards-nohammer-normal" type="HBoxContainer" parent="Options"]
+margin_top = 279.0
+margin_right = 600.0
+margin_bottom = 307.0
+
+[node name="Label" type="Label" parent="Options/cards-nohammer-normal"]
+margin_top = 2.0
+margin_right = 368.0
+margin_bottom = 26.0
+text = "Unhammerable Card Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/cards-nohammer-normal"]
+margin_left = 368.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="buttons-normal-background" type="HBoxContainer" parent="Options"]
+margin_top = 310.0
+margin_right = 600.0
+margin_bottom = 338.0
+
+[node name="Label" type="Label" parent="Options/buttons-normal-background"]
+margin_top = 2.0
+margin_right = 228.0
+margin_bottom = 26.0
+text = "Button Background: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/buttons-normal-background"]
+margin_left = 228.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="buttons-normal-border" type="HBoxContainer" parent="Options"]
+margin_top = 341.0
+margin_right = 600.0
+margin_bottom = 369.0
+
+[node name="Label" type="Label" parent="Options/buttons-normal-border"]
+margin_top = 2.0
+margin_right = 172.0
+margin_bottom = 26.0
+text = "Button Border: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/buttons-normal-border"]
+margin_left = 172.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="buttons-pressed-background" type="HBoxContainer" parent="Options"]
+margin_top = 372.0
+margin_right = 600.0
+margin_bottom = 400.0
+
+[node name="Label" type="Label" parent="Options/buttons-pressed-background"]
+margin_top = 2.0
+margin_right = 322.0
+margin_bottom = 26.0
+text = "Button Background Pressed: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/buttons-pressed-background"]
+margin_left = 322.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="buttons-pressed-border" type="HBoxContainer" parent="Options"]
+margin_top = 403.0
+margin_right = 600.0
+margin_bottom = 431.0
+
+[node name="Label" type="Label" parent="Options/buttons-pressed-border"]
+margin_top = 2.0
+margin_right = 266.0
+margin_bottom = 26.0
+text = "Button Border Pressed: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/buttons-pressed-border"]
+margin_left = 266.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="buttons-hover-background" type="HBoxContainer" parent="Options"]
+margin_top = 434.0
+margin_right = 600.0
+margin_bottom = 462.0
+
+[node name="Label" type="Label" parent="Options/buttons-hover-background"]
+margin_top = 2.0
+margin_right = 296.0
+margin_bottom = 26.0
+text = "Button Background Hover: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/buttons-hover-background"]
+margin_left = 296.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="buttons-hover-border" type="HBoxContainer" parent="Options"]
+margin_top = 465.0
+margin_right = 600.0
+margin_bottom = 493.0
+
+[node name="Label" type="Label" parent="Options/buttons-hover-border"]
+margin_top = 2.0
+margin_right = 240.0
+margin_bottom = 26.0
+text = "Button Border Hover: "
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Options/buttons-hover-border"]
+margin_left = 240.0
+margin_right = 600.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+edit_alpha = false
+
+[node name="BackgroundSettings" type="HBoxContainer" parent="Options"]
+margin_top = 496.0
+margin_right = 600.0
+margin_bottom = 524.0
+custom_constants/separation = 35
+alignment = 1
+
+[node name="SetBGImg" type="Button" parent="Options/BackgroundSettings"]
+margin_left = 117.0
+margin_right = 273.0
+margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Set BG Image"
+
+[node name="FileDialog" type="FileDialog" parent="Options/BackgroundSettings/SetBGImg"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -480.0
+margin_right = 640.0
+rect_min_size = Vector2( 400, 140 )
+theme = ExtResource( 1 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.png", "*.jpg" )
+
+[node name="ClearBgImg" type="Button" parent="Options/BackgroundSettings"]
+margin_left = 308.0
+margin_right = 483.0
+margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Clear BG Image"
+
+[node name="Buttons" type="HBoxContainer" parent="Options"]
+margin_top = 527.0
+margin_right = 600.0
+margin_bottom = 555.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="Options/Buttons"]
+margin_left = 19.0
+margin_right = 108.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Save As"
+
+[node name="SaveTDialog" type="FileDialog" parent="Options/Buttons/SaveButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -96.0
+margin_right = 432.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 400, 140 )
+theme = ExtResource( 1 )
+window_title = "Save Theme"
+access = 2
+filters = PoolStringArray( "*.json" )
+
+[node name="OpenButton" type="Button" parent="Options/Buttons"]
+margin_left = 133.0
+margin_right = 189.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Open"
+
+[node name="OpenTDialog" type="FileDialog" parent="Options/Buttons/OpenButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -305.5
+margin_top = -96.0
+margin_right = 334.5
+margin_bottom = 384.0
+rect_min_size = Vector2( 400, 140 )
+theme = ExtResource( 1 )
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json" )
+
+[node name="CopyButton" type="Button" parent="Options/Buttons"]
+margin_left = 214.0
+margin_right = 268.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Copy"
+
+[node name="PasteButton" type="Button" parent="Options/Buttons"]
+margin_left = 293.0
+margin_right = 362.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Paste"
+
+[node name="DefaultsButton" type="Button" parent="Options/Buttons"]
+margin_left = 387.0
+margin_right = 580.0
+margin_bottom = 28.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Reset to Default"
+
+[connection signal="pressed" from="Options/BackgroundSettings/SetBGImg" to="Options/BackgroundSettings/SetBGImg/FileDialog" method="popup_centered"]
+[connection signal="file_selected" from="Options/BackgroundSettings/SetBGImg/FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="Options/BackgroundSettings/ClearBgImg" to="." method="full_clear_bg"]
+[connection signal="pressed" from="Options/Buttons/SaveButton" to="Options/Buttons/SaveButton/SaveTDialog" method="popup_centered"]
+[connection signal="file_selected" from="Options/Buttons/SaveButton/SaveTDialog" to="." method="_on_SaveTDialog_file_selected"]
+[connection signal="pressed" from="Options/Buttons/OpenButton" to="Options/Buttons/OpenButton/OpenTDialog" method="popup_centered"]
+[connection signal="file_selected" from="Options/Buttons/OpenButton/OpenTDialog" to="." method="_on_OpenTDialog_file_selected"]
+[connection signal="pressed" from="Options/Buttons/CopyButton" to="." method="copy_theme"]
+[connection signal="pressed" from="Options/Buttons/PasteButton" to="." method="paste_theme"]
+[connection signal="pressed" from="Options/Buttons/DefaultsButton" to="." method="defaults"]

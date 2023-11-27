@@ -1,0 +1,430 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://packed/UI/JakeLoading.tscn" type="PackedScene" id=1]
+[ext_resource path="res://themes/papertheme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/UI/RulesetPickerProto.gd" type="Script" id=3]
+[ext_resource path="res://packed/UI/RulesetLine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gfx/portraits/Ouroboros.png" type="Texture" id=5]
+[ext_resource path="res://packed/UI/Error.tscn" type="PackedScene" id=6]
+[ext_resource path="res://packed/ThemeEditor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://themes/sigilMat.tres" type="Material" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.25 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Jake"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.5, 7.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 160, 870 ), Vector2( 160, 880 ) ]
+}
+
+[node name="RulesetPicker" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="FeaturedRulesets" type="PanelContainer" parent="."]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 900.0
+margin_bottom = 780.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FeaturedRulesets"]
+margin_right = 800.0
+margin_bottom = 680.0
+
+[node name="Label" type="Label" parent="FeaturedRulesets/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 24.0
+text = "Featured Rulesets"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FeaturedRulesets/VBoxContainer"]
+margin_top = 24.0
+margin_right = 800.0
+margin_bottom = 646.0
+size_flags_vertical = 3
+
+[node name="FeatRsCont" type="VBoxContainer" parent="FeaturedRulesets/VBoxContainer/ScrollContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 798.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+
+[node name="CustomPicker" type="PanelContainer" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont"]
+margin_right = 796.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 794.0
+margin_bottom = 98.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="RSName" type="Label" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer"]
+margin_left = 88.0
+margin_top = 36.0
+margin_right = 181.0
+margin_bottom = 60.0
+text = "Custom: "
+
+[node name="RSFU" type="Button" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer"]
+margin_left = 197.0
+margin_top = 31.0
+margin_right = 303.0
+margin_bottom = 65.0
+focus_mode = 0
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "From URL"
+
+[node name="RSFJ" type="Button" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer"]
+margin_left = 319.0
+margin_top = 31.0
+margin_right = 436.0
+margin_bottom = 65.0
+focus_mode = 0
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "From JSON"
+
+[node name="RSFF" type="Button" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer"]
+margin_left = 452.0
+margin_top = 31.0
+margin_right = 555.0
+margin_bottom = 65.0
+focus_mode = 0
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "From File"
+
+[node name="RSOF" type="Button" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer"]
+margin_left = 571.0
+margin_top = 31.0
+margin_right = 703.0
+margin_bottom = 65.0
+focus_mode = 0
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "Open Folder"
+
+[node name="RulesetLine" parent="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont" instance=ExtResource( 4 )]
+visible = false
+
+[node name="ScrollButtons" type="HBoxContainer" parent="FeaturedRulesets/VBoxContainer"]
+margin_top = 646.0
+margin_right = 800.0
+margin_bottom = 680.0
+alignment = 1
+
+[node name="UpButton" type="Button" parent="FeaturedRulesets/VBoxContainer/ScrollButtons"]
+margin_right = 400.0
+margin_bottom = 34.0
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "<"
+
+[node name="DownButton" type="Button" parent="FeaturedRulesets/VBoxContainer/ScrollButtons"]
+margin_left = 400.0
+margin_right = 800.0
+margin_bottom = 34.0
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = ">"
+
+[node name="SavedRulesets" type="PanelContainer" parent="."]
+margin_left = 1020.0
+margin_top = 100.0
+margin_right = 1820.0
+margin_bottom = 980.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SavedRulesets"]
+margin_right = 800.0
+margin_bottom = 880.0
+
+[node name="Label" type="Label" parent="SavedRulesets/VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 24.0
+text = "Saved Rulesets"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SavedRulesets/VBoxContainer"]
+margin_top = 24.0
+margin_right = 800.0
+margin_bottom = 846.0
+size_flags_vertical = 3
+
+[node name="SavedRsCont" type="VBoxContainer" parent="SavedRulesets/VBoxContainer/ScrollContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 798.0
+margin_bottom = 820.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollButtons" type="HBoxContainer" parent="SavedRulesets/VBoxContainer"]
+margin_top = 846.0
+margin_right = 800.0
+margin_bottom = 880.0
+alignment = 1
+
+[node name="UpButton" type="Button" parent="SavedRulesets/VBoxContainer/ScrollButtons"]
+margin_right = 400.0
+margin_bottom = 34.0
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = "<"
+
+[node name="DownButton" type="Button" parent="SavedRulesets/VBoxContainer/ScrollButtons"]
+margin_left = 400.0
+margin_right = 800.0
+margin_bottom = 34.0
+focus_mode = 0
+size_flags_horizontal = 3
+enabled_focus_mode = 0
+text = ">"
+
+[node name="FromFile" type="FileDialog" parent="."]
+margin_left = 536.0
+margin_top = 279.0
+margin_right = 1436.0
+margin_bottom = 760.0
+rect_min_size = Vector2( 400, 140 )
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json" )
+
+[node name="FromURL" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="PanelContainer" type="PanelContainer" parent="FromURL"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -87.5
+margin_right = 270.0
+margin_bottom = 87.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FromURL/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 538.0
+margin_bottom = 173.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="FromURL/PanelContainer/VBoxContainer"]
+margin_top = 10.0
+margin_right = 536.0
+margin_bottom = 34.0
+text = "Insert Ruleset URL:"
+align = 1
+
+[node name="LineEdit" type="LineEdit" parent="FromURL/PanelContainer/VBoxContainer"]
+margin_left = 43.0
+margin_top = 66.0
+margin_right = 493.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 450, 0 )
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FromURL/PanelContainer/VBoxContainer"]
+margin_top = 126.0
+margin_right = 536.0
+margin_bottom = 160.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="URLDownloadBtn" type="Button" parent="FromURL/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 161.0
+margin_right = 268.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Download"
+
+[node name="Button2" type="Button" parent="FromURL/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 300.0
+margin_right = 375.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Cancel"
+
+[node name="FromJSON" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="PanelContainer" type="PanelContainer" parent="FromJSON"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -313.0
+margin_right = 270.0
+margin_bottom = 313.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FromJSON/PanelContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 538.0
+margin_bottom = 624.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="FromJSON/PanelContainer/VBoxContainer"]
+margin_top = 17.0
+margin_right = 536.0
+margin_bottom = 41.0
+text = "Insert Ruleset JSON:"
+align = 1
+
+[node name="TextEdit" type="TextEdit" parent="FromJSON/PanelContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 536.0
+margin_bottom = 556.0
+rect_min_size = Vector2( 0, 500 )
+show_line_numbers = true
+wrap_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FromJSON/PanelContainer/VBoxContainer"]
+margin_top = 571.0
+margin_right = 536.0
+margin_bottom = 605.0
+custom_constants/separation = 32
+alignment = 1
+
+[node name="JSONLoadBtn" type="Button" parent="FromJSON/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 193.0
+margin_right = 236.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Add"
+
+[node name="Button2" type="Button" parent="FromJSON/PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 268.0
+margin_right = 343.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Cancel"
+
+[node name="Error" parent="." instance=ExtResource( 6 )]
+
+[node name="Status" parent="." instance=ExtResource( 1 )]
+
+[node name="VersionLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = -63.0
+margin_right = 59.0
+margin_bottom = -31.0
+text = "v0.1.9"
+
+[node name="RSDownloader" type="HTTPRequest" parent="."]
+
+[node name="FeaturedFetcher" type="HTTPRequest" parent="."]
+
+[node name="ImageRequest" type="HTTPRequest" parent="."]
+
+[node name="Jake" type="TextureRect" parent="."]
+material = ExtResource( 8 )
+margin_left = 160.0
+margin_top = 874.902
+margin_right = 274.0
+margin_bottom = 968.902
+rect_rotation = 90.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 57, 47 )
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_editor_description_": "Originally Ouroboros Act 1 portrait"
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Jake"]
+autoplay = "Jake"
+anims/Jake = SubResource( 6 )
+
+[node name="Jakebubble" type="PanelContainer" parent="."]
+margin_left = 350.0
+margin_top = 845.0
+margin_right = 850.0
+margin_bottom = 1005.0
+theme_type_variation = "SpeechBubble"
+
+[node name="Jakemsg" type="Label" parent="Jakebubble"]
+margin_left = 1.0
+margin_top = 54.0
+margin_right = 499.0
+margin_bottom = 105.0
+text = "Hi, I'm Jake!
+Welcome to the new ruleset picker"
+align = 1
+
+[node name="ThemeEditor" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[connection signal="pressed" from="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer/RSFU" to="FromURL" method="show"]
+[connection signal="pressed" from="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer/RSFJ" to="FromJSON" method="show"]
+[connection signal="pressed" from="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer/RSFF" to="FromFile" method="popup_centered"]
+[connection signal="pressed" from="FeaturedRulesets/VBoxContainer/ScrollContainer/FeatRsCont/CustomPicker/HBoxContainer/RSOF" to="." method="open_rsdir"]
+[connection signal="pressed" from="FeaturedRulesets/VBoxContainer/ScrollButtons/UpButton" to="." method="scroll_rulesets_featured" binds= [ -500 ]]
+[connection signal="pressed" from="FeaturedRulesets/VBoxContainer/ScrollButtons/DownButton" to="." method="scroll_rulesets_featured" binds= [ 500 ]]
+[connection signal="pressed" from="SavedRulesets/VBoxContainer/ScrollButtons/UpButton" to="." method="scroll_rulesets_saved" binds= [ -500 ]]
+[connection signal="pressed" from="SavedRulesets/VBoxContainer/ScrollButtons/DownButton" to="." method="scroll_rulesets_saved" binds= [ 500 ]]
+[connection signal="file_selected" from="FromFile" to="." method="_on_FromFile_file_selected"]
+[connection signal="pressed" from="FromURL/PanelContainer/VBoxContainer/HBoxContainer/URLDownloadBtn" to="." method="_on_URLDownloadBtn_pressed"]
+[connection signal="pressed" from="FromURL/PanelContainer/VBoxContainer/HBoxContainer/Button2" to="FromURL" method="hide"]
+[connection signal="pressed" from="FromJSON/PanelContainer/VBoxContainer/HBoxContainer/JSONLoadBtn" to="." method="_on_JSONLoadBtn_pressed"]
+[connection signal="pressed" from="FromJSON/PanelContainer/VBoxContainer/HBoxContainer/Button2" to="FromJSON" method="hide"]
+[connection signal="request_completed" from="RSDownloader" to="." method="_on_RSDownloader_request_completed"]
+[connection signal="request_completed" from="FeaturedFetcher" to="." method="_on_FeaturedFetcher_request_completed"]

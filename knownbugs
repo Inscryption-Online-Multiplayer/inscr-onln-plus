@@ -1,0 +1,15 @@
+Make skelemagus have 1/100 chance to be skelemagun
+Same for other cards
+
+MOON STUFF
+coup de lune
+lunacide
+
+Low priority:
+Allow user to use their opponent's ruleset
+Save each ruleset in a different file "rules/" directory?
+Starter decks
+Side deck format and ruleset customisability
+Do something with HandManager (move hand functions there from CardFight)
+Sometimes extra cards drawn at the start of the round (high ping?)
+Spectating / Replays

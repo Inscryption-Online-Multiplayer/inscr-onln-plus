@@ -1,0 +1,1908 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://gfx/portraits/Pack Rat.png" type="Texture" id=1]
+[ext_resource path="res://themes/papertheme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/CardFight.gd" type="Script" id=3]
+[ext_resource path="res://scripts/CardSlots.gd" type="Script" id=4]
+[ext_resource path="res://scripts/HandManager.gd" type="Script" id=5]
+[ext_resource path="res://themes/sigilMat.tres" type="Material" id=7]
+[ext_resource path="res://packed/SpecialCards/Moon.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gfx/cardextras/cost_energy.png" type="Texture" id=10]
+[ext_resource path="res://gfx/cardextras/pixel_card_costs.png" type="Texture" id=11]
+[ext_resource path="res://scripts/UI/CandleVis.gd" type="Script" id=12]
+[ext_resource path="res://gfx/extra/candles.png" type="Texture" id=13]
+[ext_resource path="res://gfx/extra/candlestick.png" type="Texture" id=14]
+[ext_resource path="res://gfx/extra/advantage.png" type="Texture" id=15]
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 7, 156, 10 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 7, 7 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 17, 156, 10 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 0.5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DrawPiles/YourDecks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CardSlots/PlayerSlots:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BothMoons/FriendlyMoon:rect_position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 660, 500 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BothMoons/FriendlyMoon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../HandsContainer/Hands/PlayerHand:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../DrawPiles/YourDecks:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../CardSlots/PlayerSlots:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../HandsContainer/Hands/PlayerHand:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../LeftSideUI/PassButton:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../LeftSideUI/HammerButton:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../LeftSideUI/HammerButton:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../DrawPiles/EnemyDecks:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../DrawPiles/EnemyDecks:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("../HandsContainer/Hands/EnemyHand:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../HandsContainer/Hands/EnemyHand:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../CardSlots/EnemySlots:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("../CardSlots/EnemySlots:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("BothMoons/EnemyMoon:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("../LeftSideUI/PassButton:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/20/type = "method"
+tracks/20/path = NodePath("BothMoons/EnemyMoon")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset"
+} ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath("BothMoons/FriendlyMoon")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset"
+} ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("BothMoons/EnemyMoon:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("BothMoons/FriendlyMoon:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("BothMoons/EnemyMoon:rect_scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("BothMoons/FriendlyMoon:rect_scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "eggmanEnemy"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BothMoons/EnemyMoon:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BothMoons/EnemyMoon:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 280 ), Vector2( 810, 342 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BothMoons/EnemyMoon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BothMoons/EnemyMoon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../WinScreen:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../WinScreen/Panel/VBoxContainer/WinLabel:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You Win via Lunacide!" ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "count_win"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "eggmanFriendly"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BothMoons/FriendlyMoon:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BothMoons/FriendlyMoon:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 550 ), Vector2( 810, 615 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BothMoons/FriendlyMoon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BothMoons/FriendlyMoon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../WinScreen:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../WinScreen/Panel/VBoxContainer/WinLabel:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You Lose via Lunacide!" ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "count_loss"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "enemyMoon"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DrawPiles/EnemyDecks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CardSlots/EnemySlots:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BothMoons/EnemyMoon:rect_position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 6.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 80 ), Vector2( 660, 280 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BothMoons/EnemyMoon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../HandsContainer/Hands/EnemyHand:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../DrawPiles/EnemyDecks:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../CardSlots/EnemySlots:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../HandsContainer/Hands/EnemyHand:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "enemyMoonSlap"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BothMoons/EnemyMoon:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 280 ), Vector2( 660, 252.5 ), Vector2( 660, 307.5 ), Vector2( 660, 280 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../CardSlots")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 4, 4 ],
+"method": "handle_enemy_attack"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "friendlyMoon"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DrawPiles/YourDecks:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CardSlots/PlayerSlots:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BothMoons/FriendlyMoon:rect_position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 6.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 750 ), Vector2( 660, 550 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BothMoons/FriendlyMoon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../HandsContainer/Hands/PlayerHand:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../DrawPiles/YourDecks:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../CardSlots/PlayerSlots:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../HandsContainer/Hands/PlayerHand:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../LeftSideUI/PassButton:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../LeftSideUI/HammerButton:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../LeftSideUI/HammerButton:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("..")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 6.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_turn"
+} ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../LeftSideUI/PassButton:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "friendlyMoonSlap"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BothMoons/FriendlyMoon:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 550 ), Vector2( 660, 577.5 ), Vector2( 660, 522.5 ), Vector2( 660, 550 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../CardSlots")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0, 0 ],
+"method": "handle_attack"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 13 )
+region = Rect2( 1, 0, 5, 21 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 13 )
+region = Rect2( 8, 0, 5, 21 )
+
+[sub_resource type="StyleBoxEmpty" id=19]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/Marksman.otf"
+
+[sub_resource type="DynamicFont" id=12]
+outline_size = 2
+outline_color = Color( 0.843137, 0.886275, 0.639216, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=13]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 11 )
+region = Rect2( 6, 2, 13, 13 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0.235294 )
+
+[node name="CardFight" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 539.978, 1052.51 ]
+}
+
+[node name="CustomBg" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+
+[node name="Advantage" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="AdvRight" type="TextureRect" parent="Advantage"]
+margin_left = 400.0
+margin_top = -182.0
+margin_right = 805.0
+margin_bottom = -153.2
+rect_rotation = 90.0
+texture = SubResource( 18 )
+expand = true
+
+[node name="PickRight" type="TextureRect" parent="Advantage/AdvRight"]
+margin_left = 186.0
+margin_top = -32.0
+margin_right = 218.0
+texture = SubResource( 17 )
+expand = true
+
+[node name="AdvLeft" type="TextureRect" parent="Advantage"]
+margin_left = -360.0
+margin_top = 222.5
+margin_right = 45.0
+margin_bottom = 251.3
+rect_rotation = -90.0
+texture = SubResource( 16 )
+expand = true
+
+[node name="PickLeft" type="TextureRect" parent="Advantage/AdvLeft"]
+margin_left = 187.0
+margin_top = -32.0
+margin_right = 219.0
+texture = SubResource( 17 )
+expand = true
+
+[node name="MoonFight" type="PanelContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 3 )
+
+[node name="BothMoons" type="Control" parent="MoonFight"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+
+[node name="EnemyMoon" parent="MoonFight/BothMoons" instance=ExtResource( 9 )]
+visible = false
+margin_left = 660.0
+margin_top = 280.0
+margin_right = 1260.0
+margin_bottom = 530.001
+
+[node name="FriendlyMoon" parent="MoonFight/BothMoons" instance=ExtResource( 9 )]
+visible = false
+margin_left = 660.0
+margin_top = 500.0
+margin_right = 1260.0
+margin_bottom = 750.001
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoonFight"]
+anims/RESET = SubResource( 5 )
+anims/eggmanEnemy = SubResource( 9 )
+anims/eggmanFriendly = SubResource( 10 )
+anims/enemyMoon = SubResource( 6 )
+anims/enemyMoonSlap = SubResource( 7 )
+anims/friendlyMoon = SubResource( 4 )
+anims/friendlyMoonSlap = SubResource( 8 )
+
+[node name="PlayerInfo" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MyInfo" type="Control" parent="PlayerInfo"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -70.0
+margin_right = 70.0
+margin_bottom = -30.0
+
+[node name="Candle" type="Control" parent="PlayerInfo/MyInfo"]
+margin_left = 140.0
+margin_top = 10.0
+margin_right = 220.0
+margin_bottom = 90.0
+script = ExtResource( 12 )
+
+[node name="Base" type="TextureRect" parent="PlayerInfo/MyInfo/Candle"]
+margin_top = -25.0
+margin_right = 50.0
+margin_bottom = 25.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Base2" type="TextureRect" parent="PlayerInfo/MyInfo/Candle"]
+visible = false
+margin_left = 30.5914
+margin_top = -25.0
+margin_right = 80.5914
+margin_bottom = 25.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Candle1" type="TextureRect" parent="PlayerInfo/MyInfo/Candle"]
+margin_left = 2.49
+margin_top = -84.0
+margin_right = 16.99
+margin_bottom = -25.0
+texture = SubResource( 14 )
+expand = true
+
+[node name="Candle2" type="TextureRect" parent="PlayerInfo/MyInfo/Candle"]
+margin_left = 33.0
+margin_top = -84.0
+margin_right = 47.5
+margin_bottom = -25.0
+texture = SubResource( 15 )
+expand = true
+
+[node name="Candle3" type="TextureRect" parent="PlayerInfo/MyInfo/Candle"]
+visible = false
+margin_left = 63.994
+margin_top = -84.0
+margin_right = 78.494
+margin_bottom = -25.0
+texture = SubResource( 15 )
+expand = true
+
+[node name="Snuff" type="Button" parent="PlayerInfo/MyInfo/Candle"]
+margin_left = -6.0
+margin_top = -81.0
+margin_right = 97.0
+margin_bottom = 29.0
+focus_mode = 0
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/normal = SubResource( 19 )
+enabled_focus_mode = 0
+
+[node name="Pfp" type="TextureRect" parent="PlayerInfo/MyInfo"]
+material = ExtResource( 7 )
+margin_left = 5.0
+margin_top = -70.0
+margin_right = 119.0
+margin_bottom = 24.0
+texture = ExtResource( 1 )
+
+[node name="Username" type="Label" parent="PlayerInfo/MyInfo"]
+margin_left = 5.0
+margin_top = -90.0
+margin_right = 194.0
+margin_bottom = -66.0
+text = "Ant Enthusiast"
+
+[node name="Energy" type="Control" parent="PlayerInfo/MyInfo"]
+margin_left = 10.0
+margin_top = -125.0
+margin_right = 50.0
+margin_bottom = -85.0
+
+[node name="MaxEnergy" type="TextureRect" parent="PlayerInfo/MyInfo/Energy"]
+modulate = Color( 0.5, 0.5, 0.5, 1 )
+margin_right = 20.0
+margin_bottom = 15.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
+[node name="AvailableEnergy" type="TextureRect" parent="PlayerInfo/MyInfo/Energy"]
+margin_right = 10.0
+margin_bottom = 15.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
+[node name="Bones" type="Control" parent="PlayerInfo/MyInfo"]
+margin_left = 10.0
+margin_top = -160.0
+margin_right = 50.0
+margin_bottom = -120.0
+
+[node name="BoneCount2" type="Label" parent="PlayerInfo/MyInfo/Bones"]
+margin_left = 28.0
+margin_right = 68.0
+margin_bottom = 13.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.843137, 0.886275, 0.639216, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "51"
+
+[node name="BoneCount" type="Label" parent="PlayerInfo/MyInfo/Bones"]
+margin_left = 28.0
+margin_right = 68.0
+margin_bottom = 13.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.843137, 0.886275, 0.639216, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "51"
+
+[node name="BoneSymbol" type="TextureRect" parent="PlayerInfo/MyInfo/Bones"]
+margin_right = 13.0
+margin_bottom = 13.0
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 11 )
+
+[node name="TheirInfo" type="Control" parent="PlayerInfo"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -70.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 70.0
+
+[node name="Candle" type="Control" parent="PlayerInfo/TheirInfo"]
+margin_left = -150.0
+margin_top = 95.0
+margin_right = -70.0
+margin_bottom = 175.0
+script = ExtResource( 12 )
+three_bump = -30
+
+[node name="Base" type="TextureRect" parent="PlayerInfo/TheirInfo/Candle"]
+margin_top = -25.0
+margin_right = 50.0
+margin_bottom = 25.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Base2" type="TextureRect" parent="PlayerInfo/TheirInfo/Candle"]
+visible = false
+margin_left = 30.1211
+margin_top = -25.0
+margin_right = 80.1211
+margin_bottom = 25.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="Candle1" type="TextureRect" parent="PlayerInfo/TheirInfo/Candle"]
+margin_left = 2.49
+margin_top = -84.0
+margin_right = 16.99
+margin_bottom = -25.0
+texture = SubResource( 14 )
+expand = true
+
+[node name="Candle2" type="TextureRect" parent="PlayerInfo/TheirInfo/Candle"]
+margin_left = 33.0
+margin_top = -84.0
+margin_right = 47.5
+margin_bottom = -25.0
+texture = SubResource( 15 )
+expand = true
+
+[node name="Candle3" type="TextureRect" parent="PlayerInfo/TheirInfo/Candle"]
+visible = false
+margin_left = 62.9091
+margin_top = -84.0
+margin_right = 77.4091
+margin_bottom = -25.0
+texture = SubResource( 15 )
+expand = true
+
+[node name="Pfp" type="TextureRect" parent="PlayerInfo/TheirInfo"]
+material = ExtResource( 7 )
+margin_left = -80.0
+margin_top = 20.0
+margin_right = 34.0
+margin_bottom = 114.0
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="Username" type="Label" parent="PlayerInfo/TheirInfo"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -333.0
+margin_top = -20.0
+margin_right = -5.0
+margin_bottom = 4.0
+text = "Pack Rat Enjoyer"
+align = 2
+
+[node name="Energy" type="Control" parent="PlayerInfo/TheirInfo"]
+margin_top = 125.0
+margin_right = 40.0
+margin_bottom = 165.0
+
+[node name="MaxEnergy" type="TextureRect" parent="PlayerInfo/TheirInfo/Energy"]
+modulate = Color( 0.5, 0.5, 0.5, 1 )
+margin_right = 10.0
+margin_bottom = 15.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
+[node name="AvailableEnergy" type="TextureRect" parent="PlayerInfo/TheirInfo/Energy"]
+margin_right = 10.0
+margin_bottom = 15.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
+[node name="Bones" type="Control" parent="PlayerInfo/TheirInfo"]
+margin_left = -30.0
+margin_top = 160.0
+margin_right = 10.0
+margin_bottom = 200.0
+
+[node name="BoneCount2" type="Label" parent="PlayerInfo/TheirInfo/Bones"]
+margin_left = 28.0
+margin_right = 68.0
+margin_bottom = 13.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.843137, 0.886275, 0.639216, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "51"
+
+[node name="BoneCount" type="Label" parent="PlayerInfo/TheirInfo/Bones"]
+margin_left = 28.0
+margin_right = 68.0
+margin_bottom = 13.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.843137, 0.886275, 0.639216, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "51"
+
+[node name="BoneSymbol" type="TextureRect" parent="PlayerInfo/TheirInfo/Bones"]
+margin_right = 13.0
+margin_bottom = 13.0
+rect_scale = Vector2( 2, 2 )
+texture = SubResource( 11 )
+
+[node name="DrawPiles" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="YourDecks" type="HBoxContainer" parent="DrawPiles"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -296.0
+margin_top = -215.0
+margin_right = -30.0
+margin_bottom = -30.0
+custom_constants/separation = 10
+alignment = 2
+
+[node name="Deck" type="Button" parent="DrawPiles/YourDecks"]
+margin_right = 128.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+text = "Deck"
+
+[node name="SizeLabel" type="Label" parent="DrawPiles/YourDecks/Deck"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -21.5
+margin_top = -24.0
+margin_right = 21.5
+text = "ERR"
+align = 1
+valign = 2
+
+[node name="SideDeck" type="Button" parent="DrawPiles/YourDecks"]
+margin_left = 138.0
+margin_right = 266.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+text = "Side"
+clip_text = true
+
+[node name="SizeLabel" type="Label" parent="DrawPiles/YourDecks/SideDeck"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -21.5
+margin_top = -24.0
+margin_right = 21.5
+text = "ERR"
+align = 1
+valign = 2
+
+[node name="EnemyDecks" type="HBoxContainer" parent="DrawPiles"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 296.0
+margin_bottom = 215.0
+custom_constants/separation = 10
+
+[node name="SideDeck" type="Button" parent="DrawPiles/EnemyDecks"]
+margin_right = 128.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+disabled = true
+button_mask = 3
+enabled_focus_mode = 0
+text = "Side Deck"
+
+[node name="Deck" type="Button" parent="DrawPiles/EnemyDecks"]
+margin_left = 138.0
+margin_right = 266.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+disabled = true
+button_mask = 3
+enabled_focus_mode = 0
+text = "Deck"
+
+[node name="Notify" type="Label" parent="DrawPiles"]
+margin_left = 1685.0
+margin_top = 830.0
+margin_right = 1826.0
+margin_bottom = 854.0
+text = "Draw a card!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CardSlots" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="EnemySlots" type="HBoxContainer" parent="CardSlots"]
+margin_top = 345.0
+margin_right = 1920.0
+margin_bottom = 530.0
+mouse_filter = 2
+size_flags_vertical = 10
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Slot0" type="Button" parent="CardSlots/EnemySlots"]
+margin_left = 680.0
+margin_right = 808.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot1" type="Button" parent="CardSlots/EnemySlots"]
+margin_left = 824.0
+margin_right = 952.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot2" type="Button" parent="CardSlots/EnemySlots"]
+margin_left = 968.0
+margin_right = 1096.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot3" type="Button" parent="CardSlots/EnemySlots"]
+margin_left = 1112.0
+margin_right = 1240.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="EnemySlotsBack" type="HBoxContainer" parent="CardSlots"]
+visible = false
+margin_top = 145.0
+margin_right = 1920.0
+margin_bottom = 330.0
+mouse_filter = 2
+size_flags_vertical = 10
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Slot0" type="Button" parent="CardSlots/EnemySlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 680.0
+margin_right = 808.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot1" type="Button" parent="CardSlots/EnemySlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 824.0
+margin_right = 952.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot2" type="Button" parent="CardSlots/EnemySlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 968.0
+margin_right = 1096.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot3" type="Button" parent="CardSlots/EnemySlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 1112.0
+margin_right = 1240.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="PlayerSlots" type="HBoxContainer" parent="CardSlots"]
+margin_top = 550.0
+margin_right = 1920.0
+margin_bottom = 735.0
+mouse_filter = 2
+size_flags_vertical = 2
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Slot0" type="Button" parent="CardSlots/PlayerSlots"]
+margin_left = 680.0
+margin_right = 808.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot1" type="Button" parent="CardSlots/PlayerSlots"]
+margin_left = 824.0
+margin_right = 952.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot2" type="Button" parent="CardSlots/PlayerSlots"]
+margin_left = 968.0
+margin_right = 1096.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot3" type="Button" parent="CardSlots/PlayerSlots"]
+margin_left = 1112.0
+margin_right = 1240.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+theme_type_variation = "CSlot"
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="PlayerSlotsBack" type="HBoxContainer" parent="CardSlots"]
+visible = false
+margin_top = 750.0
+margin_right = 1920.0
+margin_bottom = 935.0
+mouse_filter = 2
+size_flags_vertical = 2
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Slot0" type="Button" parent="CardSlots/PlayerSlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 680.0
+margin_right = 808.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot1" type="Button" parent="CardSlots/PlayerSlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 824.0
+margin_right = 952.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot2" type="Button" parent="CardSlots/PlayerSlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 968.0
+margin_right = 1096.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="Slot3" type="Button" parent="CardSlots/PlayerSlotsBack"]
+self_modulate = Color( 0.894118, 0.894118, 0.894118, 1 )
+margin_left = 1112.0
+margin_right = 1240.0
+margin_bottom = 185.0
+rect_min_size = Vector2( 128, 185 )
+focus_mode = 0
+button_mask = 3
+enabled_focus_mode = 0
+
+[node name="HandsContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+margin_bottom = -32.0
+mouse_filter = 2
+
+[node name="Hands" type="VBoxContainer" parent="HandsContainer"]
+margin_right = 1920.0
+margin_bottom = 1016.0
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyHand" type="HBoxContainer" parent="HandsContainer/Hands"]
+margin_left = 960.0
+margin_right = 960.0
+mouse_filter = 2
+size_flags_horizontal = 4
+
+[node name="PlayerHand" type="HBoxContainer" parent="HandsContainer/Hands"]
+margin_left = 960.0
+margin_top = 1016.0
+margin_right = 960.0
+margin_bottom = 1016.0
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="LeftSideUI" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = 35.0
+margin_right = 145.0
+mouse_filter = 2
+alignment = 1
+
+[node name="HammerButton" type="Button" parent="LeftSideUI"]
+margin_top = 465.0
+margin_right = 200.0
+margin_bottom = 529.0
+rect_min_size = Vector2( 200, 64 )
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+text = "Hammer"
+
+[node name="Spacer4" type="Control" parent="LeftSideUI"]
+margin_top = 529.0
+margin_right = 200.0
+margin_bottom = 551.347
+rect_min_size = Vector2( 0, 22.347 )
+
+[node name="PassButton" type="Button" parent="LeftSideUI"]
+margin_top = 551.0
+margin_right = 200.0
+margin_bottom = 615.0
+rect_min_size = Vector2( 200, 64 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Ring Bell"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeckSearch" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="DeckSearch"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -79.5
+margin_right = 150.0
+margin_bottom = 79.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckSearch/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="Label" type="Label" parent="DeckSearch/Panel/VBoxContainer"]
+margin_top = 41.0
+margin_right = 300.0
+margin_bottom = 65.0
+text = "Deck Search"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="DeckSearch/Panel/VBoxContainer"]
+margin_left = 62.0
+margin_top = 83.0
+margin_right = 237.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 175, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Obungus"
+align = 1
+items = [ "Obungus", null, false, 0, null, "Stoat", null, false, 1, null, "Jam", null, false, 2, null ]
+selected = 0
+
+[node name="WaitingBlocker" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Label" type="Label" parent="WaitingBlocker"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Waiting For Opponent..."
+
+[node name="RightSideUI" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -230.0
+margin_right = -30.0
+mouse_filter = 2
+alignment = 1
+
+[node name="ForfeitButton" type="Button" parent="RightSideUI"]
+margin_top = 508.0
+margin_right = 200.0
+margin_bottom = 572.0
+rect_min_size = Vector2( 200, 64 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Surrender"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinScreen" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.5
+margin_top = -50.0
+margin_right = 162.5
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+custom_constants/separation = 18
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinLabel" type="Label" parent="WinScreen/Panel/VBoxContainer"]
+margin_top = 262.0
+margin_right = 1024.0
+margin_bottom = 286.0
+text = "You Lose via Lunacide!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WinScreen/Panel/VBoxContainer"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 338.0
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RematchBtn" type="Button" parent="WinScreen/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 390.0
+margin_right = 547.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Rematch (0/2)"
+
+[node name="QuitBtn" type="Button" parent="WinScreen/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 587.0
+margin_right = 634.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Quit"
+
+[node name="MusInfo" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MusInfo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.5
+margin_top = -100.0
+margin_right = 312.5
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MusInfo/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="WinLabel" type="Label" parent="MusInfo/Panel/VBoxContainer"]
+margin_top = 88.0
+margin_right = 625.0
+margin_bottom = 112.0
+text = "Downloading music..."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusPicker" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MusPicker"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 200.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MusPicker/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="PickerLabel" type="Label" parent="MusPicker/Panel/VBoxContainer"]
+margin_top = 39.0
+margin_right = 400.0
+margin_bottom = 63.0
+text = "Insert Music Url:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SongUrl" type="LineEdit" parent="MusPicker/Panel/VBoxContainer"]
+margin_top = 81.0
+margin_right = 400.0
+margin_bottom = 109.0
+
+[node name="DlBtn" type="Button" parent="MusPicker/Panel/VBoxContainer"]
+margin_left = 174.0
+margin_top = 127.0
+margin_right = 225.0
+margin_bottom = 161.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Play"
+
+[node name="MusPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="CardSFX" type="AudioStreamPlayer" parent="."]
+bus = "SFX"
+
+[node name="DesyncWatcher" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="SniperLine" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+default_color = Color( 1, 0, 0, 1 )
+
+[connection signal="pressed" from="PlayerInfo/MyInfo/Candle/Snuff" to="CardSlots" method="_on_Snuff_pressed"]
+[connection signal="button_down" from="DrawPiles/YourDecks/Deck" to="." method="draw_maindeck"]
+[connection signal="button_down" from="DrawPiles/YourDecks/SideDeck" to="." method="draw_sidedeck"]
+[connection signal="button_down" from="LeftSideUI/HammerButton" to="." method="hammer_mode"]
+[connection signal="pressed" from="LeftSideUI/PassButton" to="." method="end_turn"]
+[connection signal="item_selected" from="DeckSearch/Panel/VBoxContainer/OptionButton" to="." method="search_callback"]
+[connection signal="pressed" from="RightSideUI/ForfeitButton" to="." method="surrender"]
+[connection signal="pressed" from="WinScreen/Panel/VBoxContainer/HBoxContainer/RematchBtn" to="." method="request_rematch"]
+[connection signal="pressed" from="WinScreen/Panel/VBoxContainer/HBoxContainer/QuitBtn" to="." method="quit_match"]
+[connection signal="timeout" from="DesyncWatcher" to="." method="_on_DesyncWatcher_timeout"]
