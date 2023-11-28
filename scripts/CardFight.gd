@@ -1139,6 +1139,14 @@ func _input(event):
 		var index = event.scancode - 49
 		var hand = $HandsContainer/Hands/PlayerHand.get_children()
 		if index < hand.size(): hand[index]._on_Button_pressed()
+	elif Input.is_action_just_released("quickPlace") and GameOptions.options.plus.quickPlace:
+		var index
+		match event.scancode:
+			74: index = 1
+			75: index = 2
+			76: index = 3
+			_: index = 0
+		play_card($CardSlots/PlayerSlots.get_children()[index])
 
 func showWin():
 	$WinScreen.visible = true

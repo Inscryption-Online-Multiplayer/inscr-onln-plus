@@ -32,6 +32,7 @@ var options = {
 		"passConfirm": false,
 		"quickSelect": false,
 		"cardNumber": false,
+		"quickPlace": false,
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
