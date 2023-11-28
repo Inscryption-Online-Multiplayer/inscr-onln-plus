@@ -1135,7 +1135,7 @@ func _input(event):
 		draw_maindeck()
 	elif Input.is_action_just_released("drawSide") and $DrawPiles/YourDecks/SideDeck.visible:
 		draw_sidedeck()
-	elif Input.is_action_just_released("quickSelect") and GameOptions.options.plus.cardNumber:
+	elif Input.is_action_just_released("quickSelect") and GameOptions.options.plus.quickSelect:
 		var index = event.scancode - 49
 		var hand = $HandsContainer/Hands/PlayerHand.get_children()
 		if index < hand.size(): hand[index]._on_Button_pressed()
