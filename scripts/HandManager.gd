@@ -16,6 +16,7 @@ func clear_hands():
 		print("Wiping ", hand.name)
 		
 		for bcard in hand.get_children():
+			hand.remove_child(bcard)
 			bcard.queue_free()
 			
 # Remote functions
