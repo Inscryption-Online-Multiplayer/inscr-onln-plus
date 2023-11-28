@@ -1350,7 +1350,7 @@ align = 1
 [node name="option" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 150.0
 margin_right = 838.0
-margin_bottom = 344.0
+margin_bottom = 378.0
 
 [node name="Label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/option"]
 margin_right = 838.0
@@ -1362,7 +1362,7 @@ align = 1
 margin_top = 24.0
 margin_right = 838.0
 margin_bottom = 58.0
-hint_tooltip = "Auto ready when entering lobby"
+hint_tooltip = "Auto ready when entering lobby."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto Ready"
@@ -1371,7 +1371,7 @@ text = "Auto Ready"
 margin_top = 58.0
 margin_right = 838.0
 margin_bottom = 92.0
-hint_tooltip = "Auto rematch when fight end"
+hint_tooltip = "Auto rematch when fight end."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto Rematch"
@@ -1380,24 +1380,33 @@ text = "Auto Rematch"
 margin_top = 92.0
 margin_right = 838.0
 margin_bottom = 126.0
-hint_tooltip = "Ask for confirmation when surrendering"
+hint_tooltip = "Ask for confirmation when surrendering."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Surrender Confirmation"
 
-[node name="quickSelect" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
+[node name="passConfirm" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
 margin_top = 126.0
 margin_right = 838.0
 margin_bottom = 160.0
-hint_tooltip = "Select cardd using number keys"
+hint_tooltip = "Ask for confirmation when passing."
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Pass Confirmation"
+
+[node name="quickSelect" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
+margin_top = 160.0
+margin_right = 838.0
+margin_bottom = 194.0
+hint_tooltip = "Select card using number keys."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Card Quick Select"
 
 [node name="cardNumber" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 160.0
+margin_top = 194.0
 margin_right = 838.0
-margin_bottom = 194.0
+margin_bottom = 228.0
 hint_tooltip = "Show card number on top of card. Recommend with Card Quick select."
 focus_mode = 0
 enabled_focus_mode = 0

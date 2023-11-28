@@ -1859,6 +1859,73 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "No"
 
+[node name="passConfirm" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Panel" type="Panel" parent="passConfirm"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.5
+margin_top = -50.0
+margin_right = 162.5
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="passConfirm/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="WinLabel" type="Label" parent="passConfirm/Panel/VBoxContainer"]
+margin_top = 262.0
+margin_right = 1024.0
+margin_bottom = 286.0
+text = "Do You Want to Surrender"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="passConfirm/Panel/VBoxContainer"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 338.0
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pass" type="Button" parent="passConfirm/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 456.0
+margin_right = 497.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Yes"
+
+[node name="noPass" type="Button" parent="passConfirm/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 537.0
+margin_right = 567.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "No"
+
 [node name="MusInfo" type="Panel" parent="."]
 visible = false
 anchor_right = 1.0
@@ -1967,11 +2034,13 @@ default_color = Color( 1, 0, 0, 1 )
 [connection signal="button_down" from="DrawPiles/YourDecks/Deck" to="." method="draw_maindeck"]
 [connection signal="button_down" from="DrawPiles/YourDecks/SideDeck" to="." method="draw_sidedeck"]
 [connection signal="button_down" from="LeftSideUI/HammerButton" to="." method="hammer_mode"]
-[connection signal="pressed" from="LeftSideUI/PassButton" to="." method="end_turn"]
+[connection signal="pressed" from="LeftSideUI/PassButton" to="." method="_on_PassButton_pressed"]
 [connection signal="item_selected" from="DeckSearch/Panel/VBoxContainer/OptionButton" to="." method="search_callback"]
 [connection signal="pressed" from="RightSideUI/ForfeitButton" to="." method="_on_ForfeitButton_pressed"]
 [connection signal="pressed" from="WinScreen/Panel/VBoxContainer/HBoxContainer/RematchBtn" to="." method="request_rematch"]
 [connection signal="pressed" from="WinScreen/Panel/VBoxContainer/HBoxContainer/QuitBtn" to="." method="quit_match"]
 [connection signal="pressed" from="surrenderConfirm/Panel/VBoxContainer/HBoxContainer/surrender" to="." method="surrender"]
 [connection signal="pressed" from="surrenderConfirm/Panel/VBoxContainer/HBoxContainer/noSurrender" to="." method="_on_noSurrender_pressed"]
+[connection signal="pressed" from="passConfirm/Panel/VBoxContainer/HBoxContainer/pass" to="." method="end_turn"]
+[connection signal="pressed" from="passConfirm/Panel/VBoxContainer/HBoxContainer/noPass" to="." method="_on_noPass_pressed"]
 [connection signal="timeout" from="DesyncWatcher" to="." method="_on_DesyncWatcher_timeout"]

@@ -436,11 +436,7 @@ func draw_card(card, source = $DrawPiles/YourDecks/Deck, do_rpc = true):
 	for card in slotManager.all_friendly_cards():
 		card.calculate_buffs()
 	
-	if GameOptions.options.plus.cardNumber:
-		# reload the hand number
-		var hand = $HandsContainer/Hands/PlayerHand.get_children()
-		for i in range(hand.size()):
-			hand[i].get_child(0).text = str(i + 1)
+	recountHand()
 		
 	return nCard
 
@@ -478,6 +474,7 @@ func play_card(slot: Node):
 				set_energy(energy -playedCard.card_data["energy_cost"])
 			
 			playedCard.move_to_parent(slot)
+			playedCard.get_child(0).text = ""
 			handManager.raisedCard = null
 
 			# Visual hand update
@@ -485,6 +482,8 @@ func play_card(slot: Node):
 			pHand.add_constant_override("separation", - pHand.get_child_count() * 4)
 
 			state = GameStates.NORMAL
+	
+	recountHand()
 			
 
 func play_card_back(slot):
@@ -1140,7 +1139,7 @@ func showWin():
 	if GameOptions.options.plus.autoRematch:
 		request_rematch()
 
-
+# surrender confirm
 func _on_ForfeitButton_pressed():
 	if GameOptions.options.plus.surrenderConfirm:
 		$surrenderConfirm.visible = true
@@ -1149,3 +1148,20 @@ func _on_ForfeitButton_pressed():
 
 func _on_noSurrender_pressed():
 	$surrenderConfirm.visible = false
+
+# pass confirm
+func _on_PassButton_pressed():
+	if GameOptions.options.plus.passConfirm:
+		$passConfirm.visible = true
+	else:
+		end_turn()
+
+func _on_noPass_pressed():
+	$passConfirm.visible = false
+
+func recountHand():
+	if GameOptions.options.plus.cardNumber:
+		# reload the hand number
+		var hand = $HandsContainer/Hands/PlayerHand.get_children()
+		for i in range(hand.size()):
+			hand[i].get_child(0).text = str(i + 1)

@@ -29,6 +29,7 @@ var options = {
 		"autoReady": false,
 		"autoRematch": false,
 		"surrenderConfirm": true,
+		"passConfirm": false,
 		"quickSelect": false,
 		"cardNumber": false,
 		"keybind": {
@@ -49,8 +50,9 @@ func read_options():
 			var nOptions = parse_json(tFile.get_as_text())
 			
 			if "plus" in nOptions:
-				for keybind in nOptions.plus.keybind:
-					options.plus.keybind[keybind] = nOptions.plus.keybind[keybind]
+				if "keybind" in nOptions.plus:
+					for keybind in nOptions.plus.keybind:
+						options.plus.keybind[keybind] = nOptions.plus.keybind[keybind]
 
 				for plusOption in nOptions.plus:
 					options.plus[plusOption] = nOptions.plus[plusOption]
