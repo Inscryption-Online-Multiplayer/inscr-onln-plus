@@ -35,6 +35,7 @@ var options = {
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
+			"hammer": 16777218,
 			"drawMain": 81,
 			"drawSide": 69
 		}
@@ -46,6 +47,7 @@ func read_options():
 	if tFile.file_exists(CardInfo.options_path):
 		print("Found options.json!")
 		tFile.open(CardInfo.options_path, File.READ)
+		print(options)
 		if parse_json(tFile.get_as_text()):
 			var nOptions = parse_json(tFile.get_as_text())
 			
@@ -55,6 +57,7 @@ func read_options():
 						options.plus.keybind[keybind] = nOptions.plus.keybind[keybind]
 
 				for plusOption in nOptions.plus:
+					if plusOption == "keybind": continue
 					options.plus[plusOption] = nOptions.plus[plusOption]
 				
 			# Do this to preserve defaults

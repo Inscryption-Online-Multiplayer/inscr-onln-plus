@@ -1032,6 +1032,7 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1224,7 +1225,6 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0

@@ -255,6 +255,7 @@ func init_match(opp_id: int, do_go_first: bool):
 # Gameplay functions
 ## LOCAL
 func end_turn():
+	$passConfirm.visible = false
 	if not state in [GameStates.NORMAL, GameStates.SACRIFICE]:
 		return
 		
@@ -295,7 +296,7 @@ func end_turn():
 	
 	# Pre turn sigils
 	slotManager.pre_turn_sigils(false)
-
+	
 func draw_maindeck():
 	if state == GameStates.DRAWPILE:
 		
@@ -996,7 +997,6 @@ func surrender():
 	
 	if GameOptions.options.plus.autoRematch:
 		request_rematch()
-	
 
 func quit_match():
 	
@@ -1123,8 +1123,14 @@ remote func add_remote_bones(bone_no):
 
 func _input(event):
 	if event is InputEventMouse or not $".".visible: return
-	if Input.is_action_just_released("endTurn"):
+	if Input.is_action_just_released("endTurn") and not $WaitingBlocker.visible:
 		end_turn()
+	elif Input.is_action_just_released("hammer") and not $WaitingBlocker.visible:
+		# the hammer button is a toggle button and
+		# hammer mode is trigger before the toggle happen
+		hammer_mode()
+		# manual toggle to mimick the button behavior
+		$LeftSideUI/HammerButton.pressed = not $LeftSideUI/HammerButton.pressed 
 	elif Input.is_action_just_released("drawMain") and $DrawPiles/YourDecks/Deck.visible:
 		draw_maindeck()
 	elif Input.is_action_just_released("drawSide") and $DrawPiles/YourDecks/SideDeck.visible:
@@ -1132,7 +1138,7 @@ func _input(event):
 	elif Input.is_action_just_released("quickSelect") and GameOptions.options.plus.cardNumber:
 		var index = event.scancode - 49
 		var hand = $HandsContainer/Hands/PlayerHand.get_children()
-		if index < hand.size(): hand[event.scancode - 49]._on_Button_pressed()
+		if index < hand.size(): hand[index]._on_Button_pressed()
 
 func showWin():
 	$WinScreen.visible = true
