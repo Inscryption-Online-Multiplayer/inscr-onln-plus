@@ -86,11 +86,9 @@ func updateKeybind():
 
 func updatePlusToggle():
 	for option in $TabContainer/Plus/VBoxContainer/option.get_children():
-		if option is Button: continue
-		
+		# if the option is not in the option list skip it
 		if not option.name in GameOptions.options.plus:
 			continue
-		
 		# don't override stuff if it didn't change
 		var old_val = GameOptions.options.plus[option.name]
 				
@@ -115,7 +113,7 @@ func updatePlus():
 		if option == "scrollReminder" or not GameOptions.options.plus[option] is bool: continue
 		var button = CheckButton.new()
 		button.name = option
-		button.pressed = not option
+		button.pressed = not GameOptions.options.plus[option]
 		button.text = GameOptions.optionName[option][0]
 		button.hint_tooltip = GameOptions.optionName[option][1]
 		button.connect("pressed", self, "updatePlusToggle")
