@@ -2,7 +2,7 @@ extends Node
 
 # Have we done initialisation?
 var past_first = false
-
+var keyNone = 16777217
 var options = {
 	"enable_accessibility_icons": false,
 	"show_card_tooltips": true,
@@ -38,6 +38,7 @@ var options = {
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
+			"surrender": keyNone,
 			"hammer": 16777218,
 			"drawMain": 81,
 			"drawSide": 69
@@ -48,6 +49,7 @@ var options = {
 var keybindName = {
 	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
 	"endTurn":["End Turn", "Hit the bell and end turn"],
+	"surrender":["Surrender", "Surrender..."],
 	"hammer": ["Toggle Hammer (New)", "Toggle the hammer if possible"],
 	"drawMain": ["Draw Main Deck", "Draw from main deck is possible"],
 	"drawSide": ["Draw Main Deck", "Draw from side deck is possible"],

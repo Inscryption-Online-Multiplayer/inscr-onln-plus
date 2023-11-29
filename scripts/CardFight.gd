@@ -994,9 +994,6 @@ func surrender():
 	
 	# Document Result
 	get_node("/root/Main/TitleScreen").count_loss(opponent)
-	
-	if GameOptions.options.plus.autoRematch:
-		request_rematch()
 
 func quit_match():
 	
@@ -1134,6 +1131,8 @@ func _input(event):
 	if event is InputEventMouse or not $".".visible: return
 	if Input.is_action_just_released("endTurn") and not $WaitingBlocker.visible:
 		end_turn()
+	elif Input.is_action_just_released("surrender"):
+		_on_ForfeitButton_pressed()
 	elif Input.is_action_just_released("hammer") and not $WaitingBlocker.visible:
 		# the hammer button is a toggle button and
 		# hammer mode is trigger before the toggle happen
