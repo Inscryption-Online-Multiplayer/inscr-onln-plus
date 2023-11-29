@@ -33,7 +33,7 @@ var options = {
 		"passConfirm": false,
 		"quickSelect": false,
 		"cardNumber": false,
-		"quickPlace": false,
+		"quickSlot": false,
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
@@ -44,6 +44,22 @@ var options = {
 	}
 }
 
+var keybindName = {
+	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
+	"endTurn":["End Turn", "Hit the bell and end turn"],
+	"hammer": ["Toggle Hammer", "Toggle the hammer if possible"],
+	"drawMain": ["Draw Main Deck", "Draw from main deck is possible"],
+	"drawSide": ["Draw Main Deck", "Draw from side deck is possible"],
+}
+var optionName = {
+	"autoReady": ["Auto Ready", "Auto ready when entering lobby."],
+	"autoRematch": ["Auto Rematch", "Auto rematch when fight end."],
+	"surrenderConfirm": ["Surrender Confirmation", "Ask for confirmation when surrendering."],
+	"passConfirm": ["Pass Confirmation", "Ask for confirmation when passing."],
+	"quickSelect": ["Card Quick Select", "Select card using number keys."],
+	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
+	"quickSlot": ["Slot Quick Select", "Select card slot using H,J,K,L"]
+}
 func read_options():
 	var tFile = File.new()
 	if tFile.file_exists(CardInfo.options_path):

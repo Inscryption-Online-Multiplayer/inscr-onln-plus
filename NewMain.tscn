@@ -1033,7 +1033,6 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1226,6 +1225,7 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1349,72 +1349,9 @@ text = "Keybind"
 [node name="option" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 160.0
 margin_right = 838.0
-margin_bottom = 432.0
+margin_bottom = 194.0
 
 [node name="optionButton" parent="Options/TabContainer/Plus/VBoxContainer/option" instance=ExtResource( 17 )]
-
-[node name="autoReady" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 34.0
-margin_right = 838.0
-margin_bottom = 68.0
-hint_tooltip = "Auto ready when entering lobby."
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Auto Ready"
-
-[node name="autoRematch" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 68.0
-margin_right = 838.0
-margin_bottom = 102.0
-hint_tooltip = "Auto rematch when fight end."
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Auto Rematch"
-
-[node name="surrenderConfirm" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 102.0
-margin_right = 838.0
-margin_bottom = 136.0
-hint_tooltip = "Ask for confirmation when surrendering."
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Surrender Confirmation"
-
-[node name="passConfirm" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 136.0
-margin_right = 838.0
-margin_bottom = 170.0
-hint_tooltip = "Ask for confirmation when passing."
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Pass Confirmation"
-
-[node name="quickSelect" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 170.0
-margin_right = 838.0
-margin_bottom = 204.0
-hint_tooltip = "Select card using number keys."
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Card Quick Select"
-
-[node name="cardNumber" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 204.0
-margin_right = 838.0
-margin_bottom = 238.0
-hint_tooltip = "Show card number on top of card. Recommend with Card Quick select."
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Card Number"
-
-[node name="quickSlot" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 238.0
-margin_right = 838.0
-margin_bottom = 272.0
-hint_tooltip = "Select card slot using h,j,k,l"
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Slot Quick Select"
 
 [node name="LoadingScreen" type="PanelContainer" parent="Options"]
 visible = false

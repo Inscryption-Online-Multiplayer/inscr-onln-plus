@@ -1139,8 +1139,9 @@ func _input(event):
 		var index = event.scancode - 49
 		var hand = $HandsContainer/Hands/PlayerHand.get_children()
 		if index < hand.size(): hand[index]._on_Button_pressed()
-	elif Input.is_action_just_released("quickPlace") and GameOptions.options.plus.quickPlace:
+	elif Input.is_action_just_released("quickSlot") and GameOptions.options.plus.quickSlot:
 		var index
+		# todo: make it more general
 		match event.scancode:
 			74: index = 1
 			75: index = 2

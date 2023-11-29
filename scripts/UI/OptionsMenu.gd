@@ -69,12 +69,13 @@ func updateKeybind():
 		var keybindButton = Button.new()
 		
 		keybindLabel.size_flags_horizontal = SIZE_EXPAND_FILL
-		keybindLabel.text = keybindName
+		keybindLabel.text = GameOptions.keybindName[keybindName][0]
 		
 		keybindButton.size_flags_horizontal = SIZE_EXPAND_FILL
 		keybindButton.text = "NONE" if keybindCode == KEY_ESCAPE else OS.get_scancode_string(GameOptions.options.plus.keybind[keybindName])
 		keybindButton.toggle_mode = true
 		keybindButton.name = keybindName
+		keybindButton.hint_tooltip = GameOptions.keybindName[keybindName][1]
 		keybindButton.connect("toggled", self, "changeKeybind")
 		
 		hBox.add_child(keybindLabel)
@@ -110,11 +111,15 @@ func updatePlus():
 	
 	updateKeybind()
 	
-	for option in $TabContainer/Plus/VBoxContainer/option.get_children():
-		if option is Button:continue
-		if option.name in GameOptions.options.plus:
-			option.connect("pressed", self, "updatePlusToggle")
-			option.pressed = not GameOptions.options.plus[option.name]
+	for option in GameOptions.options.plus:
+		if option == "scrollReminder" or not GameOptions.options.plus[option] is bool: continue
+		var button = CheckButton.new()
+		button.name = option
+		button.pressed = not option
+		button.text = GameOptions.optionName[option][0]
+		button.hint_tooltip = GameOptions.optionName[option][1]
+		button.connect("pressed", self, "updatePlusToggle")
+		$TabContainer/Plus/VBoxContainer/option.add_child(button)
 
 # Update the option to the correct value
 func update_controls():
