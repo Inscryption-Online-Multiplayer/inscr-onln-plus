@@ -1485,6 +1485,7 @@ focus_mode = 0
 theme_type_variation = "CSlot"
 button_mask = 3
 enabled_focus_mode = 0
+text = "H"
 
 [node name="Slot1" type="Button" parent="CardSlots/PlayerSlots"]
 margin_left = 824.0
@@ -1495,6 +1496,7 @@ focus_mode = 0
 theme_type_variation = "CSlot"
 button_mask = 3
 enabled_focus_mode = 0
+text = "J"
 
 [node name="Slot2" type="Button" parent="CardSlots/PlayerSlots"]
 margin_left = 968.0
@@ -1505,6 +1507,7 @@ focus_mode = 0
 theme_type_variation = "CSlot"
 button_mask = 3
 enabled_focus_mode = 0
+text = "K"
 
 [node name="Slot3" type="Button" parent="CardSlots/PlayerSlots"]
 margin_left = 1112.0
@@ -1515,6 +1518,7 @@ focus_mode = 0
 theme_type_variation = "CSlot"
 button_mask = 3
 enabled_focus_mode = 0
+text = "L"
 
 [node name="PlayerSlotsBack" type="HBoxContainer" parent="CardSlots"]
 visible = false

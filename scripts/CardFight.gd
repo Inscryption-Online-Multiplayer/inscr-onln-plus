@@ -98,7 +98,10 @@ func _ready():
 			slot.connect("pressed", self, "play_card", [slot])
 		for eSlot in slotManager.enemySlots:
 			eSlot.connect("pressed", self, "clicked_enemy_slot", [eSlot])
-
+	
+	if not GameOptions.options.plus.slotLabel:
+		for slot in $CardSlots/PlayerSlots.get_children():
+			slot.text = ""
 
 func _process(_delta):
 	if state == GameStates.SNIPE:

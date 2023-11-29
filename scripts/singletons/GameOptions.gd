@@ -35,9 +35,10 @@ var options = {
 		"quickSelect": false,
 		"cardNumber": false,
 		"quickSlot": false,
+		"slotLabel": false,
 		"hideDeck": false,
-		"hideRule": false,
-		"hideDir": false,
+		"hideRuleset": false,
+		"hideDirectory": false,
 		"hideDiscord": false,
 		"keybind": {
 			"quickHost": 72,
@@ -45,7 +46,13 @@ var options = {
 			"surrender": keyNone,
 			"hammer": 16777218,
 			"drawMain": 81,
-			"drawSide": 69
+			"drawSide": 69,
+			"host": keyNone,
+			"join": keyNone,
+			"deck": keyNone,
+			"ruleset": keyNone,
+			"option": keyNone,
+			"directory": keyNone,
 		}
 	}
 }
@@ -55,8 +62,15 @@ var keybindName = {
 	"endTurn":["End Turn", "Hit the bell and end turn"],
 	"surrender":["Surrender", "Surrender..."],
 	"hammer": ["Toggle Hammer (New)", "Toggle the hammer if possible"],
-	"drawMain": ["Draw Main Deck", "Draw from main deck is possible"],
-	"drawSide": ["Draw Main Deck", "Draw from side deck is possible"],
+	"drawMain": ["Draw Main Deck", "Draw from main deck if possible"],
+	"drawSide": ["Draw Main Deck", "Draw from side deck if possible"],
+	"host":["Open Host Menu (New)", "Press the \"Host Game\" button on the title screen"],
+	"join":["Open Join Menu (New)", "Press the \"Join Game\" button on the title screen"],
+	"deck":["Open Deck Editor (New)", "Press the \"Deck Editor\" button on the title screen"],
+	"ruleset":["Open Ruleset Selector (New)", "Press the \"Select Ruleset\" button on the title screen"],
+	"option":["Open Option (New)", "Press the \"Open Game Directory\" button on the title screen"],
+	"directory":["Open Directory (New)", "Press the \"Open Game Directory\" button on the title screen"],
+
 }
 var optionName = {
 	"autoReady": ["Auto Ready", "Auto ready when entering lobby."],
@@ -67,9 +81,10 @@ var optionName = {
 	"quickSelect": ["Card Quick Select", "Select card using number keys."],
 	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
 	"quickSlot": ["Slot Quick Select (New)", "Select card slot using H,J,K,L"],
+	"slotLabel": ["Slot Label", "Show slot label to help with Slot Quick Select."],
 	"hideDeck":["Hide Deck Editor (New)", "Hide the \"Deck Editor\" button on the title screen (reset to work)"],
-	"hideRule":["Hide Ruleset (New)", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
-	"hideDir":["Hide Open Directory (New)", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],
+	"hideRuleset":["Hide Ruleset (New)", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
+	"hideDirectory":["Hide Open Directory (New)", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],
 	"hideDiscord":["Hide Discord (New)", "Hide the \"Inscryption Multiplayer Discord\" button on the title screen (reset to work)"],
 }
 var changeLog = """

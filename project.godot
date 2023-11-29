@@ -201,6 +201,30 @@ surrender={
 "deadzone": 0.5,
 "events": [  ]
 }
+host={
+"deadzone": 0.5,
+"events": [  ]
+}
+join={
+"deadzone": 0.5,
+"events": [  ]
+}
+deck={
+"deadzone": 0.5,
+"events": [  ]
+}
+ruleset={
+"deadzone": 0.5,
+"events": [  ]
+}
+option={
+"deadzone": 0.5,
+"events": [  ]
+}
+directory={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [physics]
 

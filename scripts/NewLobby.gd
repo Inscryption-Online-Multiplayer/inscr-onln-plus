@@ -72,8 +72,8 @@ func _ready():
 	$LobbyJoin/Rows/Nickname/LineEdit.text = GameOptions.options.plus.defaultName
 	
 	$Menu/VBoxContainer/DeckEditorBtn.visible = not GameOptions.options.plus.hideDeck
-	$Menu/VBoxContainer/SelectVersionBtn.visible = not GameOptions.options.plus.hideRule
-	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDir
+	$Menu/VBoxContainer/SelectVersionBtn.visible = not GameOptions.options.plus.hideRuleset
+	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDirectory
 	$Menu/VBoxContainer/DiscordBtn.visible = not GameOptions.options.plus.hideDiscord
 
 # Methods
@@ -649,3 +649,15 @@ func _input(_event):
 	if Input.is_action_just_released("quickHost") and not $Blocker.visible:
 		_on_HostBtn_pressed()
 		_on_Host_pressed()
+	elif Input.is_action_just_released("host"):
+		_on_HostBtn_pressed()
+	elif Input.is_action_just_released("join"):
+		_on_JoinBtn_pressed()
+	elif Input.is_action_just_released("deck"):
+		_on_DeckEditorBtn_pressed()
+	elif Input.is_action_just_released("ruleset"):
+		_on_SelectVersionBtn_pressed()
+	elif Input.is_action_just_released("option"):
+		$"../Options"._on_OptionsBtn_pressed()
+	elif Input.is_action_just_released("directory"):
+		_on_LogFolder_pressed()
