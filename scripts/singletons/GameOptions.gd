@@ -48,7 +48,7 @@ var options = {
 var keybindName = {
 	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
 	"endTurn":["End Turn", "Hit the bell and end turn"],
-	"hammer": ["Toggle Hammer", "Toggle the hammer if possible"],
+	"hammer": ["Toggle Hammer (New)", "Toggle the hammer if possible"],
 	"drawMain": ["Draw Main Deck", "Draw from main deck is possible"],
 	"drawSide": ["Draw Main Deck", "Draw from side deck is possible"],
 }
