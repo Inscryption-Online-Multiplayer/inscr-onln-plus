@@ -5,7 +5,7 @@
 [node name="optionButton" type="Button"]
 margin_right = 838.0
 margin_bottom = 34.0
-hint_tooltip = "Click to collsapse"
+hint_tooltip = "Click to collapse"
 text = "Option"
 script = ExtResource( 1 )
 
