@@ -29,6 +29,7 @@ var options = {
 		"defaultName": "",
 		"autoReady": false,
 		"autoRematch": false,
+		"autoDraw": true,
 		"surrenderConfirm": true,
 		"passConfirm": false,
 		"quickSelect": false,
@@ -54,6 +55,7 @@ var keybindName = {
 var optionName = {
 	"autoReady": ["Auto Ready", "Auto ready when entering lobby."],
 	"autoRematch": ["Auto Rematch", "Auto rematch when fight end."],
+	"autoDraw": ["Auto Draw", "Automatically draw card when you only have 1 deck left"],
 	"surrenderConfirm": ["Surrender Confirmation", "Ask for confirmation when surrendering."],
 	"passConfirm": ["Pass Confirmation", "Ask for confirmation when passing."],
 	"quickSelect": ["Card Quick Select", "Select card using number keys."],

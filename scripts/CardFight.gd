@@ -1113,6 +1113,15 @@ func start_turn():
 			state = GameStates.NORMAL
 		else:
 			state = GameStates.DRAWPILE
+			# try to auto draw. If one deck is missing draw the other
+			# don't need to check if both is gone cus starvation
+			if GameOptions.options.plus.autoDraw:
+				if not $DrawPiles/YourDecks/Deck.visible:
+					draw_sidedeck()
+					return
+				elif not $DrawPiles/YourDecks/SideDeck.visible:
+					draw_maindeck()
+					return
 			$DrawPiles/Notify.visible = true
 	
 	
