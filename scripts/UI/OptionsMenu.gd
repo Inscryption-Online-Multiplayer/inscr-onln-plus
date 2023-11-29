@@ -51,8 +51,7 @@ func changeKeybind(pressed):
 func updateKeybind():
 	keybindButtonList = []
 	for n in $TabContainer/Plus/VBoxContainer/keybind.get_children():
-		if n == $TabContainer/Plus/VBoxContainer/keybind/Label:
-			continue
+		if n is Button: continue
 		$TabContainer/Plus/VBoxContainer/keybind.remove_child(n)
 		n.queue_free()
 	
@@ -86,8 +85,7 @@ func updateKeybind():
 
 func updatePlusToggle():
 	for option in $TabContainer/Plus/VBoxContainer/option.get_children():
-		if option == $TabContainer/Plus/VBoxContainer/option/Label:
-			continue
+		if option is Button: continue
 		
 		if not option.name in GameOptions.options.plus:
 			continue
@@ -113,8 +111,7 @@ func updatePlus():
 	updateKeybind()
 	
 	for option in $TabContainer/Plus/VBoxContainer/option.get_children():
-		if option == $TabContainer/Plus/VBoxContainer/option/Label:
-			continue
+		if option is Button:continue
 		if option.name in GameOptions.options.plus:
 			option.connect("pressed", self, "updatePlusToggle")
 			option.pressed = not GameOptions.options.plus[option.name]
@@ -188,3 +185,14 @@ func _input(event):
 func goodbyeReminder():
 	GameOptions.options.plus.scrollReminder = false
 	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = false
+
+func collapse(node: Node):
+	for sibling in node.get_parent().get_children():
+		if sibling == node: continue
+		sibling.visible = not sibling.visible
+
+func _on_keybindButton_pressed():
+	collapse($TabContainer/Plus/VBoxContainer/keybind/keybindButton)
+
+func _on_optionButton_pressed():
+	collapse($TabContainer/Plus/VBoxContainer/option/optionButton)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
 [ext_resource path="res://gfx/extra/Off.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://themes/scanlinemat.tres" type="Material" id=14]
 [ext_resource path="res://themes/sigilMat.tres" type="Material" id=15]
 [ext_resource path="res://packed/BattlePass.tscn" type="PackedScene" id=16]
+[ext_resource path="res://packed/UI/plusOptionButton.tscn" type="PackedScene" id=17]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
@@ -1011,6 +1012,7 @@ text = "Ok"
 visible = false
 
 [node name="Options" type="WindowDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1339,83 +1341,76 @@ caret_blink_speed = 0.5
 [node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 126.0
 margin_right = 838.0
-margin_bottom = 150.0
+margin_bottom = 160.0
 
-[node name="Label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/keybind"]
-margin_right = 838.0
-margin_bottom = 24.0
+[node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
-align = 1
 
 [node name="option" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 150.0
+margin_top = 160.0
 margin_right = 838.0
-margin_bottom = 412.0
+margin_bottom = 432.0
 
-[node name="Label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_right = 838.0
-margin_bottom = 24.0
-text = "Options"
-align = 1
+[node name="optionButton" parent="Options/TabContainer/Plus/VBoxContainer/option" instance=ExtResource( 17 )]
 
 [node name="autoReady" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 24.0
+margin_top = 34.0
 margin_right = 838.0
-margin_bottom = 58.0
+margin_bottom = 68.0
 hint_tooltip = "Auto ready when entering lobby."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto Ready"
 
 [node name="autoRematch" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 58.0
+margin_top = 68.0
 margin_right = 838.0
-margin_bottom = 92.0
+margin_bottom = 102.0
 hint_tooltip = "Auto rematch when fight end."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto Rematch"
 
 [node name="surrenderConfirm" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 92.0
+margin_top = 102.0
 margin_right = 838.0
-margin_bottom = 126.0
+margin_bottom = 136.0
 hint_tooltip = "Ask for confirmation when surrendering."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Surrender Confirmation"
 
 [node name="passConfirm" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 126.0
+margin_top = 136.0
 margin_right = 838.0
-margin_bottom = 160.0
+margin_bottom = 170.0
 hint_tooltip = "Ask for confirmation when passing."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Pass Confirmation"
 
 [node name="quickSelect" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 160.0
+margin_top = 170.0
 margin_right = 838.0
-margin_bottom = 194.0
+margin_bottom = 204.0
 hint_tooltip = "Select card using number keys."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Card Quick Select"
 
 [node name="cardNumber" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 194.0
+margin_top = 204.0
 margin_right = 838.0
-margin_bottom = 228.0
+margin_bottom = 238.0
 hint_tooltip = "Show card number on top of card. Recommend with Card Quick select."
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Card Number"
 
 [node name="quickSlot" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer/option"]
-margin_top = 228.0
+margin_top = 238.0
 margin_right = 838.0
-margin_bottom = 262.0
+margin_bottom = 272.0
 hint_tooltip = "Select card slot using h,j,k,l"
 focus_mode = 0
 enabled_focus_mode = 0
