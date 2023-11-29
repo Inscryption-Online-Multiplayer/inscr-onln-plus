@@ -123,8 +123,7 @@ func updatePlus():
 func update_controls():
 	for cat in $TabContainer.get_children():
 		for opt in cat.get_children():
-			if cat.name == "Plus":
-				continue
+			if cat.name == "Plus": continue
 			if opt.name in GameOptions.options:
 				opt.pressed = not GameOptions.options[opt.name]
 
@@ -132,9 +131,7 @@ func update_controls():
 func connect_signals():
 	for cat in $TabContainer.get_children():
 		# special handle for plus stuff
-		if cat.name == "Plus":
-			# manually add them pog
-			$TabContainer/Plus/VBoxContainer/test.connect("pressed", self, "update_plus_option")
+		if cat.name == "Plus": continue
 		for opt in cat.get_children():
 			if opt.name in GameOptions.options:
 				opt.connect("pressed", self, "update_options")
@@ -149,6 +146,7 @@ func _ready():
 	AudioServer.set_bus_mute(2, not GameOptions.options.enable_sfx)
 	
 	updatePlus()
+	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = GameOptions.options.plus.scrollReminder
 
 # Update when a pfp option is select
 func _on_defaultPic_item_selected(index):
@@ -186,3 +184,7 @@ func _input(event):
 		
 		currentButton.pressed = false
 		currentButton.text =  "NONE" if event.scancode == KEY_ESCAPE else OS.get_scancode_string(event.scancode)
+
+func goodbyeReminder():
+	GameOptions.options.plus.scrollReminder = false
+	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = false

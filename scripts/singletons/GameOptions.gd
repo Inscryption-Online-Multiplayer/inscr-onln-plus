@@ -23,6 +23,7 @@ var options = {
 	"lock_fps": true,
 	"test": false,
 	"plus": {
+		"scrollReminder": true,
 		"defaultPfp": 0,
 		"defaultRoom": "",
 		"defaultName": "",
