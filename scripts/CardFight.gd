@@ -1146,7 +1146,14 @@ func _input(event):
 			75: index = 2
 			76: index = 3
 			_: index = 0
-		play_card($CardSlots/PlayerSlots.get_children()[index])
+		var slot: Button = $CardSlots/PlayerSlots.get_children()[index]
+		if slot.get_child_count() > 0: # if it have a child click on the card instead
+			if state == GameStates.SACRIFICE: # sacrifice the card if in sac mode
+				slot.get_child(0)._on_Button_pressed()
+			else: # activate otherwise
+				slot.get_child(0)._on_ActiveSigil_pressed()
+		else:
+			play_card(slot)
 
 func showWin():
 	$WinScreen.visible = true
