@@ -67,7 +67,6 @@ func read_options():
 	if tFile.file_exists(CardInfo.options_path):
 		print("Found options.json!")
 		tFile.open(CardInfo.options_path, File.READ)
-		print(options)
 		if parse_json(tFile.get_as_text()):
 			var nOptions = parse_json(tFile.get_as_text())
 			
