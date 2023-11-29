@@ -1161,6 +1161,7 @@ func _input(event):
 				slot.get_child(0)._on_Button_pressed()
 			else: # activate otherwise
 				slot.get_child(0)._on_ActiveSigil_pressed()
+		# if not card try playing?
 		else:
 			play_card(slot)
 

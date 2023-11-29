@@ -35,6 +35,10 @@ var options = {
 		"quickSelect": false,
 		"cardNumber": false,
 		"quickSlot": false,
+		"hideDeck": false,
+		"hideRule": false,
+		"hideDir": false,
+		"hideDiscord": false,
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
@@ -62,8 +66,16 @@ var optionName = {
 	"passConfirm": ["Pass Confirmation (New)", "Ask for confirmation when passing."],
 	"quickSelect": ["Card Quick Select", "Select card using number keys."],
 	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
-	"quickSlot": ["Slot Quick Select (New)", "Select card slot using H,J,K,L"]
+	"quickSlot": ["Slot Quick Select (New)", "Select card slot using H,J,K,L"],
+	"hideDeck":["Hide Deck Editor (New)", "Hide the \"Deck Editor\" button on the title screen (reset to work)"],
+	"hideRule":["Hide Ruleset (New)", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
+	"hideDir":["Hide Open Directory (New)", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],
+	"hideDiscord":["Hide Discord (New)", "Hide the \"Inscryption Multiplayer Discord\" button on the title screen (reset to work)"],
 }
+var changeLog = """
+test string uwu
+
+"""
 func read_options():
 	var tFile = File.new()
 	if tFile.file_exists(CardInfo.options_path):

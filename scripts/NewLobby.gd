@@ -19,7 +19,6 @@ var rsCache: Dictionary = {}
 
 # Godot Handlers
 func _ready():
-
 	randomize()
 
 	# Signals
@@ -72,6 +71,10 @@ func _ready():
 	$LobbyHost/Rows/Nickname/LineEdit.text = GameOptions.options.plus.defaultName
 	$LobbyJoin/Rows/Nickname/LineEdit.text = GameOptions.options.plus.defaultName
 	
+	$Menu/VBoxContainer/DeckEditorBtn.visible = not GameOptions.options.plus.hideDeck
+	$Menu/VBoxContainer/SelectVersionBtn.visible = not GameOptions.options.plus.hideRule
+	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDir
+	$Menu/VBoxContainer/DiscordBtn.visible = not GameOptions.options.plus.hideDiscord
 
 # Methods
 func debug_host():
