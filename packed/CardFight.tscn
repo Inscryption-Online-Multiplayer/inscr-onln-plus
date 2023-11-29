@@ -1822,11 +1822,11 @@ margin_bottom = 300.0
 custom_constants/separation = 18
 alignment = 1
 
-[node name="WinLabel" type="Label" parent="surrenderConfirm/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="surrenderConfirm/Panel/VBoxContainer"]
 margin_top = 262.0
 margin_right = 1024.0
 margin_bottom = 286.0
-text = "Do You Want to Surrender"
+text = "Do You Want to Surrender?"
 align = 1
 valign = 1
 __meta__ = {
@@ -1889,11 +1889,11 @@ margin_bottom = 300.0
 custom_constants/separation = 18
 alignment = 1
 
-[node name="WinLabel" type="Label" parent="passConfirm/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="passConfirm/Panel/VBoxContainer"]
 margin_top = 262.0
 margin_right = 1024.0
 margin_bottom = 286.0
-text = "Do You Want to Surrender"
+text = "Do You Want to Pass?"
 align = 1
 valign = 1
 __meta__ = {
