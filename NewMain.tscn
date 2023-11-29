@@ -1353,25 +1353,31 @@ margin_bottom = 194.0
 
 [node name="optionButton" parent="Options/TabContainer/Plus/VBoxContainer/option" instance=ExtResource( 17 )]
 
-[node name="LoadingScreen" type="PanelContainer" parent="Options"]
+[node name="Blocker" type="Panel" parent="Options"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="loading" type="PanelContainer" parent="Options"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -250.0
-margin_top = -50.0
+margin_top = -75.0
 margin_right = 250.0
-margin_bottom = 50.0
+margin_bottom = 75.0
 
-[node name="Label" type="Label" parent="Options/LoadingScreen"]
+[node name="Label" type="Label" parent="Options/loading"]
 margin_left = 2.0
-margin_top = 38.0
+margin_top = 63.0
 margin_right = 498.0
-margin_bottom = 62.0
+margin_bottom = 87.0
 text = "Press Any Key"
 align = 1
-valign = 1
+percent_visible = 0.789474
 
 [node name="ThemeEditor" parent="." instance=ExtResource( 6 )]
 process_priority = 1

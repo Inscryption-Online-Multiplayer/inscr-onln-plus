@@ -45,7 +45,8 @@ var keybindButtonList = []
 
 # change keybind when pressed
 func changeKeybind(pressed):
-	$LoadingScreen.visible = pressed
+	$loading.visible = pressed
+	$Blocker.visible = pressed
 
 # update the keybind list
 func updateKeybind():
@@ -109,8 +110,8 @@ func updatePlus():
 	
 	updateKeybind()
 	
-	for option in GameOptions.options.plus:
-		if option == "scrollReminder" or not GameOptions.options.plus[option] is bool: continue
+	for option in GameOptions.optionName:
+		if option == "scrollReminder": continue
 		var button = CheckButton.new()
 		button.name = option
 		button.pressed = not GameOptions.options.plus[option]
