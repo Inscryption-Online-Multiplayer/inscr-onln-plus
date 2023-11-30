@@ -193,18 +193,6 @@ func goodbyeReminder():
 	GameOptions.options.plus.scrollReminder = false
 	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = false
 
-func collapse(node: Node):
-	for sibling in node.get_parent().get_children():
-		if sibling == node: continue
-		sibling.visible = not sibling.visible
-
-func _on_keybindButton_pressed():
-	collapse($TabContainer/Plus/VBoxContainer/keybind/keybindButton)
-
-func _on_optionButton_pressed():
-	collapse($TabContainer/Plus/VBoxContainer/option/optionButton)
-
-
 func plusSearch(new_text):
 	for optionCat in [$TabContainer/Plus/VBoxContainer/keybind, $TabContainer/Plus/VBoxContainer/option]:
 		for child in optionCat.get_children():
