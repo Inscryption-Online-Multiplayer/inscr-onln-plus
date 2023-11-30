@@ -81,7 +81,7 @@ var optionName = {
 	"quickSelect": ["Card Quick Select", "Select card using number keys."],
 	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
 	"quickSlot": ["Slot Quick Select (New)", "Select card slot using H,J,K,L"],
-	"slotLabel": ["Slot Label", "Show slot label to help with Slot Quick Select."],
+	"slotLabel": ["Slot Label (New)", "Show slot label to help with Slot Quick Select."],
 	"hideDeck":["Hide Deck Editor (New)", "Hide the \"Deck Editor\" button on the title screen (reset to work)"],
 	"hideRuleset":["Hide Ruleset (New)", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
 	"hideDirectory":["Hide Open Directory (New)", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],
