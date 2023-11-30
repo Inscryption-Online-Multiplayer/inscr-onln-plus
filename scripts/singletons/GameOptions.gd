@@ -25,6 +25,7 @@ var options = {
 	"plus": {
 		"scrollReminder": true,
 		"defaultPfp": 0,
+		"defaultDeck": 0,
 		"defaultRoom": "",
 		"defaultName": "",
 		"autoReady": false,

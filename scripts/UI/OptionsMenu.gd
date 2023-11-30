@@ -154,6 +154,9 @@ func _on_defaultPic_item_selected(index):
 	$TabContainer/Plus/VBoxContainer/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/pfp/defaultPic.get_item_text(index) + ".png")
 	GameOptions.options.plus.defaultPfp = index
 
+func _on_defaultDeck_item_selected(index):
+	GameOptions.options.plus.defaultDeck = index
+
 func _on_roomLine_text_changed(new_text):
 	GameOptions.options.plus.defaultRoom = new_text
 	

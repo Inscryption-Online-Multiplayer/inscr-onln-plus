@@ -70,7 +70,10 @@ func _ready():
 	$LobbyHost/Rows/Roomname/LineEdit.text = GameOptions.options.plus.defaultRoom
 	$LobbyHost/Rows/Nickname/LineEdit.text = GameOptions.options.plus.defaultName
 	$LobbyJoin/Rows/Nickname/LineEdit.text = GameOptions.options.plus.defaultName
+	$InLobby/Rows/DeckOptions/Deck._select_int(GameOptions.options.plus.defaultDeck)
+	# default deck
 	
+	# turn the button off
 	$Menu/VBoxContainer/DeckEditorBtn.visible = not GameOptions.options.plus.hideDeck
 	$Menu/VBoxContainer/SelectVersionBtn.visible = not GameOptions.options.plus.hideRuleset
 	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDirectory
@@ -118,6 +121,7 @@ func populate_deck_list():
 	while fName != "":
 		if not dTest.current_is_dir() and fName.ends_with(".deck"):
 			selector_de.add_item(fName.split(".deck")[0])
+			$"../Options/TabContainer/Plus/VBoxContainer/deck/defaultDeck".add_item(fName.split(".deck")[0])
 			
 		fName = dTest.get_next()
 
