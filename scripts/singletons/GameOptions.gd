@@ -61,36 +61,33 @@ var keybindName = {
 	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
 	"endTurn":["End Turn", "Hit the bell and end turn"],
 	"surrender":["Surrender", "Surrender..."],
-	"hammer": ["Toggle Hammer (New)", "Toggle the hammer if possible"],
+	"hammer": ["Toggle Hammer", "Toggle the hammer if possible"],
 	"drawMain": ["Draw Main Deck", "Draw from main deck if possible"],
 	"drawSide": ["Draw Main Deck", "Draw from side deck if possible"],
-	"host":["Open Host Menu (New)", "Press the \"Host Game\" button on the title screen"],
-	"join":["Open Join Menu (New)", "Press the \"Join Game\" button on the title screen"],
-	"deck":["Open Deck Editor (New)", "Press the \"Deck Editor\" button on the title screen"],
-	"ruleset":["Open Ruleset Selector (New)", "Press the \"Select Ruleset\" button on the title screen"],
-	"option":["Open Option (New)", "Press the \"Open Game Directory\" button on the title screen"],
-	"directory":["Open Directory (New)", "Press the \"Open Game Directory\" button on the title screen"],
+	"host":["Open Host Menu", "Press the \"Host Game\" button on the title screen"],
+	"join":["Open Join Menu", "Press the \"Join Game\" button on the title screen"],
+	"deck":["Open Deck Editor", "Press the \"Deck Editor\" button on the title screen"],
+	"ruleset":["Open Ruleset Selector", "Press the \"Select Ruleset\" button on the title screen"],
+	"option":["Open Option", "Press the \"Open Game Directory\" button on the title screen"],
+	"directory":["Open Directory", "Press the \"Open Game Directory\" button on the title screen"],
 
 }
 var optionName = {
 	"autoReady": ["Auto Ready", "Auto ready when entering lobby."],
 	"autoRematch": ["Auto Rematch", "Auto rematch when fight end."],
-	"autoDraw": ["Auto Draw (New)", "Automatically draw card when you only have 1 deck left"],
+	"autoDraw": ["Auto Draw", "Automatically draw card when you only have 1 deck left"],
 	"surrenderConfirm": ["Surrender Confirmation", "Ask for confirmation when surrendering."],
-	"passConfirm": ["Pass Confirmation (New)", "Ask for confirmation when passing."],
+	"passConfirm": ["Pass Confirmation", "Ask for confirmation when passing."],
 	"quickSelect": ["Card Quick Select", "Select card using number keys."],
 	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
-	"quickSlot": ["Slot Quick Select (New)", "Select card slot using H,J,K,L"],
-	"slotLabel": ["Slot Label (New)", "Show slot label to help with Slot Quick Select."],
-	"hideDeck":["Hide Deck Editor (New)", "Hide the \"Deck Editor\" button on the title screen (reset to work)"],
-	"hideRuleset":["Hide Ruleset (New)", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
-	"hideDirectory":["Hide Open Directory (New)", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],
-	"hideDiscord":["Hide Discord (New)", "Hide the \"Inscryption Multiplayer Discord\" button on the title screen (reset to work)"],
+	"quickSlot": ["Slot Quick Select", "Select card slot using H,J,K,L"],
+	"slotLabel": ["Slot Label", "Show slot label to help with Slot Quick Select."],
+	"hideDeck":["Hide Deck Editor", "Hide the \"Deck Editor\" button on the title screen (reset to work)"],
+	"hideRuleset":["Hide Ruleset", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
+	"hideDirectory":["Hide Open Directory", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],
+	"hideDiscord":["Hide Discord", "Hide the \"Inscryption Multiplayer Discord\" button on the title screen (reset to work)"],
 }
-var changeLog = """
-test string uwu
 
-"""
 func read_options():
 	var tFile = File.new()
 	if tFile.file_exists(CardInfo.options_path):
