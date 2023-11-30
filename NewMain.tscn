@@ -1012,6 +1012,7 @@ text = "Ok"
 visible = false
 
 [node name="Options" type="WindowDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1032,6 +1033,7 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1224,7 +1226,6 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1240,18 +1241,25 @@ margin_bottom = 556.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="scrollReminder" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_right = 838.0
-margin_bottom = 34.0
+margin_bottom = 28.0
+placeholder_text = "Search Option"
+placeholder_alpha = 0.472
+
+[node name="scrollReminder" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer"]
+margin_top = 28.0
+margin_right = 838.0
+margin_bottom = 62.0
 hint_tooltip = "Reminder: If you press this button the reminder will be hidden forever and can only be turn back on in the config"
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Did you know you can scroll down? (Don't show this again)"
 
 [node name="pfp" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 34.0
+margin_top = 62.0
 margin_right = 838.0
-margin_bottom = 70.0
+margin_bottom = 98.0
 
 [node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/pfp"]
 margin_top = 6.0
@@ -1286,9 +1294,9 @@ texture = ExtResource( 11 )
 expand = true
 
 [node name="room" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 70.0
+margin_top = 98.0
 margin_right = 838.0
-margin_bottom = 98.0
+margin_bottom = 126.0
 
 [node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/room"]
 margin_top = 2.0
@@ -1312,9 +1320,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="name" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 98.0
+margin_top = 126.0
 margin_right = 838.0
-margin_bottom = 126.0
+margin_bottom = 154.0
 
 [node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/name"]
 margin_top = 2.0
@@ -1338,17 +1346,17 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 126.0
+margin_top = 154.0
 margin_right = 838.0
-margin_bottom = 160.0
+margin_bottom = 188.0
 
 [node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
 
 [node name="option" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 160.0
+margin_top = 188.0
 margin_right = 838.0
-margin_bottom = 194.0
+margin_bottom = 222.0
 
 [node name="optionButton" parent="Options/TabContainer/Plus/VBoxContainer/option" instance=ExtResource( 17 )]
 
@@ -1455,6 +1463,7 @@ mouse_filter = 2
 [connection signal="value_changed" from="Options/TabContainer/Visual/Scanlines/OPACITY" to="Options/TabContainer/Visual/Scanlines" method="_child_updated"]
 [connection signal="value_changed" from="Options/TabContainer/Visual/Scanlines/SPEED" to="Options/TabContainer/Visual/Scanlines" method="_child_updated"]
 [connection signal="pressed" from="Options/TabContainer/Visual/ThemeEditor" to="ThemeEditor" method="show"]
+[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/LineEdit" to="Options" method="plusSearch"]
 [connection signal="pressed" from="Options/TabContainer/Plus/VBoxContainer/scrollReminder" to="Options" method="goodbyeReminder"]
 [connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/pfp/defaultPic" to="Options" method="_on_defaultPic_item_selected"]
 [connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/room/roomLine" to="Options" method="_on_roomLine_text_changed"]

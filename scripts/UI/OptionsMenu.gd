@@ -200,3 +200,15 @@ func _on_keybindButton_pressed():
 
 func _on_optionButton_pressed():
 	collapse($TabContainer/Plus/VBoxContainer/option/optionButton)
+
+
+func plusSearch(new_text):
+	for optionCat in [$TabContainer/Plus/VBoxContainer/keybind, $TabContainer/Plus/VBoxContainer/option]:
+		for child in optionCat.get_children():
+			var text
+			if child is HBoxContainer:
+				text = child.get_child(0).text
+			elif child is CheckButton:
+				text = child.text
+			else: continue
+			child.visible = new_text.to_lower() in text.to_lower() or new_text == ""
