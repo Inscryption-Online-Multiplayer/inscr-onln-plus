@@ -314,6 +314,101 @@ func draw_maindeck():
 			$DrawPiles/YourDecks/Deck.visible = false
 		
 		starve_check()
+	else:
+		var tempDeck = {}
+		for card in deck:
+			if card in tempDeck:
+				tempDeck[card]+=1
+			else:
+				tempDeck[card]=1
+		var temp = tempDeck.keys()
+		temp.sort()
+		for card in temp:
+			var style = load("res://themes/papertheme.tres")
+			
+			var new_style = StyleBoxFlat.new()
+			var new_material = load("res://themes/sigilMat.tres").duplicate()
+			var hBox = HBoxContainer.new()
+			var label = Label.new()
+			var pic = TextureRect.new()
+			var spacer = Control.new()
+			
+			var card_data = CardInfo.from_name(card)
+			
+			# make the label
+			label.text = " %s x %s" % [card, tempDeck[card]]
+			label.size_flags_horizontal = SIZE_EXPAND_FILL
+			
+			if "nohammer" in card_data:
+				new_style.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
+			elif "rare" in card_data and "nosac" in card_data:
+				new_style.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("rns_normal", "Card").bg_color
+				)
+				
+			elif "nosac" in card_data:
+				new_style.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("nosac_normal", "Card").bg_color
+				)
+					
+			elif "rare" in card_data:
+				new_style.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("rare_normal", "Card").bg_color
+				)
+				
+			else:
+				new_style.bg_color = style.get_stylebox("normal", "Card").bg_color
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("normal", "Card").bg_color
+				)
+			label.add_stylebox_override("normal", new_style)
+			label.add_color_override(
+				"font_color",
+				load("res://themes/sigilMat.tres").get_shader_param("u_replacement_color")
+			)
+			
+			# make the pic
+			# Special portrait overrides
+			var d = Directory.new()
+			if d.file_exists(CardInfo.portrait_override_path + card_data.name + ".png"):
+				var i = Image.new()
+				i.load(CardInfo.portrait_override_path + card_data.name + ".png")
+				var tx = ImageTexture.new()
+				tx.create_from_image(i)
+				tx.flags -= tx.FLAG_FILTER
+				pic.texture = tx
+			elif "pixport_url" in card_data:
+				var i = Image.new()
+				i.load(CardInfo.custom_portrait_path + CardInfo.ruleset + "_" + card_data.name + ".png")
+				var tx = ImageTexture.new()
+				tx.create_from_image(i)
+				tx.flags -= tx.FLAG_FILTER
+				pic.texture = tx
+			else:
+				pic.texture = load("res://gfx/pixport/" + card_data.name + ".png")
+			pic.material = new_material
+			var scale = 2
+			# using the actual scale properties doesn;t work
+			pic.rect_min_size = Vector2(
+				pic.texture.get_size()[0] * scale,
+				pic.texture.get_size()[1] * scale
+			)
+			pic.expand = true
+			pic.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
+			
+			spacer.rect_min_size = Vector2(5, 0)
+			hBox.add_child(pic)
+			#hBox.add_child(spacer)
+			hBox.add_child(label)
+			$whatLeft/Panel/ScrollContainer/VBoxContainer.add_child(hBox)
+		$whatLeft.visible = true
 	
 
 func draw_sidedeck():
@@ -1199,3 +1294,7 @@ func recountHand():
 		var hand = $HandsContainer/Hands/PlayerHand.get_children()
 		for i in range(hand.size()):
 			hand[i].get_child(0).text = str(i + 1)
+
+
+func _on_whatLeft_pressed():
+	$whatLeft.visible = false
