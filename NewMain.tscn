@@ -1012,6 +1012,7 @@ text = "Ok"
 visible = false
 
 [node name="Options" type="WindowDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1032,6 +1033,7 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1224,7 +1226,6 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1255,24 +1256,32 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Did you know you can scroll down? (Don't show this again)"
 
-[node name="pfp" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="misc" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 62.0
 margin_right = 838.0
-margin_bottom = 98.0
+margin_bottom = 250.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/pfp"]
+[node name="miscButton" parent="Options/TabContainer/Plus/VBoxContainer/misc" instance=ExtResource( 17 )]
+text = "Miscellaneous"
+
+[node name="pfp" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 34.0
+margin_right = 838.0
+margin_bottom = 70.0
+
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
 margin_top = 6.0
 margin_right = 268.0
 margin_bottom = 30.0
 text = "Default Profile Picture: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/pfp"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
 margin_left = 268.0
 margin_right = 531.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 
-[node name="defaultPic" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/pfp"]
+[node name="defaultPic" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
 margin_left = 531.0
 margin_right = 795.0
 margin_bottom = 36.0
@@ -1283,7 +1292,7 @@ text = "Amoeba"
 items = [ "Amoeba", null, false, 0, null, "Cat", null, false, 1, null, "Geck", null, false, 2, null, "Grizzly", null, false, 3, null, "Lil Boi", null, false, 4, null, "Mantis God", null, false, 5, null, "Orlu's Vessel", null, false, 6, null, "Pack Rat", null, false, 7, null, "Stoat", null, false, 8, null, "Worker Ant", null, false, 9, null, "Ouroboros", null, false, 10, null, "Magpie", null, false, 11, null, "Egg", null, false, 12, null, "Skeleton", null, false, 13, null, "Horse Mage", null, false, 14, null ]
 selected = 0
 
-[node name="picPreview" type="TextureRect" parent="Options/TabContainer/Plus/VBoxContainer/pfp"]
+[node name="picPreview" type="TextureRect" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
 material = ExtResource( 15 )
 margin_left = 795.0
 margin_right = 838.0
@@ -1292,24 +1301,24 @@ rect_min_size = Vector2( 43, 36 )
 texture = ExtResource( 11 )
 expand = true
 
-[node name="deck" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 98.0
+[node name="deck" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 70.0
 margin_right = 838.0
-margin_bottom = 132.0
+margin_bottom = 104.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/deck"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deck"]
 margin_top = 5.0
 margin_right = 160.0
 margin_bottom = 29.0
 text = "Default Deck: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/deck"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deck"]
 margin_left = 160.0
 margin_right = 499.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
-[node name="defaultDeck" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/deck"]
+[node name="defaultDeck" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/deck"]
 margin_left = 499.0
 margin_right = 838.0
 margin_bottom = 34.0
@@ -1317,24 +1326,24 @@ focus_mode = 0
 size_flags_horizontal = 3
 enabled_focus_mode = 0
 
-[node name="room" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 132.0
+[node name="room" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 104.0
 margin_right = 838.0
-margin_bottom = 160.0
+margin_bottom = 132.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/room"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/room"]
 margin_top = 2.0
 margin_right = 233.0
 margin_bottom = 26.0
 text = "Default Room Name: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/room"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/room"]
 margin_left = 233.0
 margin_right = 535.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="roomLine" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer/room"]
+[node name="roomLine" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer/misc/room"]
 margin_left = 535.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1343,24 +1352,24 @@ size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="name" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 160.0
+[node name="name" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 132.0
 margin_right = 838.0
-margin_bottom = 188.0
+margin_bottom = 160.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/name"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/name"]
 margin_top = 2.0
 margin_right = 212.0
 margin_bottom = 26.0
 text = "Default Username: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/name"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/name"]
 margin_left = 212.0
 margin_right = 525.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="nameLine" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer/name"]
+[node name="nameLine" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer/misc/name"]
 margin_left = 525.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1369,18 +1378,45 @@ size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 188.0
+[node name="picScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 160.0
 margin_right = 838.0
-margin_bottom = 222.0
+margin_bottom = 188.0
+
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/picScale"]
+margin_top = 2.0
+margin_right = 175.0
+margin_bottom = 26.0
+text = "Deck List Scale:"
+
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/picScale"]
+margin_left = 175.0
+margin_right = 506.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/picScale"]
+margin_left = 506.0
+margin_right = 838.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.05
+value = 1.0
+align = 1
+
+[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+margin_top = 250.0
+margin_right = 838.0
+margin_bottom = 284.0
 
 [node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
 
 [node name="toggle" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 222.0
+margin_top = 284.0
 margin_right = 838.0
-margin_bottom = 256.0
+margin_bottom = 318.0
 
 [node name="toggleButton" parent="Options/TabContainer/Plus/VBoxContainer/toggle" instance=ExtResource( 17 )]
 text = "Toggle Option"
@@ -1490,7 +1526,8 @@ mouse_filter = 2
 [connection signal="pressed" from="Options/TabContainer/Visual/ThemeEditor" to="ThemeEditor" method="show"]
 [connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/LineEdit" to="Options" method="plusSearch"]
 [connection signal="pressed" from="Options/TabContainer/Plus/VBoxContainer/scrollReminder" to="Options" method="goodbyeReminder"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/pfp/defaultPic" to="Options" method="_on_defaultPic_item_selected"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/deck/defaultDeck" to="Options" method="_on_defaultDeck_item_selected"]
-[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/room/roomLine" to="Options" method="_on_roomLine_text_changed"]
-[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/name/nameLine" to="Options" method="_on_nameLine_text_changed"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic" to="Options" method="_on_defaultPic_item_selected"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deck/defaultDeck" to="Options" method="_on_defaultDeck_item_selected"]
+[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/room/roomLine" to="Options" method="_on_roomLine_text_changed"]
+[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/name/nameLine" to="Options" method="_on_nameLine_text_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/picScale/SpinBox" to="Options" method="_on_SpinBox_value_changed"]

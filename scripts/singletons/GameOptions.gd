@@ -28,6 +28,7 @@ var options = {
 		"defaultDeck": 0,
 		"defaultRoom": "",
 		"defaultName": "",
+		"picScale": 1,
 		"autoReady": false,
 		"autoRematch": false,
 		"autoDraw": true,
