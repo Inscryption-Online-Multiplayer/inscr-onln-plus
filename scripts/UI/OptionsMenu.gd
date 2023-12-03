@@ -107,8 +107,9 @@ func updatePlus():
 	# setting room name and username
 	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
 	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
-	$TabContainer/Plus/VBoxContainer/misc/picScale/picScale.value = GameOptions.options.plus.picScale
-	$TabContainer/Plus/VBoxContainer/misc/iconScale/iconScale.value = GameOptions.options.plus.iconScale
+	$TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale.value = GameOptions.options.plus.deckPicScale
+	$TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale.value = GameOptions.options.plus.deckIconScale
+	$TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
 	updateKeybind()
 	
 	for option in GameOptions.optionName:
@@ -165,10 +166,13 @@ func _on_nameLine_text_changed(new_text):
 	GameOptions.options.plus.defaultName = new_text
 
 func _on_picScale_value_changed(value):
-	GameOptions.options.plus.picScale = value
-	
+	GameOptions.options.plus.deckPicScale = value
+
 func _on_iconScale_value_changed(value):
-	GameOptions.options.plus.iconScale = value
+	GameOptions.options.plus.deckIconScale = value
+
+func _on_previewScale_value_changed(value):
+	GameOptions.options.plus.deckPreviewScale = value
 	
 func _on_OptionsBtn_pressed():
 	popup()

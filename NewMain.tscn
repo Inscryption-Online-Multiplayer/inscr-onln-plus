@@ -1377,24 +1377,24 @@ size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="picScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deckPicScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
 margin_top = 160.0
 margin_right = 838.0
 margin_bottom = 188.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/picScale"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
 margin_top = 2.0
 margin_right = 175.0
 margin_bottom = 26.0
 text = "Deck List Pic Scale:"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/picScale"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
 margin_left = 175.0
 margin_right = 506.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="picScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/picScale"]
+[node name="picScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
 margin_left = 506.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1404,29 +1404,57 @@ step = 0.05
 value = 1.0
 align = 1
 
-[node name="iconScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deckIconScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
 margin_top = 160.0
 margin_right = 838.0
 margin_bottom = 188.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/iconScale"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
 margin_top = 2.0
 margin_right = 175.0
 margin_bottom = 26.0
 text = "Deck List Icon Scale:"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/iconScale"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
 margin_left = 175.0
 margin_right = 506.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="iconScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/iconScale"]
+[node name="iconScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
 margin_left = 506.0
 margin_right = 838.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 max_value = 10.0
+step = 0.05
+value = 1.0
+align = 1
+
+[node name="deckPreviewScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 160.0
+margin_right = 838.0
+margin_bottom = 188.0
+
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
+margin_top = 2.0
+margin_right = 175.0
+margin_bottom = 26.0
+text = "Deck List Preview Scale:"
+
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
+margin_left = 175.0
+margin_right = 506.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="previewScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
+margin_left = 506.0
+margin_right = 838.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 3.0
 step = 0.05
 value = 1.0
 align = 1
@@ -1556,5 +1584,6 @@ mouse_filter = 2
 [connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deck/defaultDeck" to="Options" method="_on_defaultDeck_item_selected"]
 [connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/room/roomLine" to="Options" method="_on_roomLine_text_changed"]
 [connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/name/nameLine" to="Options" method="_on_nameLine_text_changed"]
-[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/picScale/picScale" to="Options" method="_on_picScale_value_changed"]
-[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/iconScale/iconScale" to="Options" method="_on_iconScale_value_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale" to="Options" method="_on_picScale_value_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale" to="Options" method="_on_iconScale_value_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale" to="Options" method="_on_previewScale_value_changed"]

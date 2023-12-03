@@ -102,7 +102,11 @@ func _ready():
 	if not GameOptions.options.plus.slotLabel:
 		for slot in $CardSlots/PlayerSlots.get_children():
 			slot.text = ""
-
+	
+	$whatLeft/Card.rect_scale = Vector2(GameOptions.options.plus.deckPreviewScale, GameOptions.options.plus.deckPreviewScale)
+	$whatLeft/Card.rect_position.y -= ($whatLeft/Card.rect_size.y*GameOptions.options.plus.deckPreviewScale) / 2
+	$whatLeft/Card.from_data(CardInfo.from_name("49er"))
+	
 func _process(_delta):
 	if state == GameStates.SNIPE:
 		$SniperLine.visible = true
@@ -300,6 +304,15 @@ func end_turn():
 	# Pre turn sigils
 	slotManager.pre_turn_sigils(false)
 
+"""func cardHover():
+	var card
+	for i in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children().size():
+		print($whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).is_hovered())
+		if $whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).is_hovered():
+			card = CardInfo.from_name($whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).name)
+			break
+	$whatLeft/Card.from_data(card)"""
+
 func deckList(source, magpie = false):
 	$whatLeft/Panel/closeButton.visible = not magpie
 	# kill all child
@@ -324,19 +337,21 @@ func deckList(source, magpie = false):
 		var new_style = StyleBoxFlat.new()
 		var new_material = load("res://themes/sigilMat.tres").duplicate()
 		var hBox = HBoxContainer.new()
-		var label = Button.new() if magpie else Label.new()
+		var label = Button.new()
 		var pic = TextureRect.new()
 		var spacer = Control.new()
 		
 		var card_data = CardInfo.from_name(card)
-		print(card_data)
 		
 		# make the label or button
 		label.text = card if magpie else " %s x %s" % [card, tempDeck[card]]
 		label.size_flags_horizontal = SIZE_EXPAND_FILL
+		label.name = card
+		label.set_script(load("res://scripts/Plus/deckListHover.gd"))
 		if magpie: 
 			label.connect("pressed", self, "search_callback")
 			label.toggle_mode = true
+		
 		
 		if "nohammer" in card_data:
 			new_style.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
@@ -395,8 +410,8 @@ func deckList(source, magpie = false):
 		pic.material = new_material
 		# using the actual scale properties doesn;t work for some reason
 		pic.rect_min_size = Vector2(
-			pic.texture.get_width() * GameOptions.options.plus.picScale,
-			pic.texture.get_height() * GameOptions.options.plus.picScale
+			pic.texture.get_width() * GameOptions.options.plus.deckPicScale,
+			pic.texture.get_height() * GameOptions.options.plus.deckPicScale
 		)
 		pic.expand = true
 		pic.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
@@ -419,13 +434,12 @@ func deckList(source, magpie = false):
 				)
 				texture.texture = atlast
 				texture.rect_min_size = Vector2(
-					atlast.region.size.x * (GameOptions.options.plus.iconScale),
-					atlast.region.size.y * (GameOptions.options.plus.iconScale)
+					atlast.region.size.x * (GameOptions.options.plus.deckIconScale),
+					atlast.region.size.y * (GameOptions.options.plus.deckIconScale)
 				)
 				texture.expand = true
 				texture.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
 				hBox.add_child(texture)
-				
 		$whatLeft/Panel/ScrollContainer/VBoxContainer.add_child(hBox)
 	$whatLeft.visible = true
 	
