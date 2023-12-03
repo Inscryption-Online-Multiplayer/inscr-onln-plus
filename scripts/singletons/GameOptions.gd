@@ -29,6 +29,7 @@ var options = {
 		"defaultRoom": "",
 		"defaultName": "",
 		"picScale": 1,
+		"iconScale": 2,
 		"autoReady": false,
 		"autoRematch": false,
 		"autoDraw": true,

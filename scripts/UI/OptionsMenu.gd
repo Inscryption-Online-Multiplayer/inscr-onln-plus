@@ -107,7 +107,8 @@ func updatePlus():
 	# setting room name and username
 	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
 	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
-	$TabContainer/Plus/VBoxContainer/misc/picScale/SpinBox.value = GameOptions.options.plus.picScale
+	$TabContainer/Plus/VBoxContainer/misc/picScale/picScale.value = GameOptions.options.plus.picScale
+	$TabContainer/Plus/VBoxContainer/misc/iconScale/iconScale.value = GameOptions.options.plus.iconScale
 	updateKeybind()
 	
 	for option in GameOptions.optionName:
@@ -163,9 +164,12 @@ func _on_roomLine_text_changed(new_text):
 func _on_nameLine_text_changed(new_text):
 	GameOptions.options.plus.defaultName = new_text
 
-func _on_SpinBox_value_changed(value):
+func _on_picScale_value_changed(value):
 	GameOptions.options.plus.picScale = value
-
+	
+func _on_iconScale_value_changed(value):
+	GameOptions.options.plus.iconScale = value
+	
 func _on_OptionsBtn_pressed():
 	popup()
 	$"../TitleScreen/Blocker".visible = true
@@ -207,4 +211,3 @@ func plusSearch(new_text):
 				text = child.text
 			else: continue
 			child.visible = new_text.to_lower() in text.to_lower() or new_text == ""
-			
