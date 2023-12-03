@@ -390,16 +390,37 @@ func deckList(source):
 		pic.material = new_material
 		# using the actual scale properties doesn;t work for some reason
 		pic.rect_min_size = Vector2(
-			pic.texture.get_size()[0] * GameOptions.options.plus.picScale,
-			pic.texture.get_size()[1] * GameOptions.options.plus.picScale
+			pic.texture.get_width() * GameOptions.options.plus.picScale,
+			pic.texture.get_height() * GameOptions.options.plus.picScale
 		)
 		pic.expand = true
 		pic.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
 		
+		
+		
 		spacer.rect_min_size = Vector2(5, 0)
 		hBox.add_child(pic)
-		#hBox.add_child(spacer)
+		hBox.add_child(spacer)
 		hBox.add_child(label)
+		for special in ["rare", "nohammer", "nosac"]:
+			if special in card_data:
+				var texture = TextureRect.new()
+				var atlast = AtlasTexture.new()
+				atlast.atlas = load("res://gfx/cardextras/SpecialSigils.png")
+				atlast.region = (
+					Rect2(12,0,13,15) if special == "nosac" 
+					else Rect2(12,15,13,15) if special == "rare" 
+					else Rect2(12,30,13,15)
+				)
+				texture.texture = atlast
+				texture.rect_min_size = Vector2(
+					atlast.region.size.x * (GameOptions.options.plus.iconScale),
+					atlast.region.size.y * (GameOptions.options.plus.iconScale)
+				)
+				texture.expand = true
+				texture.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
+				hBox.add_child(texture)
+				
 		$whatLeft/Panel/ScrollContainer/VBoxContainer.add_child(hBox)
 	$whatLeft.visible = true
 	
