@@ -475,30 +475,30 @@ func draw_sidedeck():
 		deckList(side_deck)
 
 func search_deck():
-	deckList(deck, true)
-	"""
-	if deck.size() == 0:
-		return
-	
-	$DeckSearch/Panel/VBoxContainer/OptionButton.clear()
+	if GameOptions.options.plus.improveDeckSearch:
+		deckList(deck, true)
+	else:
+		if deck.size() == 0:
+			return
+		
+		$DeckSearch/Panel/VBoxContainer/OptionButton.clear()
 
-	$DeckSearch/Panel/VBoxContainer/OptionButton.add_item("- Select a Card -")
-	$DeckSearch/Panel/VBoxContainer/OptionButton.set_item_disabled(0, true)
+		$DeckSearch/Panel/VBoxContainer/OptionButton.add_item("- Select a Card -")
+		$DeckSearch/Panel/VBoxContainer/OptionButton.set_item_disabled(0, true)
 
-	for card in deck:
-		$DeckSearch/Panel/VBoxContainer/OptionButton.add_item(card)
+		for card in deck:
+			$DeckSearch/Panel/VBoxContainer/OptionButton.add_item(card)
 
-	$DeckSearch.visible = true
-	"""
+		$DeckSearch.visible = true
 
-func search_callback():
-	var index = 0
-	for i in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children().size():
-		if $whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).pressed:
-			index = i
-			break
-	print("here")
-	var targetCard = deck.pop_at(index)
+func search_callback(index=0):
+	if GameOptions.options.plus.improveDeckSearch:
+		for i in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children().size():
+			if $whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).pressed:
+				index = i + 1
+				break
+
+	var targetCard = deck.pop_at(index-1)
 
 	draw_card(targetCard)
 
@@ -508,10 +508,9 @@ func search_callback():
 	starve_check()
 
 	deck.shuffle()
-
-	# $DeckSearch.visible = false
-	$whatLeft.visible = false
-
+	
+	if GameOptions.options.plus.improveDeckSearch: $whatLeft.visible = false
+	else: $DeckSearch.visible = false
 func starve_check(soft_rpc = true):
 	if deck.size() == 0 and side_deck.size() == 0:
 		turns_starving += 1
