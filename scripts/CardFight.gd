@@ -300,7 +300,8 @@ func end_turn():
 	# Pre turn sigils
 	slotManager.pre_turn_sigils(false)
 
-func deckList(source):
+func deckList(source, magpie = false):
+	$whatLeft/Panel/closeButton.visible = not magpie
 	# kill all child
 	for child in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children():
 		$whatLeft/Panel/ScrollContainer/VBoxContainer.remove_child(child)
@@ -317,21 +318,25 @@ func deckList(source):
 	# going thur and adding card 
 	var temp = tempDeck.keys()
 	temp.sort()
-	for card in temp:
+	for card in deck if magpie else temp:
 		var style = load("res://themes/papertheme.tres")
 		
 		var new_style = StyleBoxFlat.new()
 		var new_material = load("res://themes/sigilMat.tres").duplicate()
 		var hBox = HBoxContainer.new()
-		var label = Label.new()
+		var label = Button.new() if magpie else Label.new()
 		var pic = TextureRect.new()
 		var spacer = Control.new()
 		
 		var card_data = CardInfo.from_name(card)
+		print(card_data)
 		
-		# make the label
-		label.text = " %s x %s" % [card, tempDeck[card]]
+		# make the label or button
+		label.text = card if magpie else " %s x %s" % [card, tempDeck[card]]
 		label.size_flags_horizontal = SIZE_EXPAND_FILL
+		if magpie: 
+			label.connect("pressed", self, "search_callback")
+			label.toggle_mode = true
 		
 		if "nohammer" in card_data:
 			new_style.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
@@ -458,6 +463,8 @@ func draw_sidedeck():
 		deckList(side_deck)
 
 func search_deck():
+	deckList(deck, true)
+	"""
 	if deck.size() == 0:
 		return
 	
@@ -470,10 +477,16 @@ func search_deck():
 		$DeckSearch/Panel/VBoxContainer/OptionButton.add_item(card)
 
 	$DeckSearch.visible = true
+	"""
 
-func search_callback(index):
-
-	var targetCard = deck.pop_at(index - 1)
+func search_callback():
+	var index = 0
+	for i in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children().size():
+		if $whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).pressed:
+			index = i
+			break
+	print("here")
+	var targetCard = deck.pop_at(index)
 
 	draw_card(targetCard)
 
@@ -484,7 +497,8 @@ func search_callback(index):
 
 	deck.shuffle()
 
-	$DeckSearch.visible = false
+	# $DeckSearch.visible = false
+	$whatLeft.visible = false
 
 func starve_check(soft_rpc = true):
 	if deck.size() == 0 and side_deck.size() == 0:
@@ -615,7 +629,6 @@ func play_card(slot: Node):
 			state = GameStates.NORMAL
 	
 	recountHand()
-			
 
 func play_card_back(slot):
 	
