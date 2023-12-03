@@ -78,6 +78,7 @@ func _ready():
 	$Menu/VBoxContainer/SelectVersionBtn.visible = not GameOptions.options.plus.hideRuleset
 	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDirectory
 	$Menu/VBoxContainer/DiscordBtn.visible = not GameOptions.options.plus.hideDiscord
+	
 
 # Methods
 func debug_host():

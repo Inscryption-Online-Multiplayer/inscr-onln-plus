@@ -118,7 +118,7 @@ func updatePlus():
 		button.text = GameOptions.optionName[option][0]
 		button.hint_tooltip = GameOptions.optionName[option][1]
 		button.connect("pressed", self, "updatePlusToggle")
-		$TabContainer/Plus/VBoxContainer/option.add_child(button)
+		$TabContainer/Plus/VBoxContainer/toggle.add_child(button)
 
 # Update the option to the correct value
 func update_controls():
