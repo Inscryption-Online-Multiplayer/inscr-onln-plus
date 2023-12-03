@@ -105,7 +105,7 @@ func _ready():
 	
 	$whatLeft/Card.rect_scale = Vector2(GameOptions.options.plus.deckPreviewScale, GameOptions.options.plus.deckPreviewScale)
 	$whatLeft/Card.rect_position.y -= ($whatLeft/Card.rect_size.y*GameOptions.options.plus.deckPreviewScale) / 2
-	$whatLeft/Card.from_data(CardInfo.from_name("49er"))
+	$whatLeft/Card.draw_from_data(CardInfo.from_name("49er"))
 	
 func _process(_delta):
 	if state == GameStates.SNIPE:
@@ -141,8 +141,6 @@ func init_match(opp_id: int, do_go_first: bool):
 	$DrawPiles/YourDecks/Deck.visible = true
 	$DrawPiles/YourDecks/SideDeck.visible = true
 	$DrawPiles/Notify.visible = false
-	
-	
 	
 	# TODO: Clean up. This is spaghetti city
 

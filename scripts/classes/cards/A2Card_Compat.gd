@@ -305,7 +305,7 @@ func _on_CardBtn_button_up() -> void:
 	# Trigger a press action
 	if has_method("_on_Button_pressed"):
 		self.call("_on_Button_pressed")
-	else:
+	elif get_parent().has_method("_on_Button_pressed"):
 		get_parent()._on_Button_pressed()
 		
 
