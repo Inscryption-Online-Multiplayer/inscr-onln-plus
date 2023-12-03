@@ -38,6 +38,7 @@ var options = {
 		"cardNumber": false,
 		"quickSlot": false,
 		"slotLabel": false,
+		"deckList": true,
 		"hideDeck": false,
 		"hideRuleset": false,
 		"hideDirectory": false,
@@ -72,7 +73,6 @@ var keybindName = {
 	"ruleset":["Open Ruleset Selector", "Press the \"Select Ruleset\" button on the title screen"],
 	"option":["Open Option", "Press the \"Open Game Directory\" button on the title screen"],
 	"directory":["Open Directory", "Press the \"Open Game Directory\" button on the title screen"],
-
 }
 var optionName = {
 	"autoReady": ["Auto Ready", "Auto ready when entering lobby."],
@@ -84,6 +84,7 @@ var optionName = {
 	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
 	"quickSlot": ["Slot Quick Select", "Select card slot using H,J,K,L"],
 	"slotLabel": ["Slot Label", "Show slot label to help with Slot Quick Select."],
+	"deckList": ["Deck List", "Show a list of reminaing card when clicking on a deck pile"],
 	"hideDeck":["Hide Deck Editor", "Hide the \"Deck Editor\" button on the title screen (reset to work)"],
 	"hideRuleset":["Hide Ruleset", "Hide the \"Select Ruleset\" button on the title screen (reset to work)"],
 	"hideDirectory":["Hide Open Directory", "Hide the \"Open Game Directory\" button on the title screen (reset to work)"],

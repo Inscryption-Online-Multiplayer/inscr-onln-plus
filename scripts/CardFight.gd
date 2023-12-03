@@ -417,7 +417,7 @@ func draw_maindeck():
 			$DrawPiles/YourDecks/Deck.visible = false
 		
 		starve_check()
-	else:
+	elif GameOptions.options.plus.deckList:
 		deckList(deck)
 
 func draw_sidedeck():
@@ -433,7 +433,7 @@ func draw_sidedeck():
 			$DrawPiles/YourDecks/SideDeck.visible = false
 		
 		starve_check()
-	else:
+	elif GameOptions.options.plus.deckList:
 		deckList(side_deck)
 
 func search_deck():
