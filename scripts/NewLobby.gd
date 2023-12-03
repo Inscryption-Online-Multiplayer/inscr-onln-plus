@@ -122,7 +122,7 @@ func populate_deck_list():
 	while fName != "":
 		if not dTest.current_is_dir() and fName.ends_with(".deck"):
 			selector_de.add_item(fName.split(".deck")[0])
-			$"../Options/TabContainer/Plus/VBoxContainer/deck/defaultDeck".add_item(fName.split(".deck")[0])
+			$"../Options/TabContainer/Plus/VBoxContainer/misc/deck/defaultDeck".add_item(fName.split(".deck")[0])
 			
 		fName = dTest.get_next()
 

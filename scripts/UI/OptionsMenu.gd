@@ -101,13 +101,13 @@ func updatePlusToggle():
 		
 func updatePlus():
 	# setting the pic in the option menu
-	$TabContainer/Plus/VBoxContainer/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
-	$TabContainer/Plus/VBoxContainer/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
+	$TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
+	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
 	
 	# setting room name and username
-	$TabContainer/Plus/VBoxContainer/room/roomLine.text = GameOptions.options.plus.defaultRoom
-	$TabContainer/Plus/VBoxContainer/name/nameLine.text = GameOptions.options.plus.defaultName
-	
+	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
+	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
+	$TabContainer/Plus/VBoxContainer/misc/picScale/SpinBox.value = GameOptions.options.plus.picScale
 	updateKeybind()
 	
 	for option in GameOptions.optionName:
@@ -163,6 +163,9 @@ func _on_roomLine_text_changed(new_text):
 func _on_nameLine_text_changed(new_text):
 	GameOptions.options.plus.defaultName = new_text
 
+func _on_SpinBox_value_changed(value):
+	GameOptions.options.plus.picScale = value
+
 func _on_OptionsBtn_pressed():
 	popup()
 	$"../TitleScreen/Blocker".visible = true
@@ -194,7 +197,8 @@ func goodbyeReminder():
 	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = false
 
 func plusSearch(new_text):
-	for optionCat in [$TabContainer/Plus/VBoxContainer/keybind, $TabContainer/Plus/VBoxContainer/option]:
+	for optionCat in $TabContainer/Plus/VBoxContainer.get_children():
+		if not optionCat is VBoxContainer: continue
 		for child in optionCat.get_children():
 			var text
 			if child is HBoxContainer:
@@ -203,3 +207,4 @@ func plusSearch(new_text):
 				text = child.text
 			else: continue
 			child.visible = new_text.to_lower() in text.to_lower() or new_text == ""
+			
