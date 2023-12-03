@@ -86,7 +86,7 @@ func updateKeybind():
 		$TabContainer/Plus/VBoxContainer/keybind.add_child(hBox)
 
 func updatePlusToggle():
-	for option in $TabContainer/Plus/VBoxContainer/option.get_children():
+	for option in $TabContainer/Plus/VBoxContainer/toggle.get_children():
 		# if the option is not in the option list skip it
 		if not option.name in GameOptions.options.plus:
 			continue
