@@ -64,6 +64,7 @@ var options = {
 
 var keybindName = {
 	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
+	"quickTest": ["Quick Test", "Quickly open a test lobby using your default info."],
 	"endTurn":["End Turn", "Hit the bell and end turn"],
 	"surrender":["Surrender", "Surrender..."],
 	"hammer": ["Toggle Hammer", "Toggle the hammer if possible"],
