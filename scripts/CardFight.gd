@@ -340,6 +340,8 @@ func deckList(source, magpie = false):
 		var pic = TextureRect.new()
 		var spacer = Control.new()
 		
+		var new_material = load("res://themes/sigilMat.tres").duplicate()
+
 		var bgStyle = StyleBoxFlat.new()
 		var bg = Panel.new()
 		
@@ -348,23 +350,48 @@ func deckList(source, magpie = false):
 		# settign up the style color
 		if "nohammer" in card_data:
 			labelStyle.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
-			bgStyle.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
+			if GameOptions.options.plus.deckPortraitColor:
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("nohammer_normal", "Card").bg_color
+				)
+			else: bgStyle.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
 			
 		elif "rare" in card_data and "nosac" in card_data:
 			labelStyle.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
-			bgStyle.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
+			if GameOptions.options.plus.deckPortraitColor:
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("rns_normal", "Card").bg_color
+				)
+			else: bgStyle.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
 			
 		elif "nosac" in card_data:
 			labelStyle.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
-			bgStyle.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
+			if GameOptions.options.plus.deckPortraitColor:
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("nosac_normal", "Card").bg_color
+				)
+			else: bgStyle.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
 				
 		elif "rare" in card_data:
 			labelStyle.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
-			bgStyle.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
+			if GameOptions.options.plus.deckPortraitColor:
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("rare_normal", "Card").bg_color
+				)
+			else: bgStyle.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
 			
 		else:
 			labelStyle.bg_color = style.get_stylebox("normal", "Card").bg_color
-			bgStyle.bg_color = style.get_stylebox("normal", "Card").bg_color
+			if GameOptions.options.plus.deckPortraitColor:
+				new_material.set_shader_param(
+					"u_replacement_color",
+					style.get_stylebox("normal", "Card").bg_color
+				)
+			else: bgStyle.bg_color = style.get_stylebox("normal", "Card").bg_color
 			
 		# make the button label
 		label.text = card if magpie else " %s x %s" % [card, tempDeck[card]]
@@ -410,11 +437,16 @@ func deckList(source, magpie = false):
 		
 		spacer.rect_min_size = Vector2(5, 0)
 		
+		pic.material = new_material
 		bg.rect_min_size = pic.rect_min_size
 		bg.add_stylebox_override("panel", bgStyle)
-
-		bg.add_child(pic)
-		hBox.add_child(bg)
+		
+		if GameOptions.options.plus.deckPortraitColor:
+			hBox.add_child(pic)
+		else:
+			bg.add_child(pic)
+			hBox.add_child(bg)
+			
 		hBox.add_child(spacer)
 		hBox.add_child(label)
 		
