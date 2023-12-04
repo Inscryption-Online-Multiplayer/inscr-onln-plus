@@ -1032,6 +1032,7 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1224,7 +1225,6 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1258,7 +1258,7 @@ text = "Did you know you can scroll down? (Don't show this again)"
 [node name="misc" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 62.0
 margin_right = 838.0
-margin_bottom = 250.0
+margin_bottom = 340.0
 
 [node name="miscButton" parent="Options/TabContainer/Plus/VBoxContainer/misc" instance=ExtResource( 17 )]
 text = "Miscellaneous"
@@ -1384,18 +1384,18 @@ margin_bottom = 188.0
 
 [node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
 margin_top = 2.0
-margin_right = 175.0
+margin_right = 216.0
 margin_bottom = 26.0
 text = "Deck List Pic Scale:"
 
 [node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
-margin_left = 175.0
-margin_right = 506.0
+margin_left = 216.0
+margin_right = 527.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="picScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
-margin_left = 506.0
+margin_left = 527.0
 margin_right = 838.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -1405,24 +1405,24 @@ value = 1.0
 align = 1
 
 [node name="deckIconScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
-margin_top = 160.0
+margin_top = 188.0
 margin_right = 838.0
-margin_bottom = 188.0
+margin_bottom = 216.0
 
 [node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
 margin_top = 2.0
-margin_right = 175.0
+margin_right = 230.0
 margin_bottom = 26.0
 text = "Deck List Icon Scale:"
 
 [node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
-margin_left = 175.0
-margin_right = 506.0
+margin_left = 230.0
+margin_right = 534.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="iconScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
-margin_left = 506.0
+margin_left = 534.0
 margin_right = 838.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -1432,24 +1432,24 @@ value = 1.0
 align = 1
 
 [node name="deckPreviewScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
-margin_top = 160.0
+margin_top = 216.0
 margin_right = 838.0
-margin_bottom = 188.0
+margin_bottom = 244.0
 
 [node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
 margin_top = 2.0
-margin_right = 175.0
+margin_right = 266.0
 margin_bottom = 26.0
 text = "Deck List Preview Scale:"
 
 [node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
-margin_left = 175.0
-margin_right = 506.0
+margin_left = 266.0
+margin_right = 552.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="previewScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
-margin_left = 506.0
+margin_left = 552.0
 margin_right = 838.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -1459,18 +1459,46 @@ step = 0.05
 value = 1.0
 align = 1
 
-[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 250.0
+[node name="deckNameAlign" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 244.0
 margin_right = 838.0
-margin_bottom = 284.0
+margin_bottom = 278.0
+
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign"]
+margin_top = 5.0
+margin_right = 229.0
+margin_bottom = 29.0
+text = "Deck List Name Align"
+
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign"]
+margin_left = 229.0
+margin_right = 533.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="deckNameAlign" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign"]
+margin_left = 533.0
+margin_right = 838.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Left"
+align = 1
+items = [ "Left", null, false, 0, null, "Center", null, false, 1, null, "Right", null, false, 2, null ]
+selected = 0
+
+[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+margin_top = 340.0
+margin_right = 838.0
+margin_bottom = 374.0
 
 [node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
 
 [node name="toggle" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 284.0
+margin_top = 374.0
 margin_right = 838.0
-margin_bottom = 318.0
+margin_bottom = 408.0
 
 [node name="toggleButton" parent="Options/TabContainer/Plus/VBoxContainer/toggle" instance=ExtResource( 17 )]
 text = "Toggle Option"
@@ -1587,3 +1615,4 @@ mouse_filter = 2
 [connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale" to="Options" method="_on_picScale_value_changed"]
 [connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale" to="Options" method="_on_iconScale_value_changed"]
 [connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale" to="Options" method="_on_previewScale_value_changed"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign" to="Options" method="_on_deckNameAlign_item_selected"]

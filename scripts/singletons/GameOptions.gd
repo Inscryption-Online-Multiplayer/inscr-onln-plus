@@ -31,6 +31,7 @@ var options = {
 		"deckPicScale": 1,
 		"deckIconScale": 2,
 		"deckPreviewScale": 2,
+		"deckAlign": 0,
 		"autoReady": false,
 		"autoRematch": false,
 		"autoDraw": true,

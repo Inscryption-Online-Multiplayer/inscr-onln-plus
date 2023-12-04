@@ -104,12 +104,13 @@ func updatePlus():
 	$TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
 	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
 	
-	# setting room name and username
+	# setting room name and username and other manual thing
 	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
 	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
 	$TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale.value = GameOptions.options.plus.deckPicScale
 	$TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale.value = GameOptions.options.plus.deckIconScale
 	$TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
+	$TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign._select_int(GameOptions.options.plus.deckAlign) 
 	updateKeybind()
 	
 	for option in GameOptions.optionName:
@@ -155,6 +156,9 @@ func _ready():
 func _on_defaultPic_item_selected(index):
 	$TabContainer/Plus/VBoxContainer/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/pfp/defaultPic.get_item_text(index) + ".png")
 	GameOptions.options.plus.defaultPfp = index
+	
+func _on_deckNameAlign_item_selected(index):
+	GameOptions.options.plus.deckAlign = index
 
 func _on_defaultDeck_item_selected(index):
 	GameOptions.options.plus.defaultDeck = index
@@ -215,3 +219,6 @@ func plusSearch(new_text):
 				text = child.text
 			else: continue
 			child.visible = new_text.to_lower() in text.to_lower() or new_text == ""
+
+
+

@@ -395,7 +395,7 @@ func deckList(source, magpie = false):
 			
 		# make the button label
 		label.text = card if magpie else " %s x %s" % [card, tempDeck[card]]
-		label.align = HALIGN_LEFT
+		label.align = GameOptions.options.plus.deckAlign
 		label.size_flags_horizontal = SIZE_EXPAND_FILL
 		label.name = card.replace(".","\\\\")
 		label.set_script(load("res://scripts/Plus/deckListHover.gd"))
