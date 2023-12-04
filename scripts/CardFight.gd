@@ -332,16 +332,41 @@ func deckList(source, magpie = false):
 	for card in deck if magpie else temp:
 		var style = load("res://themes/papertheme.tres")
 		
-		var new_style = StyleBoxFlat.new()
-		var new_material = load("res://themes/sigilMat.tres").duplicate()
 		var hBox = HBoxContainer.new()
+		
+		var labelStyle = StyleBoxFlat.new()
 		var label = Button.new()
+		
 		var pic = TextureRect.new()
 		var spacer = Control.new()
 		
+		var bgStyle = StyleBoxFlat.new()
+		var bg = Panel.new()
+		
 		var card_data = CardInfo.from_name(card)
 		
-		# make the label or button
+		# settign up the style color
+		if "nohammer" in card_data:
+			labelStyle.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
+			bgStyle.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
+			
+		elif "rare" in card_data and "nosac" in card_data:
+			labelStyle.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
+			bgStyle.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
+			
+		elif "nosac" in card_data:
+			labelStyle.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
+			bgStyle.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
+				
+		elif "rare" in card_data:
+			labelStyle.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
+			bgStyle.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
+			
+		else:
+			labelStyle.bg_color = style.get_stylebox("normal", "Card").bg_color
+			bgStyle.bg_color = style.get_stylebox("normal", "Card").bg_color
+			
+		# make the button label
 		label.text = card if magpie else " %s x %s" % [card, tempDeck[card]]
 		label.size_flags_horizontal = SIZE_EXPAND_FILL
 		label.name = card
@@ -349,38 +374,7 @@ func deckList(source, magpie = false):
 		if magpie: 
 			label.connect("pressed", self, "search_callback")
 			label.toggle_mode = true
-		
-		
-		if "nohammer" in card_data:
-			new_style.bg_color = style.get_stylebox("nohammer_normal", "Card").bg_color
-		elif "rare" in card_data and "nosac" in card_data:
-			new_style.bg_color = style.get_stylebox("rns_normal", "Card").bg_color
-			new_material.set_shader_param(
-				"u_replacement_color",
-				style.get_stylebox("rns_normal", "Card").bg_color
-			)
-			
-		elif "nosac" in card_data:
-			new_style.bg_color = style.get_stylebox("nosac_normal", "Card").bg_color
-			new_material.set_shader_param(
-				"u_replacement_color",
-				style.get_stylebox("nosac_normal", "Card").bg_color
-			)
-				
-		elif "rare" in card_data:
-			new_style.bg_color = style.get_stylebox("rare_normal", "Card").bg_color
-			new_material.set_shader_param(
-				"u_replacement_color",
-				style.get_stylebox("rare_normal", "Card").bg_color
-			)
-			
-		else:
-			new_style.bg_color = style.get_stylebox("normal", "Card").bg_color
-			new_material.set_shader_param(
-				"u_replacement_color",
-				style.get_stylebox("normal", "Card").bg_color
-			)
-		label.add_stylebox_override("normal", new_style)
+		label.add_stylebox_override("normal", labelStyle)
 		label.add_color_override(
 			"font_color",
 			load("res://themes/sigilMat.tres").get_shader_param("u_replacement_color")
@@ -405,7 +399,7 @@ func deckList(source, magpie = false):
 			pic.texture = tx
 		else:
 			pic.texture = load("res://gfx/pixport/" + card_data.name + ".png")
-		pic.material = new_material
+		pic.material = load("res://themes/sigilMat.tres")
 		# using the actual scale properties doesn;t work for some reason
 		pic.rect_min_size = Vector2(
 			pic.texture.get_width() * GameOptions.options.plus.deckPicScale,
@@ -414,12 +408,16 @@ func deckList(source, magpie = false):
 		pic.expand = true
 		pic.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
 		
-		
-		
 		spacer.rect_min_size = Vector2(5, 0)
-		hBox.add_child(pic)
+		
+		bg.rect_min_size = pic.rect_min_size
+		bg.add_stylebox_override("panel", bgStyle)
+
+		bg.add_child(pic)
+		hBox.add_child(bg)
 		hBox.add_child(spacer)
 		hBox.add_child(label)
+		
 		for special in ["rare", "nohammer", "nosac"]:
 			if special in card_data:
 				var texture = TextureRect.new()
