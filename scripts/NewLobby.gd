@@ -77,8 +77,16 @@ func _ready():
 	$Menu/VBoxContainer/DeckEditorBtn.visible = not GameOptions.options.plus.hideDeck
 	$Menu/VBoxContainer/SelectVersionBtn.visible = not GameOptions.options.plus.hideRuleset
 	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDirectory
+	$Menu/VBoxContainer/LogFolder.visible = not GameOptions.options.plus.hideDirectory
 	$Menu/VBoxContainer/DiscordBtn.visible = not GameOptions.options.plus.hideDiscord
 	
+	if GameOptions.options.plus.muteMusic:
+		var music = $"../music"
+		var audio_loader = AudioLoader.new()
+		music.set_stream(audio_loader.loadfile(CardInfo.data_path + "/plus/music/%s" % GameOptions.options.plus.music[1]))
+		music.volume_db = 1
+		music.pitch_scale = 1
+		music.play()
 
 # Methods
 func debug_host():

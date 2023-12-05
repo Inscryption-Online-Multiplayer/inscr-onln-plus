@@ -100,17 +100,6 @@ func updatePlusToggle():
 		GameOptions.options.plus[option.name] = not option.pressed
 		
 func updatePlus():
-	# setting the pic in the option menu
-	$TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
-	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
-	
-	# setting room name and username and other manual thing
-	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
-	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
-	$TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale.value = GameOptions.options.plus.deckPicScale
-	$TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale.value = GameOptions.options.plus.deckIconScale
-	$TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
-	$TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign._select_int(GameOptions.options.plus.deckAlign) 
 	updateKeybind()
 	
 	for option in GameOptions.optionName:
@@ -122,6 +111,31 @@ func updatePlus():
 		button.hint_tooltip = GameOptions.optionName[option][1]
 		button.connect("pressed", self, "updatePlusToggle")
 		$TabContainer/Plus/VBoxContainer/toggle.add_child(button)
+		
+	var dir = Directory.new()
+	var path = "user://plus/music"
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".wav") or file_name.ends_with(".mp3"):
+				$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.add_item(file_name)
+			file_name = dir.get_next()
+			
+	# setting the pic in the option menu
+	$TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
+	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
+	
+	# setting room name and username and other manual thing
+	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
+	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
+	$TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale.value = GameOptions.options.plus.deckPicScale
+	$TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale.value = GameOptions.options.plus.deckIconScale
+	$TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
+	$TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign._select_int(GameOptions.options.plus.deckAlign) 
+	$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect._select_int(GameOptions.options.plus.music[0])
+	
+
 
 # Update the option to the correct value
 func update_controls():
@@ -178,6 +192,9 @@ func _on_iconScale_value_changed(value):
 func _on_previewScale_value_changed(value):
 	GameOptions.options.plus.deckPreviewScale = value
 	
+func _on_musicSelect_item_selected(index):
+	GameOptions.options.plus.music = [index, $TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.get_item_text(index)]
+	
 func _on_OptionsBtn_pressed():
 	popup()
 	$"../TitleScreen/Blocker".visible = true
@@ -219,6 +236,3 @@ func plusSearch(new_text):
 				text = child.text
 			else: continue
 			child.visible = new_text.to_lower() in text.to_lower() or new_text == ""
-
-
-

@@ -1012,6 +1012,7 @@ text = "Ok"
 visible = false
 
 [node name="Options" type="WindowDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1032,6 +1033,7 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1224,7 +1226,6 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1258,7 +1259,7 @@ text = "Did you know you can scroll down? (Don't show this again)"
 [node name="misc" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 62.0
 margin_right = 838.0
-margin_bottom = 340.0
+margin_bottom = 374.0
 
 [node name="miscButton" parent="Options/TabContainer/Plus/VBoxContainer/misc" instance=ExtResource( 17 )]
 text = "Miscellaneous"
@@ -1487,18 +1488,45 @@ align = 1
 items = [ "Left", null, false, 0, null, "Center", null, false, 1, null, "Right", null, false, 2, null ]
 selected = 0
 
-[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 340.0
+[node name="musicSelect" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 278.0
 margin_right = 838.0
-margin_bottom = 374.0
+margin_bottom = 312.0
+
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect"]
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 29.0
+text = "Music:"
+
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect"]
+margin_left = 60.0
+margin_right = 449.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="musicSelect" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect"]
+margin_left = 449.0
+margin_right = 838.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+items = [ "- Choose Music -", null, false, 0, null ]
+selected = 0
+
+[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+margin_top = 374.0
+margin_right = 838.0
+margin_bottom = 408.0
 
 [node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
 
 [node name="toggle" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 374.0
+margin_top = 408.0
 margin_right = 838.0
-margin_bottom = 408.0
+margin_bottom = 442.0
 
 [node name="toggleButton" parent="Options/TabContainer/Plus/VBoxContainer/toggle" instance=ExtResource( 17 )]
 text = "Toggle Option"
@@ -1567,6 +1595,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/HostBtn" to="TitleScreen" method="_on_HostBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/JoinBtn" to="TitleScreen" method="_on_JoinBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/BattlePassBtn" to="TitleScreen" method="_on_JoinBtn_pressed"]
@@ -1616,3 +1647,4 @@ mouse_filter = 2
 [connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale" to="Options" method="_on_iconScale_value_changed"]
 [connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale" to="Options" method="_on_previewScale_value_changed"]
 [connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign" to="Options" method="_on_deckNameAlign_item_selected"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect" to="Options" method="_on_musicSelect_item_selected"]
