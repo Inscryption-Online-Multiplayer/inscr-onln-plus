@@ -42,6 +42,7 @@ func update_options():
 					Engine.target_fps = 60 if GameOptions.options.lock_fps else 0
 
 var keybindButtonList = []
+const toggleButton = preload("res://packed/UI/plusToggleButton.tscn")
 
 # change keybind when pressed
 func changeKeybind(pressed):
@@ -85,31 +86,13 @@ func updateKeybind():
 		keybindButtonList.append(keybindButton)
 		$TabContainer/Plus/VBoxContainer/keybind.add_child(hBox)
 
-func updatePlusToggle():
-	for option in $TabContainer/Plus/VBoxContainer/toggle.get_children():
-		# if the option is not in the option list skip it
-		if not option.name in GameOptions.options.plus:
-			continue
-		# don't override stuff if it didn't change
-		var old_val = GameOptions.options.plus[option.name]
-				
-		if old_val != option.pressed:
-			continue
-		
-		# save it
-		GameOptions.options.plus[option.name] = not option.pressed
-		
 func updatePlus():
 	updateKeybind()
 	
 	for option in GameOptions.optionName:
 		if option == "scrollReminder": continue
-		var button = CheckButton.new()
-		button.name = option
-		button.pressed = not GameOptions.options.plus[option]
-		button.text = GameOptions.optionName[option][0]
-		button.hint_tooltip = GameOptions.optionName[option][1]
-		button.connect("pressed", self, "updatePlusToggle")
+		var button = toggleButton.instance()
+		button.setName(option)
 		$TabContainer/Plus/VBoxContainer/toggle.add_child(button)
 		
 	var dir = Directory.new()
