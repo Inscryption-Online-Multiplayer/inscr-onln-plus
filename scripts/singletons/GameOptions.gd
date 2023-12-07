@@ -67,7 +67,9 @@ var options = {
 	}
 }
 
+# didn't use a dict for displayName and tooltip cus that too verbose
 var keybindName = {
+	# optionName : [displayName, tooltip]
 	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
 	"quickTest": ["Quick Test", "Quickly open a test lobby using your default info."],
 	"endTurn":["End Turn", "Hit the bell and end turn"],
@@ -82,7 +84,9 @@ var keybindName = {
 	"option":["Open Option", "Press the \"Open Game Directory\" button on the title screen"],
 	"directory":["Open Directory", "Press the \"Open Game Directory\" button on the title screen"],
 }
+
 var optionName = {
+	# optionName : [displayName, tooltip]
 	"autoReady": ["Auto Ready", "Auto ready when entering lobby."],
 	"autoRematch": ["Auto Rematch", "Auto rematch when fight end."],
 	"autoDraw": ["Auto Draw", "Automatically draw card when you only have 1 deck left."],

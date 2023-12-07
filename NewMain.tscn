@@ -16,7 +16,7 @@
 [ext_resource path="res://themes/scanlinemat.tres" type="Material" id=14]
 [ext_resource path="res://themes/sigilMat.tres" type="Material" id=15]
 [ext_resource path="res://packed/BattlePass.tscn" type="PackedScene" id=16]
-[ext_resource path="res://packed/UI/plusOptionButton.tscn" type="PackedScene" id=17]
+[ext_resource path="res://packed/Plus/plusOptionButton.tscn" type="PackedScene" id=17]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
@@ -1012,7 +1012,6 @@ text = "Ok"
 visible = false
 
 [node name="Options" type="WindowDialog" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1033,7 +1032,6 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1226,6 +1224,7 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1511,6 +1510,7 @@ margin_right = 838.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+text = "- Choose Music -"
 align = 1
 items = [ "- Choose Music -", null, false, 0, null ]
 selected = 0
