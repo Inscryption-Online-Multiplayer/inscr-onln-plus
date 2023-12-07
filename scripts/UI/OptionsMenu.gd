@@ -98,13 +98,21 @@ func updatePlus():
 		
 	# music stuff
 	var dir = Directory.new()
-	var path = "user://plus/music"
-	if dir.open(path) == OK:
+	if dir.open("user://plus/music") == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".wav") or file_name.ends_with(".mp3"):
 				$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.add_item(file_name)
+			file_name = dir.get_next()
+			
+	# music stuff
+	if dir.open("user://plus/theme") == OK:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".json"):
+				$TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect.add_item(file_name)
 			file_name = dir.get_next()
 			
 	# setting the pic in the option menu
@@ -119,7 +127,7 @@ func updatePlus():
 	$TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
 	$TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign._select_int(GameOptions.options.plus.deckAlign) 
 	$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect._select_int(GameOptions.options.plus.music[0])
-	
+	$TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect._select_int(GameOptions.options.plus.theme[0])
 
 
 # Update the option to the correct value
@@ -178,8 +186,40 @@ func _on_previewScale_value_changed(value):
 	GameOptions.options.plus.deckPreviewScale = value
 	
 func _on_musicSelect_item_selected(index):
-	GameOptions.options.plus.music = [index, $TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.get_item_text(index)]
+	GameOptions.options.plus.theme = [
+		index, 
+		$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.get_item_text(index)
+	]
 	
+	# update music player with new music
+	if GameOptions.options.plus.muteMusic:
+		var music = $"../music"
+		var audio_loader = AudioLoader.new()
+		music.set_stream(audio_loader.loadfile(
+			CardInfo.data_path + "/plus/music/%s" % GameOptions.options.plus.music[1]
+			)
+		)
+		music.volume_db = 1
+		music.pitch_scale = 1
+		music.play()
+
+func _on_themeSelect_item_selected(index):
+	GameOptions.options.plus.theme = [
+		index, 
+		$TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect.get_item_text(index)
+	]
+	var file = File.new()
+	if file.file_exists(CardInfo.data_path + "/plus/theme/%s" % GameOptions.options.plus.theme[1]):
+		file.open(
+			CardInfo.data_path + "/plus/theme/%s" % GameOptions.options.plus.theme[1], 
+			File.READ
+		)
+		var json = parse_json(file.get_as_text())
+		if json:
+			$"../ThemeEditor".theme_data = json
+	$"../ThemeEditor".apply_theme()
+	
+
 func _on_OptionsBtn_pressed():
 	popup()
 	$"../TitleScreen/Blocker".visible = true

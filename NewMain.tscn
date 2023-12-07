@@ -1032,6 +1032,7 @@ margin_bottom = 598.0
 mouse_filter = 1
 
 [node name="Visual" type="VBoxContainer" parent="Options/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1224,7 +1225,6 @@ enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
 [node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1258,7 +1258,7 @@ text = "Did you know you can scroll down? (Don't show this again)"
 [node name="misc" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
 margin_top = 62.0
 margin_right = 838.0
-margin_bottom = 374.0
+margin_bottom = 408.0
 
 [node name="miscButton" parent="Options/TabContainer/Plus/VBoxContainer/misc" instance=ExtResource( 17 )]
 text = "Miscellaneous"
@@ -1515,18 +1515,46 @@ align = 1
 items = [ "- Choose Music -", null, false, 0, null ]
 selected = 0
 
-[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 374.0
+[node name="themeSelect" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+margin_top = 312.0
 margin_right = 838.0
-margin_bottom = 408.0
+margin_bottom = 346.0
+
+[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect"]
+margin_top = 5.0
+margin_right = 84.0
+margin_bottom = 29.0
+text = "Theme: "
+
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect"]
+margin_left = 84.0
+margin_right = 461.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="themeSelect" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect"]
+margin_left = 461.0
+margin_right = 838.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "- Choose Theme -"
+align = 1
+items = [ "- Choose Theme -", null, false, 0, null ]
+selected = 0
+
+[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+margin_top = 408.0
+margin_right = 838.0
+margin_bottom = 442.0
 
 [node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
 
 [node name="toggle" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
-margin_top = 408.0
+margin_top = 442.0
 margin_right = 838.0
-margin_bottom = 442.0
+margin_bottom = 476.0
 
 [node name="toggleButton" parent="Options/TabContainer/Plus/VBoxContainer/toggle" instance=ExtResource( 17 )]
 text = "Toggle Option"
@@ -1648,3 +1676,4 @@ autoplay = true
 [connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale" to="Options" method="_on_previewScale_value_changed"]
 [connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign" to="Options" method="_on_deckNameAlign_item_selected"]
 [connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect" to="Options" method="_on_musicSelect_item_selected"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect" to="Options" method="_on_themeSelect_item_selected"]

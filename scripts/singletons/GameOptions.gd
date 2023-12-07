@@ -32,7 +32,9 @@ var options = {
 		"deckIconScale": 2,
 		"deckPreviewScale": 2,
 		"deckAlign": 0,
+		# store as [num, str] cus when new file get add, file order may change
 		"music": [0, ""],
+		"theme": [0, ""],
 		"autoReady": false,
 		"autoRematch": false,
 		"autoDraw": true,
