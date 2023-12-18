@@ -38,7 +38,7 @@ Original Readme:
 > [!NOTE]
 > To learn more about the feature follow their header link
 
-# Option
+## Option
 
 -   Auto Draw: Automatically draw card when 1 deck is left.
 -   Auto Ready: Automatically press `Ready` when joining lobby.
@@ -56,7 +56,7 @@ Original Readme:
 -   End Turn Confirmation: Ask for confirmation when ending turn
 -   Surrender Confirmation: Ask for confirmation when surrendering
 
-# Theme and Music
+## Theme and Music
 
 > [!IMPORTANT]
 > This feature is only available on `Pres`. Try the latest `Pres` out for this feature
@@ -77,7 +77,7 @@ Here a example of what it should look like:
         └── rick_roll.mp3 <- mp3 file are also supported
 ```
 
-## Adding theme:
+### Adding theme:
 
 To add theme option to the theme selector. Make a `plus/theme` folder in your Game Directory (Access using the `Game Directory` button) and drop your `theme.json` into that folder. Here what it should look like:
 
@@ -89,7 +89,7 @@ To add theme option to the theme selector. Make a `plus/theme` folder in your Ga
         └── another_theme.json <- another theme.json with a different name
 ```
 
-## Adding music:
+### Adding music:
 
 To add music option to the music selector. Make a `plus/music` folder in your Game Directory (Access using the `Game Directory` button) and drop your `music.wav` or `music.mp3`jj into that folder. Here what it should look like:
 
@@ -101,7 +101,7 @@ To add music option to the music selector. Make a `plus/music` folder in your Ga
         └── another_song.mp3 <- song mp3 file
 ```
 
-# Keybind
+## Keybind
 
 > [!IMPORTANT]
 > This list is sync with the latest `Ples` version. `Stable` version may not have these feature yet
