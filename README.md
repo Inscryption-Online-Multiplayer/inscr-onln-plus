@@ -13,18 +13,18 @@ Original Readme:
 # Inscryption Online Multiplayer Plus (IMF+)
 
 [![Plus Latest][plus-badge]][plus-link]
-[![Pres Latest][ples-badge]][ples-link]
+[![Pres Latest][pres-badge]][pres-link]
 
 **IMF+** is a fork of the original IMF that include some QoL feature. The fork is compatible with IMF, this mean every feature is client side and you should be able to connect to a vanilla client with no problem, if there is a problem please report it.
 
 > [!NOTE]
-> Plus have 2 branch `Pres` and `Stable`.
+> IMF+ have 2 branches [`Pres`][pres-link] and [`Plus`][plus-link].
 >
-> -   `Stable` is the release and staple version of Plus, have fewer bug and update less often. This release is refer to as `Plus` on all release.
-> -   `Ples` is the pre-release version of Plus with unstable feature that may mess with your config and bugs are expected. This release is refer to as `Pres` on all pre-release.
+> -   [`Plus`][plus-link] is the release and staple version of IMF+, have fewer bug and update less often.
+> -   `Pres` is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
 
 > [!IMPORTANT]
-> Every list is sync with the latest `Ples` version. `Stable` version may not have these feature yet. Check out latest `Pres` to have access to all these feature
+> List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Check out latest [`Pres`][pres-link] to have access to all these feature
 
 ## Feature
 
@@ -62,7 +62,7 @@ Original Readme:
 ## Theme and Music
 
 > [!IMPORTANT]
-> This feature is only available on `Pres`. Try the latest `Pres` out for this feature
+> This feature is only available on [`Pres`][pres-link]. Try the latest [`Pres`](https://github.com/Mouthless-Stoat/inscr-onln-plus/releases) out for this feature
 
 > [!WARNING]
 > This feature is unstable and may mess with your config. Changes are expected
@@ -123,5 +123,5 @@ This is a list of keybind that Plus currently have:
 
 [plus-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus
 [plus-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/latest
-[ples-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres
-[ples-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases
+[pres-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres
+[pres-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases
