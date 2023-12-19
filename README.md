@@ -21,7 +21,7 @@ Original Readme:
 > IMF+ have 2 branches [`Pres`][pres-link] and [`Plus`][plus-link].
 >
 > -   [`Plus`][plus-link] is the release and staple version of IMF+, have fewer bug and update less often.
-> -   `Pres`[pres-link] is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
+> -   [`Pres`][pres-link] is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
 
 > [!IMPORTANT]
 > List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Feature mark with a :test_tube: are [`Pres`](pres-link) feature. Check out latest [`Pres`][pres-link] to have access to all these feature.
