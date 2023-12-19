@@ -11,8 +11,8 @@ Original Readme:
 > Source was formerly available under MIT license, but this led to forks being distributed over discord as executables without visible source code, and I really don't want this project to be yet another discord virus factory. I also want this game's code to be a resource for people who want to make their own fangames (even though it is super spaghetti).
 
 # Inscryption Online Multiplayer Plus (IMF+)
-![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus) <!-- Plus Latest-->
-![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres) <!-- Pres Latest -->
+[![Plus Latest][plus-badge]][plus-link] 
+[![Pres Latest][ples-badge]][ples-link]
 
 **IMF+** is a fork of the original IMF that include some QoL feature. The fork is compatible with IMF, this mean every feature is client side and you should be able to connect to a vanilla client with no problem, if there is a problem please report it.
 
@@ -119,3 +119,8 @@ This is a list of keybind that Plus currently have:
 -   Open Join Menu: Open the Join menu using the menu button
 -   Open Option: Open the Option menu using the menu button
 -   Open Ruleset Selector: Open the Ruleset Selector using the menu button
+
+[plus-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus
+[plus-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/latest
+[ples-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres
+[ples-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases
