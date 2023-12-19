@@ -131,4 +131,4 @@ This is a list of keybind that Plus currently have:
 [plus-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus
 [plus-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/latest
 [pres-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres
-[pres-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases
+[pres-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/tag/1.1.4
