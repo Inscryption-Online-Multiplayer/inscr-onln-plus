@@ -101,7 +101,7 @@ To add theme option to the theme selector. Make a `plus/theme` folder in your Ga
 
 ### Adding music:
 
-To add music option to the music selector. Make a `plus/music` folder in your Game Directory (Access using the `Game Directory` button) and drop your `music.wav` or `music.mp3`jj into that folder. Here what it should look like:
+To add music option to the music selector. Make a `plus/music` folder in your Game Directory (Access using the `Game Directory` button) and drop your `music.wav` or `music.mp3` into that folder. Here what it should look like:
 
 ```
 ...Godot/user_appdata/Inscry_Mult_GD/
@@ -115,18 +115,18 @@ To add music option to the music selector. Make a `plus/music` folder in your Ga
 
 This is a list of keybind that Plus currently have:
 
--   Draw Main Deck: Draw from your main deck if possible
--   Draw Side Deck: Draw from your side deck if possible
--   End Turn: End your turn if possible
--   Toggle Hammer: Toggle the hammer if possible
--   Quick Host: Quickly host a room using the default info
--   Quick Test: Quicky test a deck using the default info. :test_tube:
--   Open Deck Editor: Open the Deck Editor using the menu button
--   Open Game Directory: Open the Game Directory using the menu button
--   Open Host Menu: Open the Host menu using the menu button
--   Open Join Menu: Open the Join menu using the menu button
--   Open Option: Open the Option menu using the menu button
--   Open Ruleset Selector: Open the Ruleset Selector using the menu button
+-   **Draw Main Deck**: Draw from your main deck if possible
+-   **Draw Side Deck**: Draw from your side deck if possible
+-   **End Turn**: End your turn if possible
+-   **Toggle Hammer**: Toggle the hammer if possible
+-   **Quick Host**: Quickly host a room using the default info
+-   **Quick Test**: Quicky test a deck using the default info. :test_tube:
+-   **Open Deck Editor**: Open the Deck Editor using the menu button
+-   **Open Game Directory**: Open the Game Directory using the menu button
+-   **Open Host Menu**: Open the Host menu using the menu button
+-   **Open Join Menu**: Open the Join menu using the menu button
+-   **Open Option**: Open the Option menu using the menu button
+-   **Open Ruleset Selector**: Open the Ruleset Selector using the menu button
 
 [plus-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus
 [plus-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/latest
