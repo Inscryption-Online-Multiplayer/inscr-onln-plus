@@ -21,10 +21,10 @@ Original Readme:
 > IMF+ have 2 branches [`Pres`][pres-link] and [`Plus`][plus-link].
 >
 > -   [`Plus`][plus-link] is the release and staple version of IMF+, have fewer bug and update less often.
-> -   `Pres` is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
+> -   `Pres`[pres-link] is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
 
 > [!IMPORTANT]
-> List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Check out latest [`Pres`][pres-link] to have access to all these feature
+> List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Feature mark with a test tube (:test_tube:) are [`Pres`](pres-link) feature. Check out latest [`Pres`][pres-link] to have access to all these feature.
 
 ## Feature
 
@@ -46,18 +46,25 @@ Original Readme:
 -   **Auto Draw:** Automatically draw card when 1 deck is left.
 -   **Auto Ready:** Automatically press `Ready` when joining lobby.
 -   **Auto Rematch:** Automatically press `Rematch` when game end.
--   **Card Quick Select:** Select Card in hand using the number key (`0`, `1`, `2`, etc.) to play card
--   **Slot Quick Select:** Select Slot using `h`, `j`, `k`, `l` to play and activate card
--   **Default Deck:** Automatically select default Deck
--   **Default Profile Picture:** Automatically select default Profile Picture
--   **Default Room name:** Automatically fill in default Room Name
--   **Default Username:** Automatically fill in default Username
--   **Hide Deck Editor:** Hide the `Deck Editor` button on the title screen
--   **Hide Discord:** Hide the `Discord` button on the title screen
--   **Hide Open Directory:** Hide the `Open Directory` button on the title screen
--   **Hide Ruleset:** Hide the `Ruleset` button on the title screen
--   **End Turn Confirmation:** Ask for confirmation when ending turn
--   **Surrender Confirmation:** Ask for confirmation when surrendering
+-   **Card Quick Select:** Select Card in hand using the number key (`0`, `1`, `2`, etc.) to play card.
+-   **Slot Quick Select:** Select Slot using `h`, `j`, `k`, `l` to play and activate card.
+-   **Default Deck:** Automatically select default Deck. :test_tube:
+-   **Default Profile Picture:** Automatically select default Profile Picture.
+-   **Default Room name:** Automatically fill in default Room Name.
+-   **Default Username:** Automatically fill in default Username.
+-   **Hide Deck Editor:** Hide the `Deck Editor` button on the title screen.
+-   **Hide Discord:** Hide the `Discord` button on the title screen.
+-   **Hide Open Directory:** Hide the `Open Directory` button on the title screen.
+-   **Hide Ruleset:** Hide the `Ruleset` button on the title screen.
+-   **End Turn Confirmation:** Ask for confirmation when ending turn.
+-   **Surrender Confirmation:** Ask for confirmation when surrendering.
+-   **Improve Deck Search**: Improve deck search ui using Deck List. :test_tube:
+-   **Deck List**: A Deck list to view what left in the deck. :test_tube:
+-   **Deck List Pic Scale**: Scale of the portrait preview in Deck List. :test_tube:
+-   **Deck List Icon Scale**: Scale of the accessibility icon in Deck List. :test_tube:
+-   **Deck List Preview Scale**: Scale of the card preview in Deck List. :test_tube:
+-   **Deck List Portrait Color**: Change the portrait color in Deck List to match card color. :test_tube:
+-   **Deck List Name Align**: Change where the card name name align in Deck List. :test_tube:
 
 ## Theme and Music
 
@@ -113,7 +120,7 @@ This is a list of keybind that Plus currently have:
 -   End Turn: End your turn if possible
 -   Toggle Hammer: Toggle the hammer if possible
 -   Quick Host: Quickly host a room using the default info
--   Quick Test: Quicky test a deck using the default info
+-   Quick Test: Quicky test a deck using the default info. :test_tube:
 -   Open Deck Editor: Open the Deck Editor using the menu button
 -   Open Game Directory: Open the Game Directory using the menu button
 -   Open Host Menu: Open the Host menu using the menu button
