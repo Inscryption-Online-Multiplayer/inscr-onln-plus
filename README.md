@@ -43,21 +43,21 @@ Original Readme:
 
 ## Option
 
--   Auto Draw: Automatically draw card when 1 deck is left.
--   Auto Ready: Automatically press `Ready` when joining lobby.
--   Auto Rematch: Automatically press `Rematch` when game end.
--   Card Quick Select: Select Card in hand using the number key (`0`, `1`, `2`, etc.) to play card
--   Slot Quick Select: Select Slot using `h`, `j`, `k`, `l` to play and activate card
--   Default Deck: Automatically select default Deck
--   Default Profile Picture: Automatically select default Profile Picture
--   Default Room name: Automatically fill in default Room Name
--   Default Username: Automatically fill in default Username
--   Hide Deck Editor: Hide the `Deck Editor` button on the title screen
--   Hide Discord: Hide the `Discord` button on the title screen
--   Hide Open Directory: Hide the `Open Directory` button on the title screen
--   Hide Ruleset: Hide the `Ruleset` button on the title screen
--   End Turn Confirmation: Ask for confirmation when ending turn
--   Surrender Confirmation: Ask for confirmation when surrendering
+-   **Auto Draw:** Automatically draw card when 1 deck is left.
+-   **Auto Ready:** Automatically press `Ready` when joining lobby.
+-   **Auto Rematch:** Automatically press `Rematch` when game end.
+-   **Card Quick Select:** Select Card in hand using the number key (`0`, `1`, `2`, etc.) to play card
+-   **Slot Quick Select:** Select Slot using `h`, `j`, `k`, `l` to play and activate card
+-   **Default Deck:** Automatically select default Deck
+-   **Default Profile Picture:** Automatically select default Profile Picture
+-   **Default Room name:** Automatically fill in default Room Name
+-   **Default Username:** Automatically fill in default Username
+-   **Hide Deck Editor:** Hide the `Deck Editor` button on the title screen
+-   **Hide Discord:** Hide the `Discord` button on the title screen
+-   **Hide Open Directory:** Hide the `Open Directory` button on the title screen
+-   **Hide Ruleset:** Hide the `Ruleset` button on the title screen
+-   **End Turn Confirmation:** Ask for confirmation when ending turn
+-   **Surrender Confirmation:** Ask for confirmation when surrendering
 
 ## Theme and Music
 
