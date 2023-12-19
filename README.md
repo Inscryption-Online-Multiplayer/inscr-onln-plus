@@ -11,8 +11,8 @@ Original Readme:
 > Source was formerly available under MIT license, but this led to forks being distributed over discord as executables without visible source code, and I really don't want this project to be yet another discord virus factory. I also want this game's code to be a resource for people who want to make their own fangames (even though it is super spaghetti).
 
 # Inscryption Online Multiplayer Plus (IMF+)
-![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres)
-![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus)
+![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus) <!-- Plus Latest-->
+![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres) <!-- Pres Latest -->
 
 **IMF+** is a fork of the original IMF that include some QoL feature. The fork is compatible with IMF, this mean every feature is client side and you should be able to connect to a vanilla client with no problem, if there is a problem please report it.
 
@@ -22,10 +22,13 @@ Original Readme:
 > -   `Stable` is the release and staple version of Plus, have fewer bug and update less often. This release is refer to as `Plus` on all release.
 > -   `Ples` is the pre-release version of Plus with unstable feature that may mess with your config and bugs are expected. This release is refer to as `Pres` on all pre-release.
 
+> [!IMPORTANT]
+> Every list is sync with the latest `Ples` version. `Stable` version may not have these feature yet. Check out latest `Pres` to have access to all these feature
+
 ## Feature
 
-> [!IMPORTANT]
-> This list is sync with the latest `Ples` version. `Stable` version may not have these feature yet
+> [!NOTE]
+> To learn more about the feature follow their header link or scroll down to [Option](#option)
 
 -   Default Room name, Username, Profile Picture, Deck
 -   Auto Rematch, Ready, Draw
@@ -36,9 +39,6 @@ Original Readme:
 -   [Music](#theme-and-music)
 -   [Keybind](#keybind)
 -   ~~New and improve Deck List (Merge with `main` pending update)~~
-
-> [!NOTE]
-> To learn more about the feature follow their header link
 
 ## Option
 
@@ -104,9 +104,6 @@ To add music option to the music selector. Make a `plus/music` folder in your Ga
 ```
 
 ## Keybind
-
-> [!IMPORTANT]
-> This list is sync with the latest `Ples` version. `Stable` version may not have these feature yet
 
 This is a list of keybind that Plus currently have:
 
