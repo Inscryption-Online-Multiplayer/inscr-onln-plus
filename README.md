@@ -50,7 +50,7 @@ Original Readme:
 -   Default Deck: Automatically select default Deck
 -   Default Profile Picture: Automatically select default Profile Picture
 -   Default Room name: Automatically fill in default Room Name
--   Default USername: Automatically fill in default Username
+-   Default Username: Automatically fill in default Username
 -   Hide Deck Editor: Hide the `Deck Editor` button on the title screen
 -   Hide Discord: Hide the `Discord` button on the title screen
 -   Hide Open Directory: Hide the `Open Directory` button on the title screen
