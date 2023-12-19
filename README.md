@@ -11,6 +11,8 @@ Original Readme:
 > Source was formerly available under MIT license, but this led to forks being distributed over discord as executables without visible source code, and I really don't want this project to be yet another discord virus factory. I also want this game's code to be a resource for people who want to make their own fangames (even though it is super spaghetti).
 
 # Inscryption Online Multiplayer Plus (IMF+)
+![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres)
+![](https://badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus)
 
 **IMF+** is a fork of the original IMF that include some QoL feature. The fork is compatible with IMF, this mean every feature is client side and you should be able to connect to a vanilla client with no problem, if there is a problem please report it.
 
