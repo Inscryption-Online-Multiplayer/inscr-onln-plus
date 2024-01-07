@@ -161,7 +161,7 @@ func _ready():
 
 # Update when a pfp option is select
 func _on_defaultPic_item_selected(index):
-	$TabContainer/Plus/VBoxContainer/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/pfp/defaultPic.get_item_text(index) + ".png")
+	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(index) + ".png")
 	GameOptions.options.plus.defaultPfp = index
 	
 func _on_deckNameAlign_item_selected(index):
@@ -186,7 +186,7 @@ func _on_previewScale_value_changed(value):
 	GameOptions.options.plus.deckPreviewScale = value
 	
 func _on_musicSelect_item_selected(index):
-	GameOptions.options.plus.theme = [
+	GameOptions.options.plus.music = [
 		index, 
 		$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.get_item_text(index)
 	]
