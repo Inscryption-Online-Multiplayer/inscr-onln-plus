@@ -28,13 +28,13 @@ Original README:
 
 ## Feature
 
+List of noteable feature scroll down to [Option](#option) the view the full list of option.
 > [!NOTE]
 > To learn more about the feature follow their header link or scroll down to [Option](#option)
 
 -   Default Room name, Username, Profile Picture, Deck
 -   Auto Rematch, Ready, Draw
 -   Quick Card and Slot Select
--   Surrender and Pass Confirmation
 -   Enable and Disable any menu button
 -   [Multiple theme support](#theme-and-music)
 -   [Music](#theme-and-music)
