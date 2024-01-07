@@ -1,4 +1,4 @@
-Original Readme:
+Original README:
 
 > Inscryption Multiplayer [Godot]
 >
@@ -24,7 +24,7 @@ Original Readme:
 > -   [`Pres`][pres-link] is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
 
 > [!IMPORTANT]
-> List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Feature mark with a :test_tube: are [`Pres`](pres-link) feature. Check out latest [`Pres`][pres-link] to have access to all these feature.
+> List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Feature mark with a :test_tube: are [`Pres`][pres-link] feature. Check out latest [`Pres`][pres-link] to have access to all these features.
 
 ## Feature
 
@@ -58,23 +58,23 @@ Original Readme:
 -   **Hide Ruleset:** Hide the `Ruleset` button on the title screen.
 -   **End Turn Confirmation:** Ask for confirmation when ending turn.
 -   **Surrender Confirmation:** Ask for confirmation when surrendering.
--   **Improve Deck Search**: Improve deck search ui using Deck List. :test_tube:
+-   **Improve Deck Search**: Improve deck search UI using Deck List. :test_tube:
 -   **Deck List**: A Deck list to view what left in the deck. :test_tube:
 -   **Deck List Pic Scale**: Scale of the portrait preview in Deck List. :test_tube:
 -   **Deck List Icon Scale**: Scale of the accessibility icon in Deck List. :test_tube:
 -   **Deck List Preview Scale**: Scale of the card preview in Deck List. :test_tube:
 -   **Deck List Portrait Color**: Change the portrait color in Deck List to match card color. :test_tube:
--   **Deck List Name Align**: Change where the card name name align in Deck List. :test_tube:
+-   **Deck List Name Align**: Change where the card name align in Deck List. :test_tube:
 
 ## Theme and Music
 
 > [!IMPORTANT]
-> This feature is only available on [`Pres`][pres-link]. Try the latest [`Pres`](https://github.com/Mouthless-Stoat/inscr-onln-plus/releases) out for this feature
+> This feature is only available on [`Pres`][pres-link]. Try the latest [`Pres`][pres-link] out for this feature
 
 > [!WARNING]
 > This feature is unstable and may mess with your config. Changes are expected
 
-Here a example of what it should look like:
+Here is an example of what it should look like:
 
 ```
 ...Godot/user_appdata/Inscry_Mult_GD/
