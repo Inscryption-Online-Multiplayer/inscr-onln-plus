@@ -29,6 +29,7 @@ Original README:
 ## Feature
 
 List of noteable feature scroll down to [Option](#option) the view the full list of option.
+
 > [!NOTE]
 > To learn more about the feature follow their header link or scroll down to [Option](#option)
 
@@ -127,6 +128,14 @@ This is a list of keybind that Plus currently have:
 -   **Open Join Menu**: Open the Join menu using the menu button
 -   **Open Option**: Open the Option menu using the menu button
 -   **Open Ruleset Selector**: Open the Ruleset Selector using the menu button
+
+## Todo
+
+-   Deck profile
+-   Warning screen when loading deck not made for the format
+-   Make backup deck when loading invalid format
+-   Format version warning
+-   Format version chooser
 
 [plus-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus
 [plus-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/latest
