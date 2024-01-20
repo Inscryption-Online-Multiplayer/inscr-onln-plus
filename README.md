@@ -18,7 +18,7 @@ Original README:
 **IMF+** is a fork of the original IMF that include some QoL feature. The fork is compatible with IMF, this mean every feature is client side and you should be able to connect to a vanilla client with no problem, if there is a problem please report it.
 
 > [!NOTE]
-> IMF+ have 2 branches [`Pres`][pres-link] and [`Plus`][plus-link].
+> IMF+ have 2 type of release [`Pres`][pres-link] and [`Plus`][plus-link].
 >
 > -   [`Plus`][plus-link] is the release and staple version of IMF+, have fewer bug and update less often.
 > -   [`Pres`][pres-link] is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
