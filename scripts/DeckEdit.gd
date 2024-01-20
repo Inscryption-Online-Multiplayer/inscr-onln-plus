@@ -32,6 +32,7 @@ onready var sidedeck_prefix = get_node("%PrefixType")
 
 onready var tab_cont = get_node("%TabContainer")
 
+var preDeck = 0
 
 # Card result prefab
 var cardPrefab = preload("res://packed/dbCard.tscn")
@@ -245,14 +246,16 @@ func get_card_id(card_data):
 
 # UI for deck save
 func save_deck(_arg = null):
-	
 	var sFile = File.new()
+	var json = get_deck_object()
+	json.format = CardInfo.all_data.ruleset
+	
 	sFile.open(CardInfo.deck_path + selector_de.text + ".deck", File.WRITE)
-	sFile.store_line(to_json(get_deck_object()))
+	sFile.store_line(to_json(json))
 	sFile.close()
 
 	sFile.open(CardInfo.deck_backup_path + selector_de.text + ".deck", File.WRITE)
-	sFile.store_line(to_json(get_deck_object()))
+	sFile.store_line(to_json(json))
 	sFile.close()
 	
 func save_deck_as(_arg = null):
@@ -264,12 +267,16 @@ func save_deck_as(_arg = null):
 		selector_de.add_item(rename_de.text, selector_de.get_item_count())	
 	
 	var sFile: File = File.new()
+	var json = get_deck_object()
+	print(json)
+	json.format = CardInfo.all_data.ruleset
+	
 	sFile.open(CardInfo.deck_path + rename_de.text + ".deck", File.WRITE)
-	sFile.store_line(to_json(get_deck_object()))
+	sFile.store_line(to_json(json))
 	sFile.close()
 
 	sFile.open(CardInfo.deck_backup_path + rename_de.text + ".deck", File.WRITE)
-	sFile.store_line(to_json(get_deck_object()))
+	sFile.store_line(to_json(json))
 	sFile.close()
 	
 	for item in range(selector_de.get_item_count()):
@@ -294,7 +301,7 @@ func ensure_default_deck():
 		defDeck.open(CardInfo.deck_path + "default.deck", File.WRITE)
 		defDeck.store_line("{\"cards\": [], \"side_deck\": 0}\n")
 
-func load_deck(_arg = null):
+func load_deck(_index=null, force = false):
 	
 	print("Loading deck ", selector_de.text, "...")
 
@@ -312,7 +319,7 @@ func load_deck(_arg = null):
 	
 	if parse_result.error != 0:
 		dFile.open(CardInfo.deck_path + selector_de.text + ".deck", File.WRITE)
-		dFile.store_line("{\"cards\": [], \"side_deck\": 0}\n")
+		dFile.store_line('{"cards": [], "format": %s, "side_deck": 0}\n' % [CardInfo.all_data.ruleset])
 		
 		dFile.open(CardInfo.deck_path + selector_de.text + ".deck", File.READ)
 		rdj = dFile.get_as_text()
@@ -323,6 +330,16 @@ func load_deck(_arg = null):
 		parse_result = JSON.parse(rdj)
 	
 	var dj = parse_result.result
+	
+	if ("format" in dj):
+		print(dj.format)
+		print(CardInfo.all_data.ruleset)
+		print(dj.format != CardInfo.all_data.ruleset)
+		print(not force)
+		print((dj.format != CardInfo.all_data.ruleset) and (not force))
+		if (dj.format != CardInfo.all_data.ruleset) and (not force):
+			$warning.visible = true
+			return
 	
 	for card in dj["cards"]:
 		var nCard = cardPrefab.instance()
@@ -629,5 +646,36 @@ func _on_FromFile_file_selected(path):
 	
 	load_deck()
 
+func _on_load_pressed():
+	load_deck(null, true)
+	$warning.visible = false
 
+func _on_backup_pressed():
+	var file = File.new()
+	file.open(CardInfo.deck_path + selector_de.text + ".deck", File.READ)
+	var data = file.get_as_text()
+	file.close()
+	var backupName = selector_de.text + "-backup"
 
+	file.open(CardInfo.deck_path + backupName + ".deck", File.WRITE)
+	file.store_line(data)
+	file.close()
+	
+	selector_de.add_item(backupName)
+	
+	for i in range(selector_de.get_item_count()):
+		if (selector_de.get_item_text(i) == backupName):
+			selector_de.select(i)
+			break
+			
+
+	load_deck(null, true)
+	$warning.visible = false
+	
+func _on_no_pressed():
+	selector_de.select(preDeck)
+	load_deck()
+	$warning.visible = false
+
+func _updatePre():
+	preDeck = selector_de.selected

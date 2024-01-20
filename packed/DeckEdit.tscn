@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/DeckEdit.gd" type="Script" id=2]
@@ -160,6 +160,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, -360.0 ]
 }
+
+[sub_resource type="StyleBoxFlat" id=38]
+bg_color = Color( 0, 0, 0, 0.235294 )
 
 [node name="DeckEdit" type="Control"]
 anchor_right = 1.0
@@ -1460,6 +1463,82 @@ margin_right = 432.0
 margin_bottom = 110.0
 text = "Downloading deck..."
 
+[node name="warning" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 38 )
+
+[node name="Panel" type="Panel" parent="warning"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -150.0
+margin_right = 300.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="warning/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="Label" type="Label" parent="warning/Panel/VBoxContainer"]
+margin_top = 248.0
+margin_right = 1024.0
+margin_bottom = 299.0
+text = "This deck was not make for this format
+Would you like to load it anyway?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="warning/Panel/VBoxContainer"]
+margin_top = 317.0
+margin_right = 1024.0
+margin_bottom = 351.0
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load" type="Button" parent="warning/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 255.0
+margin_right = 400.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Load Anyway"
+
+[node name="backup" type="Button" parent="warning/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 440.0
+margin_right = 609.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Load & Backup"
+
+[node name="no" type="Button" parent="warning/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 649.0
+margin_right = 769.0
+margin_bottom = 34.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Don't load"
+
 [connection signal="button_down" from="HBoxContainer/CardPreview/PreviewContainer/Card/CardBtn" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_CardBtn_button_down"]
 [connection signal="button_up" from="HBoxContainer/CardPreview/PreviewContainer/Card/CardBtn" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_CardBtn_button_up"]
 [connection signal="mouse_entered" from="HBoxContainer/CardPreview/PreviewContainer/Card/CardBtn" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_CardBtn_mouse_entered"]
@@ -1468,6 +1547,7 @@ text = "Downloading deck..."
 [connection signal="mouse_entered" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active2_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active2_mouse_exited"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="save_deck"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="_updatePre"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="load_deck"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DelBtn" to="." method="_on_DelBtn_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DNameLine/Button" to="." method="save_deck_as"]
@@ -1498,3 +1578,6 @@ text = "Downloading deck..."
 [connection signal="pressed" from="FromJSON/PanelContainer/VBoxContainer/HBoxContainer/JSONLoadBtn" to="." method="_on_JSONLoadBtn_pressed"]
 [connection signal="pressed" from="FromJSON/PanelContainer/VBoxContainer/HBoxContainer/Button2" to="FromJSON" method="hide"]
 [connection signal="request_completed" from="DeckDownloader" to="." method="_on_DeckDownloader_request_completed"]
+[connection signal="pressed" from="warning/Panel/VBoxContainer/HBoxContainer/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="warning/Panel/VBoxContainer/HBoxContainer/backup" to="." method="_on_backup_pressed"]
+[connection signal="pressed" from="warning/Panel/VBoxContainer/HBoxContainer/no" to="." method="_on_no_pressed"]
