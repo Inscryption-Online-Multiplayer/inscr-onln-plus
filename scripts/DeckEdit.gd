@@ -543,7 +543,7 @@ class CardSorter:
 	static func attack(a, b):
 		return CardInfo.from_name(a).attack > CardInfo.from_name(b).attack
 
-func _on_SortButton_item_selected(index):
+func sort(index):
 	var cardList = get_deck_object()["cards"]
 
 	for eCard in deckDisplay.get_children():
