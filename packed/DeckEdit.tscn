@@ -860,7 +860,7 @@ margin_bottom = 106.0
 alignment = 1
 
 [node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
-margin_right = 116.0
+margin_right = 113.0
 margin_bottom = 34.0
 focus_mode = 0
 size_flags_horizontal = 3
@@ -877,18 +877,20 @@ size_flags_horizontal = 3
 enabled_focus_mode = 0
 text = "Shuffle"
 
-[node name="SortButton" type="Button" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
-margin_left = 116.0
-margin_right = 233.0
+[node name="SortButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
+margin_left = 113.0
+margin_right = 244.0
 margin_bottom = 34.0
 focus_mode = 0
 size_flags_horizontal = 3
 enabled_focus_mode = 0
-text = "Sort"
+text = "Sort Name"
+items = [ "Sort Name", null, false, 0, null, "Sort Cost", null, false, 1, null, "Sort Health", null, false, 2, null, "Sort Attack", null, false, 3, null ]
+selected = 0
 
 [node name="ClearButton" type="Button" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
-margin_left = 233.0
-margin_right = 350.0
+margin_left = 244.0
+margin_right = 357.0
 margin_bottom = 34.0
 focus_mode = 0
 size_flags_horizontal = 3
@@ -896,8 +898,8 @@ enabled_focus_mode = 0
 text = "Clear"
 
 [node name="ViewFolder" type="Button" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
-margin_left = 350.0
-margin_right = 482.0
+margin_left = 357.0
+margin_right = 489.0
 margin_bottom = 34.0
 focus_mode = 0
 size_flags_horizontal = 3
@@ -905,8 +907,8 @@ enabled_focus_mode = 0
 text = "Deck Folder"
 
 [node name="TestButton" type="Button" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
-margin_left = 482.0
-margin_right = 599.0
+margin_left = 489.0
+margin_right = 602.0
 margin_bottom = 34.0
 focus_mode = 0
 size_flags_horizontal = 3
@@ -914,7 +916,7 @@ enabled_focus_mode = 0
 text = "Test"
 
 [node name="JsonButton" type="Button" parent="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof"]
-margin_left = 599.0
+margin_left = 602.0
 margin_right = 716.0
 margin_bottom = 34.0
 focus_mode = 0
@@ -1597,14 +1599,14 @@ text = "Don't load"
 [connection signal="button_up" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active_button_up"]
 [connection signal="mouse_entered" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active2_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active2_mouse_exited"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="_updatePre"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="save_deck"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="_updatePre"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="load_deck"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DelBtn" to="." method="_on_DelBtn_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DNameLine/Button" to="." method="save_deck_as"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/ShuffleButton" to="." method="_on_ShuffleButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/SortButton" to="." method="_on_SortButton_pressed"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/SortButton" to="." method="_on_SortButton_item_selected"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/ClearButton" to="." method="_on_ClearButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/ViewFolder" to="." method="_on_ViewFolder_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/TestButton" to="." method="_on_TestButton_pressed"]

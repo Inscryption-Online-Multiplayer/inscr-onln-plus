@@ -33,6 +33,12 @@ onready var sidedeck_prefix = get_node("%PrefixType")
 onready var tab_cont = get_node("%TabContainer")
 
 var preDeck = 0
+var sortState = [
+	"Sort Name",
+	"Sort Cost",
+	"Sort Power",
+	"Sort Health"
+]
 
 # Card result prefab
 var cardPrefab = preload("res://packed/dbCard.tscn")
@@ -502,14 +508,55 @@ func validate_draft_side():
 		if not current_data.name in valid_side_cards:
 			sCard.queue_free()
 
-func _on_SortButton_pressed():
+class CardSorter:
+	static func cost(a, b):
+		var aCard = CardInfo.from_name(a)
+		var bCard = CardInfo.from_name(b)
+		
+		var costName = ["mox_cost", "energy_cost", "bone_cost", "blood_cost"]
+		
+		var aCost = -1
+		var bCost = -1
+		
+		for i in costName.size():
+			if costName[i] in aCard:
+				aCost = i
+			if costName[i] in bCard:
+				bCost = i
+			if aCost != -1 and bCost != -1:
+				break
+		
+		if aCost == bCost:
+			if aCost == -1 and bCost == -1:
+				return true
+			
+			a = aCard[costName[aCost]] if aCost != 0 else aCard[costName[aCost]].size()
+			b = bCard[costName[bCost]] if bCost != 0 else bCard[costName[bCost]].size()
+			
+			return a > b
+		else:
+			return aCost > bCost
+	
+	static func health(a, b):
+		return CardInfo.from_name(a).health > CardInfo.from_name(b).health
+	
+	static func attack(a, b):
+		return CardInfo.from_name(a).attack > CardInfo.from_name(b).attack
+
+func _on_SortButton_item_selected(index):
 	var cardList = get_deck_object()["cards"]
 
 	for eCard in deckDisplay.get_children():
 		eCard.queue_free()
 	
-	
-	cardList.sort()
+	if index == 0:
+		cardList.sort()
+	elif index == 1:
+		cardList.sort_custom(CardSorter, "cost")
+	elif index == 2:
+		cardList.sort_custom(CardSorter, "health")
+	elif index == 3:
+		cardList.sort_custom(CardSorter, "attack")
 	
 	for card in cardList:
 		var nCard = cardPrefab.instance()
