@@ -158,7 +158,7 @@ func _ready():
 	
 	updatePlus()
 	$TabContainer/Plus/ScrollContainer/VBoxContainer/scrollReminder.visible = GameOptions.options.plus.scrollReminder
-
+	$TabContainer/Plus/HBoxContainer.visible = not GameOptions.options.plus.hideScroll
 # Update when a pfp option is select
 func _on_defaultPic_item_selected(index):
 	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/defaultPic.get_item_text(index) + ".png")

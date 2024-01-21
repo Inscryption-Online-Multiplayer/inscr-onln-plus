@@ -93,6 +93,7 @@ func _ready():
 		$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/TestButton.visible = false
 		$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/Stoof/ViewFolder.visible = false
 
+	$"%LRButtonsContainer".visible = not GameOptions.options.plus.hideScroll
 
 func init_sidedeck_ui():
 	for sd in CardInfo.side_decks:
@@ -643,7 +644,6 @@ func _on_FromFile_file_selected(path):
 
 func avg(nums: Array) -> int:
 	var sum = 0
-	print(nums)
 	for num in nums:
 		sum += num
 	
@@ -668,7 +668,6 @@ func updateStats():
 		if free: costCount.free.append(1)
 		
 	var costLabel = $"HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer/cost"
-	print(deckList.cards.size())
 	costLabel.text = ""
 	for cost in costCount:
 		costLabel.text += "%s cost amount: %s (%s%%)\n" % [cost, costCount[cost].size(), stepify((costCount[cost].size() as float / deckList.cards.size()) * 100, 0.01) ]
