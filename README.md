@@ -44,6 +44,10 @@ List of noteable feature scroll down to [Option](#option) the view the full list
 
 ## Option
 
+> [!WARNING]
+> Most of these option require the game to restart before working
+> If you are un sure restart the game after making some changes to your option
+
 -   **Auto Draw:** Automatically draw card when 1 deck is left.
 -   **Auto Ready:** Automatically press `Ready` when joining lobby.
 -   **Auto Rematch:** Automatically press `Rematch` when game end.
