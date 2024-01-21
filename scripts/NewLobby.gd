@@ -28,7 +28,7 @@ func _ready():
 	get_tree().connect("network_peer_disconnected", self, "_erase_player")
 
 	# Version
-	get_node("../VersionLabel").text = "Game: " + CardInfo.VERSION + "\nPlus: " + CardInfo.PLUS
+	get_node("../VersionLabel").text = "IMF: " + CardInfo.VERSION + "\nPlus: " + CardInfo.PLUS
 	get_node("../RulesetLabel").text = CardInfo.ruleset
 	
 	# Custom Bg
