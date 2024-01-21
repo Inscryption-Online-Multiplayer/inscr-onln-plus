@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://themes/papertheme.tres" type="Theme" id=1]
 [ext_resource path="res://gfx/extra/Off.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://themes/sigilMat.tres" type="Material" id=15]
 [ext_resource path="res://packed/BattlePass.tscn" type="PackedScene" id=16]
 [ext_resource path="res://packed/Plus/plusOptionButton.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ARG/scripts/ButtonScroll.gd" type="Script" id=18]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
@@ -1012,6 +1013,7 @@ text = "Ok"
 visible = false
 
 [node name="Options" type="WindowDialog" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1223,7 +1225,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
 
-[node name="Plus" type="ScrollContainer" parent="Options/TabContainer"]
+[node name="Plus" type="VBoxContainer" parent="Options/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1232,21 +1234,28 @@ margin_top = 36.0
 margin_right = -2.0
 margin_bottom = -2.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Plus"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Options/TabContainer/Plus"]
+margin_right = 842.0
+margin_bottom = 524.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 18 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 840.0
-margin_bottom = 556.0
+margin_bottom = 522.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LineEdit" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer"]
 margin_right = 838.0
 margin_bottom = 28.0
 placeholder_text = "Search Option"
 placeholder_alpha = 0.472
 
-[node name="scrollReminder" type="CheckButton" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="scrollReminder" type="CheckButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 838.0
 margin_bottom = 62.0
@@ -1255,32 +1264,32 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Did you know you can scroll down? (Don't show this again)"
 
-[node name="misc" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="misc" type="VBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer"]
 margin_top = 62.0
 margin_right = 838.0
 margin_bottom = 408.0
 
-[node name="miscButton" parent="Options/TabContainer/Plus/VBoxContainer/misc" instance=ExtResource( 17 )]
+[node name="miscButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc" instance=ExtResource( 17 )]
 text = "Miscellaneous"
 
-[node name="pfp" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="pfp" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 34.0
 margin_right = 838.0
 margin_bottom = 70.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp"]
 margin_top = 6.0
 margin_right = 268.0
 margin_bottom = 30.0
 text = "Default Profile Picture: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp"]
 margin_left = 268.0
 margin_right = 531.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 
-[node name="defaultPic" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
+[node name="defaultPic" type="OptionButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp"]
 margin_left = 531.0
 margin_right = 795.0
 margin_bottom = 36.0
@@ -1291,7 +1300,7 @@ text = "Amoeba"
 items = [ "Amoeba", null, false, 0, null, "Cat", null, false, 1, null, "Geck", null, false, 2, null, "Grizzly", null, false, 3, null, "Lil Boi", null, false, 4, null, "Mantis God", null, false, 5, null, "Orlu's Vessel", null, false, 6, null, "Pack Rat", null, false, 7, null, "Stoat", null, false, 8, null, "Worker Ant", null, false, 9, null, "Ouroboros", null, false, 10, null, "Magpie", null, false, 11, null, "Egg", null, false, 12, null, "Skeleton", null, false, 13, null, "Horse Mage", null, false, 14, null ]
 selected = 0
 
-[node name="picPreview" type="TextureRect" parent="Options/TabContainer/Plus/VBoxContainer/misc/pfp"]
+[node name="picPreview" type="TextureRect" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp"]
 material = ExtResource( 15 )
 margin_left = 795.0
 margin_right = 838.0
@@ -1300,24 +1309,24 @@ rect_min_size = Vector2( 43, 36 )
 texture = ExtResource( 11 )
 expand = true
 
-[node name="deck" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deck" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 70.0
 margin_right = 838.0
 margin_bottom = 104.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deck"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deck"]
 margin_top = 5.0
 margin_right = 160.0
 margin_bottom = 29.0
 text = "Default Deck: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deck"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deck"]
 margin_left = 160.0
 margin_right = 499.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
-[node name="defaultDeck" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/deck"]
+[node name="defaultDeck" type="OptionButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deck"]
 margin_left = 499.0
 margin_right = 838.0
 margin_bottom = 34.0
@@ -1325,24 +1334,24 @@ focus_mode = 0
 size_flags_horizontal = 3
 enabled_focus_mode = 0
 
-[node name="room" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="room" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 104.0
 margin_right = 838.0
 margin_bottom = 132.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/room"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/room"]
 margin_top = 2.0
 margin_right = 233.0
 margin_bottom = 26.0
 text = "Default Room Name: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/room"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/room"]
 margin_left = 233.0
 margin_right = 535.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="roomLine" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer/misc/room"]
+[node name="roomLine" type="LineEdit" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/room"]
 margin_left = 535.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1351,24 +1360,24 @@ size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="name" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="name" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 132.0
 margin_right = 838.0
 margin_bottom = 160.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/name"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/name"]
 margin_top = 2.0
 margin_right = 212.0
 margin_bottom = 26.0
 text = "Default Username: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/name"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/name"]
 margin_left = 212.0
 margin_right = 525.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="nameLine" type="LineEdit" parent="Options/TabContainer/Plus/VBoxContainer/misc/name"]
+[node name="nameLine" type="LineEdit" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/name"]
 margin_left = 525.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1377,24 +1386,24 @@ size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="deckPicScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deckPicScale" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 160.0
 margin_right = 838.0
 margin_bottom = 188.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPicScale"]
 margin_top = 2.0
 margin_right = 216.0
 margin_bottom = 26.0
 text = "Deck List Pic Scale:"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPicScale"]
 margin_left = 216.0
 margin_right = 527.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="picScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale"]
+[node name="picScale" type="SpinBox" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPicScale"]
 margin_left = 527.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1404,24 +1413,24 @@ step = 0.05
 value = 1.0
 align = 1
 
-[node name="deckIconScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deckIconScale" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 188.0
 margin_right = 838.0
 margin_bottom = 216.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckIconScale"]
 margin_top = 2.0
 margin_right = 230.0
 margin_bottom = 26.0
 text = "Deck List Icon Scale:"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckIconScale"]
 margin_left = 230.0
 margin_right = 534.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="iconScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale"]
+[node name="iconScale" type="SpinBox" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckIconScale"]
 margin_left = 534.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1431,24 +1440,24 @@ step = 0.05
 value = 1.0
 align = 1
 
-[node name="deckPreviewScale" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deckPreviewScale" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 216.0
 margin_right = 838.0
 margin_bottom = 244.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPreviewScale"]
 margin_top = 2.0
 margin_right = 266.0
 margin_bottom = 26.0
 text = "Deck List Preview Scale:"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPreviewScale"]
 margin_left = 266.0
 margin_right = 552.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="previewScale" type="SpinBox" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale"]
+[node name="previewScale" type="SpinBox" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPreviewScale"]
 margin_left = 552.0
 margin_right = 838.0
 margin_bottom = 28.0
@@ -1459,24 +1468,24 @@ step = 0.05
 value = 1.0
 align = 1
 
-[node name="deckNameAlign" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="deckNameAlign" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 244.0
 margin_right = 838.0
 margin_bottom = 278.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckNameAlign"]
 margin_top = 5.0
 margin_right = 229.0
 margin_bottom = 29.0
 text = "Deck List Name Align"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckNameAlign"]
 margin_left = 229.0
 margin_right = 533.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
-[node name="deckNameAlign" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign"]
+[node name="deckNameAlign" type="OptionButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckNameAlign"]
 margin_left = 533.0
 margin_right = 838.0
 margin_bottom = 34.0
@@ -1487,24 +1496,24 @@ align = 1
 items = [ "Left", null, false, 0, null, "Center", null, false, 1, null, "Right", null, false, 2, null ]
 selected = 0
 
-[node name="musicSelect" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="musicSelect" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 278.0
 margin_right = 838.0
 margin_bottom = 312.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect"]
 margin_top = 5.0
 margin_right = 60.0
 margin_bottom = 29.0
 text = "Music:"
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect"]
 margin_left = 60.0
 margin_right = 449.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
-[node name="musicSelect" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect"]
+[node name="musicSelect" type="OptionButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect"]
 margin_left = 449.0
 margin_right = 838.0
 margin_bottom = 34.0
@@ -1515,24 +1524,24 @@ align = 1
 items = [ "- Choose Music -", null, false, 0, null ]
 selected = 0
 
-[node name="themeSelect" type="HBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer/misc"]
+[node name="themeSelect" type="HBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc"]
 margin_top = 312.0
 margin_right = 838.0
 margin_bottom = 346.0
 
-[node name="label" type="Label" parent="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect"]
+[node name="label" type="Label" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect"]
 margin_top = 5.0
 margin_right = 84.0
 margin_bottom = 29.0
 text = "Theme: "
 
-[node name="spacer" type="Control" parent="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect"]
+[node name="spacer" type="Control" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect"]
 margin_left = 84.0
 margin_right = 461.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
-[node name="themeSelect" type="OptionButton" parent="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect"]
+[node name="themeSelect" type="OptionButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect"]
 margin_left = 461.0
 margin_right = 838.0
 margin_bottom = 34.0
@@ -1543,21 +1552,42 @@ align = 1
 items = [ "- Choose Theme -", null, false, 0, null ]
 selected = 0
 
-[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="keybind" type="VBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer"]
 margin_top = 408.0
 margin_right = 838.0
 margin_bottom = 442.0
 
-[node name="keybindButton" parent="Options/TabContainer/Plus/VBoxContainer/keybind" instance=ExtResource( 17 )]
+[node name="keybindButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/keybind" instance=ExtResource( 17 )]
 text = "Keybind"
 
-[node name="toggle" type="VBoxContainer" parent="Options/TabContainer/Plus/VBoxContainer"]
+[node name="toggle" type="VBoxContainer" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer"]
 margin_top = 442.0
 margin_right = 838.0
 margin_bottom = 476.0
 
-[node name="toggleButton" parent="Options/TabContainer/Plus/VBoxContainer/toggle" instance=ExtResource( 17 )]
+[node name="toggleButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/toggle" instance=ExtResource( 17 )]
 text = "Toggle Option"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Plus"]
+margin_top = 524.0
+margin_right = 842.0
+margin_bottom = 558.0
+size_flags_vertical = 0
+
+[node name="up" type="Button" parent="Options/TabContainer/Plus/HBoxContainer"]
+margin_right = 421.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "UP"
+
+[node name="down" type="Button" parent="Options/TabContainer/Plus/HBoxContainer"]
+margin_left = 421.0
+margin_right = 842.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "DOWN"
 
 [node name="Blocker" type="Panel" parent="Options"]
 visible = false
@@ -1666,15 +1696,17 @@ autoplay = true
 [connection signal="value_changed" from="Options/TabContainer/Visual/Scanlines/OPACITY" to="Options/TabContainer/Visual/Scanlines" method="_child_updated"]
 [connection signal="value_changed" from="Options/TabContainer/Visual/Scanlines/SPEED" to="Options/TabContainer/Visual/Scanlines" method="_child_updated"]
 [connection signal="pressed" from="Options/TabContainer/Visual/ThemeEditor" to="ThemeEditor" method="show"]
-[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/LineEdit" to="Options" method="plusSearch"]
-[connection signal="pressed" from="Options/TabContainer/Plus/VBoxContainer/scrollReminder" to="Options" method="goodbyeReminder"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic" to="Options" method="_on_defaultPic_item_selected"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deck/defaultDeck" to="Options" method="_on_defaultDeck_item_selected"]
-[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/room/roomLine" to="Options" method="_on_roomLine_text_changed"]
-[connection signal="text_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/name/nameLine" to="Options" method="_on_nameLine_text_changed"]
-[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale" to="Options" method="_on_picScale_value_changed"]
-[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale" to="Options" method="_on_iconScale_value_changed"]
-[connection signal="value_changed" from="Options/TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale" to="Options" method="_on_previewScale_value_changed"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign" to="Options" method="_on_deckNameAlign_item_selected"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect" to="Options" method="_on_musicSelect_item_selected"]
-[connection signal="item_selected" from="Options/TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect" to="Options" method="_on_themeSelect_item_selected"]
+[connection signal="text_changed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/LineEdit" to="Options" method="plusSearch"]
+[connection signal="pressed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/scrollReminder" to="Options" method="goodbyeReminder"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/defaultPic" to="Options" method="_on_defaultPic_item_selected"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deck/defaultDeck" to="Options" method="_on_defaultDeck_item_selected"]
+[connection signal="text_changed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/room/roomLine" to="Options" method="_on_roomLine_text_changed"]
+[connection signal="text_changed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/name/nameLine" to="Options" method="_on_nameLine_text_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPicScale/picScale" to="Options" method="_on_picScale_value_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckIconScale/iconScale" to="Options" method="_on_iconScale_value_changed"]
+[connection signal="value_changed" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPreviewScale/previewScale" to="Options" method="_on_previewScale_value_changed"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckNameAlign/deckNameAlign" to="Options" method="_on_deckNameAlign_item_selected"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect/musicSelect" to="Options" method="_on_musicSelect_item_selected"]
+[connection signal="item_selected" from="Options/TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect/themeSelect" to="Options" method="_on_themeSelect_item_selected"]
+[connection signal="pressed" from="Options/TabContainer/Plus/HBoxContainer/up" to="Options/TabContainer/Plus/ScrollContainer" method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="Options/TabContainer/Plus/HBoxContainer/down" to="Options/TabContainer/Plus/ScrollContainer" method="_on_RightButton_pressed"]

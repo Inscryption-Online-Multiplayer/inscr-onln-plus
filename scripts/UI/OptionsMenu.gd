@@ -52,9 +52,9 @@ func changeKeybind(pressed):
 # update the keybind list
 func updateKeybind():
 	keybindButtonList = []
-	for n in $TabContainer/Plus/VBoxContainer/keybind.get_children():
+	for n in $TabContainer/Plus/ScrollContainer/VBoxContainer/keybind.get_children():
 		if n is Button: continue
-		$TabContainer/Plus/VBoxContainer/keybind.remove_child(n)
+		$TabContainer/Plus/ScrollContainer/VBoxContainer/keybind.remove_child(n)
 		n.queue_free()
 	
 	for keybindName in GameOptions.options.plus.keybind:
@@ -84,7 +84,7 @@ func updateKeybind():
 		hBox.add_child(keybindButton)
 		
 		keybindButtonList.append(keybindButton)
-		$TabContainer/Plus/VBoxContainer/keybind.add_child(hBox)
+		$TabContainer/Plus/ScrollContainer/VBoxContainer/keybind.add_child(hBox)
 
 func updatePlus():
 	updateKeybind() # make all the keybind button
@@ -94,7 +94,7 @@ func updatePlus():
 		if option == "scrollReminder": continue
 		var button = toggleButton.instance()
 		button.setName(option)
-		$TabContainer/Plus/VBoxContainer/toggle.add_child(button)
+		$TabContainer/Plus/ScrollContainer/VBoxContainer/toggle.add_child(button)
 		
 	# music stuff
 	var dir = Directory.new()
@@ -103,7 +103,7 @@ func updatePlus():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".wav") or file_name.ends_with(".mp3"):
-				$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.add_item(file_name)
+				$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect/musicSelect.add_item(file_name)
 			file_name = dir.get_next()
 			
 	# music stuff
@@ -112,22 +112,22 @@ func updatePlus():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".json"):
-				$TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect.add_item(file_name)
+				$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect/themeSelect.add_item(file_name)
 			file_name = dir.get_next()
 			
 	# setting the pic in the option menu
-	$TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
-	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/defaultPic._select_int(GameOptions.options.plus.defaultPfp)
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/defaultPic.get_item_text(GameOptions.options.plus.defaultPfp) + ".png")
 	
 	# setting room name and username and other manual thing
-	$TabContainer/Plus/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
-	$TabContainer/Plus/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
-	$TabContainer/Plus/VBoxContainer/misc/deckPicScale/picScale.value = GameOptions.options.plus.deckPicScale
-	$TabContainer/Plus/VBoxContainer/misc/deckIconScale/iconScale.value = GameOptions.options.plus.deckIconScale
-	$TabContainer/Plus/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
-	$TabContainer/Plus/VBoxContainer/misc/deckNameAlign/deckNameAlign._select_int(GameOptions.options.plus.deckAlign) 
-	$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect._select_int(GameOptions.options.plus.music[0])
-	$TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect._select_int(GameOptions.options.plus.theme[0])
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/room/roomLine.text = GameOptions.options.plus.defaultRoom
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/name/nameLine.text = GameOptions.options.plus.defaultName
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPicScale/picScale.value = GameOptions.options.plus.deckPicScale
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckIconScale/iconScale.value = GameOptions.options.plus.deckIconScale
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckPreviewScale/previewScale.value = GameOptions.options.plus.deckPreviewScale
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/deckNameAlign/deckNameAlign._select_int(GameOptions.options.plus.deckAlign) 
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect/musicSelect._select_int(GameOptions.options.plus.music[0])
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect/themeSelect._select_int(GameOptions.options.plus.theme[0])
 
 
 # Update the option to the correct value
@@ -157,11 +157,11 @@ func _ready():
 	AudioServer.set_bus_mute(2, not GameOptions.options.enable_sfx)
 	
 	updatePlus()
-	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = GameOptions.options.plus.scrollReminder
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/scrollReminder.visible = GameOptions.options.plus.scrollReminder
 
 # Update when a pfp option is select
 func _on_defaultPic_item_selected(index):
-	$TabContainer/Plus/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/VBoxContainer/misc/pfp/defaultPic.get_item_text(index) + ".png")
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/picPreview.texture = load("res://gfx/portraits/" + $TabContainer/Plus/ScrollContainer/VBoxContainer/misc/pfp/defaultPic.get_item_text(index) + ".png")
 	GameOptions.options.plus.defaultPfp = index
 	
 func _on_deckNameAlign_item_selected(index):
@@ -188,7 +188,7 @@ func _on_previewScale_value_changed(value):
 func _on_musicSelect_item_selected(index):
 	GameOptions.options.plus.music = [
 		index, 
-		$TabContainer/Plus/VBoxContainer/misc/musicSelect/musicSelect.get_item_text(index)
+		$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/musicSelect/musicSelect.get_item_text(index)
 	]
 	
 	# update music player with new music
@@ -206,7 +206,7 @@ func _on_musicSelect_item_selected(index):
 func _on_themeSelect_item_selected(index):
 	GameOptions.options.plus.theme = [
 		index, 
-		$TabContainer/Plus/VBoxContainer/misc/themeSelect/themeSelect.get_item_text(index)
+		$TabContainer/Plus/ScrollContainer/VBoxContainer/misc/themeSelect/themeSelect.get_item_text(index)
 	]
 	var file = File.new()
 	if file.file_exists(CardInfo.data_path + "/plus/theme/%s" % GameOptions.options.plus.theme[1]):
@@ -248,10 +248,10 @@ func _input(event):
 
 func goodbyeReminder():
 	GameOptions.options.plus.scrollReminder = false
-	$TabContainer/Plus/VBoxContainer/scrollReminder.visible = false
+	$TabContainer/Plus/ScrollContainer/VBoxContainer/scrollReminder.visible = false
 
 func plusSearch(new_text):
-	for optionCat in $TabContainer/Plus/VBoxContainer.get_children():
+	for optionCat in $TabContainer/Plus/ScrollContainer/VBoxContainer.get_children():
 		if not optionCat is VBoxContainer: continue
 		for child in optionCat.get_children():
 			var text

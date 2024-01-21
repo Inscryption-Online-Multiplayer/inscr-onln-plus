@@ -1215,7 +1215,6 @@ size_flags_vertical = 3
 drag_to_rearrange_enabled = true
 
 [node name="Cards" type="PanelContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1287,6 +1286,7 @@ enabled_focus_mode = 0
 text = ">"
 
 [node name="Deck Statistics" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
