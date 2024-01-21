@@ -40,7 +40,7 @@ List of noteable feature scroll down to [Option](#option) the view the full list
 -   [Multiple theme support](#theme-and-music)
 -   [Music](#theme-and-music)
 -   [Keybind](#keybind)
--   ~~New and improve Deck List (Merge with `main` pending update)~~
+-   ~~New and improve Deck List~~ Merged with `IMF` pending update
 
 ## Option
 
@@ -72,12 +72,6 @@ List of noteable feature scroll down to [Option](#option) the view the full list
 -   **Deck List Name Align**: Change where the card name align in Deck List. :test_tube:
 
 ## Theme and Music
-
-> [!IMPORTANT]
-> This feature is only available on [`Pres`][pres-link]. Try the latest [`Pres`][pres-link] out for this feature
-
-> [!WARNING]
-> This feature is unstable and may mess with your config. Changes are expected
 
 Here is an example of what it should look like:
 
@@ -136,12 +130,10 @@ This is a list of keybind that Plus currently have:
 ## Todo
 
 -   Deck profile
--   Warning screen when loading deck not made for the format
--   Make backup deck when loading invalid format
 -   Format version warning
 -   Format version chooser
 
 [plus-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus/stable?label=Latest%20Plus
 [plus-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/latest
 [pres-badge]: https://flat.badgen.net/github/release/Mouthless-Stoat/inscr-onln-plus?label=Latest%20Pres
-[pres-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/tag/1.1.4
+[pres-link]: https://github.com/Mouthless-Stoat/inscr-onln-plus/releases/tag/1.1.6
