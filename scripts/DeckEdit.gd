@@ -53,8 +53,8 @@ func apply_custom_background():
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview.theme_type_variation = "TspBg"
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/SearchOptions.theme_type_variation = "TspBg"
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions.theme_type_variation = "TspBg"
-	$HBoxContainer/VBoxContainer/MainArea/SearchResults.theme_type_variation = "TspBg"
-	$HBoxContainer/VBoxContainer/MainArea/SearchResults/VBoxContainer/ScrollContainer.theme_type_variation = "TspBg"
+	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards.theme_type_variation = "TspBg"
+	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer.theme_type_variation = "TspBg"
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2.theme_type_variation = "TspBg"
 
 func clear_custom_background():
@@ -64,8 +64,8 @@ func clear_custom_background():
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview.theme_type_variation = ""
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/SearchOptions.theme_type_variation = ""
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions.theme_type_variation = ""
-	$HBoxContainer/VBoxContainer/MainArea/SearchResults.theme_type_variation = ""
-	$HBoxContainer/VBoxContainer/MainArea/SearchResults/VBoxContainer/ScrollContainer.theme_type_variation = ""
+	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards.theme_type_variation = ""
+	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer.theme_type_variation = ""
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2.theme_type_variation = ""
 	
 
@@ -175,7 +175,7 @@ func search(_arg = null):
 		if "banned" in card and tab_cont.current_tab == 0:
 			cObject.get_node("BannedOverlay").visible = true
 		
-	$HBoxContainer/VBoxContainer/MainArea/SearchResults/VBoxContainer/PanelContainer/ResultsCount.text = str(resultCount) + "/" + str(len(CardInfo.all_cards))
+	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/PanelContainer/ResultsCount.text = str(resultCount) + "/" + str(len(CardInfo.all_cards))
 
 func update_deck_count(var diff = 0):
 	dSize += diff
@@ -332,11 +332,6 @@ func load_deck(_index=null, force = false):
 	var dj = parse_result.result
 	
 	if ("format" in dj):
-		print(dj.format)
-		print(CardInfo.all_data.ruleset)
-		print(dj.format != CardInfo.all_data.ruleset)
-		print(not force)
-		print((dj.format != CardInfo.all_data.ruleset) and (not force))
 		if (dj.format != CardInfo.all_data.ruleset) and (not force):
 			$warning.visible = true
 			return
@@ -645,6 +640,40 @@ func _on_FromFile_file_selected(path):
 	sFile.close()
 	
 	load_deck()
+
+func avg(nums: Array) -> int:
+	var sum = 0
+	print(nums)
+	for num in nums:
+		sum += num
+	
+	return sum / nums.size()
+	
+func updateStats():
+	var deckList = get_deck_object()
+	var costCount = {
+		"blood": [],
+		"bone": [],
+		"energy": [],
+		"mox": [],
+		"free": []
+	}
+	for cName in deckList.cards:
+		var card = CardInfo.from_name(cName)
+		var free = true
+		for cost in costCount: if (cost + "_cost") in card: 
+			free = false
+			costCount[cost].append(card[cost + "_cost"])
+		
+		if free: costCount.free.append(1)
+		
+	var costLabel = $"HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer/cost"
+	print(deckList.cards.size())
+	costLabel.text = ""
+	for cost in costCount:
+		costLabel.text += "%s cost amount: %s (%s%%)\n" % [cost, costCount[cost].size(), stepify((costCount[cost].size() as float / deckList.cards.size()) * 100, 0.01) ]
+		if (cost != "mox") and (cost != "free"): costLabel.text += "%s cost average: %s\n" % [cost, stepify(avg(costCount[cost]), 0.01)]
+		costLabel.text += "\n"
 
 func _on_load_pressed():
 	load_deck(null, true)
