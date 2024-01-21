@@ -690,7 +690,9 @@ func _on_FromFile_file_selected(path):
 	
 	load_deck()
 
-func avg(nums: Array) -> int:
+func avg(nums: Array):
+	if (nums.size() <= 0): return 0
+	
 	var sum = 0
 	for num in nums:
 		sum += num
@@ -756,6 +758,6 @@ func _on_no_pressed():
 func _updatePre():
 	preDeck = selector_de.selected
 
-func _on_searchDeck_text_changed(new_text):
-	for child in deckDisplay.get_children():
+func _on_searchDeck_text_changed(new_text): 
+	for child in deckDisplay.get_children(): 
 		child.visible = new_text.to_lower() in child.name.to_lower() if new_text != "" else true
