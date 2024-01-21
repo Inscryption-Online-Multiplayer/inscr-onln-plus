@@ -186,7 +186,7 @@ func search(_arg = null):
 
 func update_deck_count(var diff = 0):
 	dSize += diff
-	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/PanelContainer/DeckSize.text = str(dSize)
+	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/HBoxContainer/PanelContainer/DeckSize.text = str(dSize)
 
 func _on_ClearButton_pressed():
 	for card in deckDisplay.get_children():
@@ -379,6 +379,7 @@ func load_deck(_index=null, force = false):
 				continue
 		
 		nCard.from_data(cdat)
+		nCard.name = cdat.name # set card name so later can be search
 		deckDisplay.add_child(nCard)
 		nCard.modulate = nCard.HVR_COLOURS[0]
 		dSize += 1
@@ -754,3 +755,7 @@ func _on_no_pressed():
 
 func _updatePre():
 	preDeck = selector_de.selected
+
+func _on_searchDeck_text_changed(new_text):
+	for child in deckDisplay.get_children():
+		child.visible = new_text.to_lower() in child.name.to_lower() if new_text != "" else true

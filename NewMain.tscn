@@ -1252,7 +1252,7 @@ size_flags_vertical = 3
 margin_right = 838.0
 margin_bottom = 28.0
 placeholder_text = "Search Option"
-placeholder_alpha = 0.472
+placeholder_alpha = 0.5
 
 [node name="scrollReminder" type="CheckButton" parent="Options/TabContainer/Plus/ScrollContainer/VBoxContainer"]
 margin_top = 28.0

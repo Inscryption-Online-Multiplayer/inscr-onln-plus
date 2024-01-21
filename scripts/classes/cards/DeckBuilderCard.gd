@@ -46,6 +46,7 @@ func _on_Button_pressed():
 					return
 			var newCard = self.duplicate(7)
 			newCard.from_data(card_data)
+			newCard.name = card_data.name
 			deckContainer.add_child(newCard)
 			newCard.modulate = HVR_COLOURS[0]
 			deckEditor.update_deck_count(1)
