@@ -53,6 +53,7 @@ var options = {
 		"hideDirectory": false,
 		"hideDiscord": false,
 		"hideScroll": false,
+		"deckWarning": true,
 		"keybind": {
 			"quickHost": 72,
 			"endTurn":32,
@@ -107,7 +108,8 @@ var optionName = {
 	"hideRuleset":["Hide Ruleset", "Hide the \"Select Ruleset\" button on the title screen (reset to work)."],
 	"hideDirectory":["Hide Open Directory", "Hide the \"Open Game Directory\" button on the title screen (reset to work)."],
 	"hideDiscord":["Hide Discord", "Hide the \"Inscryption Multiplayer Discord\" button on the title screen (reset to work)."],
-	"hideScroll": ["Hide Scroll", "Hide scroll button accessibility scroll button"]
+	"hideScroll": ["Hide Scroll", "Hide scroll button accessibility scroll button"],
+	"deckWarning": ["Deck Warning", "Deck warning pop up when loading deck that was made for other format"]
 }
 
 func read_options():

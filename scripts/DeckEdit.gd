@@ -333,7 +333,7 @@ func load_deck(_index=null, force = false):
 	var dj = parse_result.result
 	
 	if ("format" in dj):
-		if (dj.format != CardInfo.all_data.ruleset) and (not force):
+		if (dj.format != CardInfo.all_data.ruleset) and (not force) and GameOptions.options.plus.deckWarning:
 			$warning.visible = true
 			return
 	
