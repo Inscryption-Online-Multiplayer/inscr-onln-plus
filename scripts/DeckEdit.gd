@@ -529,7 +529,7 @@ class CardSorter:
 		
 		if aCost == bCost:
 			if aCost == -1 and bCost == -1:
-				return true
+				return aCard.name > bCard.name
 			
 			a = aCard[costName[aCost]] if aCost != 0 else aCard[costName[aCost]].size()
 			b = bCard[costName[bCost]] if bCost != 0 else bCard[costName[bCost]].size()
