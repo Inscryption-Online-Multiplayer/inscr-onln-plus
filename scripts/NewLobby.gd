@@ -662,6 +662,10 @@ func _input(_event):
 	if Input.is_action_just_released("quickHost") and not $Blocker.visible:
 		_on_HostBtn_pressed()
 		_on_Host_pressed()
+	elif Input.is_action_just_released("quickJoin") and not $Blocker.visible:
+		_on_JoinBtn_pressed()
+		_on_PasteButton_pressed()
+		_on_Join_pressed()
 	elif Input.is_action_just_released("quickTest") and not $Blocker.visible:
 		_on_DeckEditorBtn_pressed()
 		deckEditor._on_TestButton_pressed()
