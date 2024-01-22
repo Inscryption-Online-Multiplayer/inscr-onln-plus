@@ -184,6 +184,7 @@ func convert_to_16bit(data: PoolByteArray, from: int) -> PoolByteArray:
 			data[j] = data[i+1]
 			data[j+1] = data[i+2]
 			j += 2
+# warning-ignore:integer_division
 		data.resize(data.size() * 2 / 3)
 	# 32 bit .wav's are typically stored as floating point numbers
 	# so we need to grab all 4 bytes and interpret them as a float first
@@ -194,6 +195,7 @@ func convert_to_16bit(data: PoolByteArray, from: int) -> PoolByteArray:
 		for i in range(0, data.size(), 4):
 			spb.data_array = data.subarray(i, i+3)
 			single_float = spb.get_float()
+# warning-ignore:narrowing_conversion
 			value = single_float * 32768
 			data[i/2] = value
 			data[i/2+1] = value >> 8

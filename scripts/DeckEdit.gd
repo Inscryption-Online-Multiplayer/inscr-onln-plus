@@ -59,8 +59,8 @@ func apply_custom_background():
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview.theme_type_variation = "TspBg"
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/SearchOptions.theme_type_variation = "TspBg"
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions.theme_type_variation = "TspBg"
-	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards.theme_type_variation = "TspBg"
-	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer.theme_type_variation = "TspBg"
+	$HBoxContainer/VBoxContainer/MainArea/cardTab/Cards.theme_type_variation = "TspBg"
+	$HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/ScrollContainer.theme_type_variation = "TspBg"
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2.theme_type_variation = "TspBg"
 
 func clear_custom_background():
@@ -70,8 +70,8 @@ func clear_custom_background():
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview.theme_type_variation = ""
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/SearchOptions.theme_type_variation = ""
 	$HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions.theme_type_variation = ""
-	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards.theme_type_variation = ""
-	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer.theme_type_variation = ""
+	$HBoxContainer/VBoxContainer/MainArea/cardTab/Cards.theme_type_variation = ""
+	$HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/ScrollContainer.theme_type_variation = ""
 	$HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2.theme_type_variation = ""
 	
 
@@ -182,7 +182,7 @@ func search(_arg = null):
 		if "banned" in card and tab_cont.current_tab == 0:
 			cObject.get_node("BannedOverlay").visible = true
 		
-	$HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/PanelContainer/ResultsCount.text = str(resultCount) + "/" + str(len(CardInfo.all_cards))
+	$HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/PanelContainer/ResultsCount.text = str(resultCount) + "/" + str(len(CardInfo.all_cards))
 
 func update_deck_count(var diff = 0):
 	dSize += diff
@@ -717,7 +717,7 @@ func updateStats():
 		
 		if free: costCount.free.append(1)
 		
-	var costLabel = $"HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer/cost"
+	var costLabel = $"HBoxContainer/VBoxContainer/MainArea/cardTab/Deck Statistics/VBoxContainer/cost"
 	costLabel.text = ""
 	for cost in costCount:
 		costLabel.text += "%s cost amount: %s (%s%%)\n" % [cost, costCount[cost].size(), stepify((costCount[cost].size() as float / deckList.cards.size()) * 100, 0.01) ]
@@ -761,3 +761,7 @@ func _updatePre():
 func _on_searchDeck_text_changed(new_text): 
 	for child in deckDisplay.get_children(): 
 		child.visible = new_text.to_lower() in child.name.to_lower() if new_text != "" else true
+
+
+func _on_cardTab_tab_changed(tab):
+	if tab == 1: updateStats()

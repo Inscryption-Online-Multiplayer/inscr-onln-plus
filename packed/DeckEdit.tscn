@@ -1222,7 +1222,7 @@ custom_styles/bg = SubResource( 2 )
 unique_name_in_owner = true
 columns = 10
 
-[node name="TabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/MainArea"]
+[node name="cardTab" type="TabContainer" parent="HBoxContainer/VBoxContainer/MainArea"]
 margin_left = 1024.0
 margin_right = 1444.0
 margin_bottom = 966.0
@@ -1231,7 +1231,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 drag_to_rearrange_enabled = true
 
-[node name="Cards" type="PanelContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer"]
+[node name="Cards" type="PanelContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
@@ -1240,17 +1240,17 @@ margin_right = -2.0
 margin_bottom = -2.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 414.0
 margin_bottom = 926.0
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer"]
 margin_right = 412.0
 margin_bottom = 28.0
 
-[node name="ResultsCount" type="Label" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/PanelContainer"]
+[node name="ResultsCount" type="Label" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/PanelContainer"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 410.0
@@ -1258,7 +1258,7 @@ margin_bottom = 26.0
 text = "40/19281"
 align = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer"]
 margin_top = 28.0
 margin_right = 412.0
 margin_bottom = 860.0
@@ -1269,7 +1269,7 @@ scroll_horizontal_enabled = false
 scroll_deadzone = 5
 script = ExtResource( 5 )
 
-[node name="SearchContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer"]
+[node name="SearchContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 margin_left = 2.0
 margin_top = 2.0
@@ -1278,14 +1278,14 @@ margin_bottom = 2.0
 size_flags_horizontal = 3
 columns = 4
 
-[node name="LRButtonsContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer"]
+[node name="LRButtonsContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 860.0
 margin_right = 412.0
 margin_bottom = 924.0
 rect_min_size = Vector2( 0, 64 )
 
-[node name="LeftButton" type="Button" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/LRButtonsContainer"]
+[node name="LeftButton" type="Button" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/LRButtonsContainer"]
 margin_right = 206.0
 margin_bottom = 64.0
 focus_mode = 0
@@ -1293,7 +1293,7 @@ size_flags_horizontal = 3
 enabled_focus_mode = 0
 text = "<"
 
-[node name="RightButton" type="Button" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/LRButtonsContainer"]
+[node name="RightButton" type="Button" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/LRButtonsContainer"]
 margin_left = 206.0
 margin_right = 412.0
 margin_bottom = 64.0
@@ -1302,7 +1302,7 @@ size_flags_horizontal = 3
 enabled_focus_mode = 0
 text = ">"
 
-[node name="Deck Statistics" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer"]
+[node name="Deck Statistics" type="ScrollContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1311,7 +1311,7 @@ margin_top = 36.0
 margin_right = -2.0
 margin_bottom = -2.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Deck Statistics"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 414.0
@@ -1320,12 +1320,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Deck Statistics/VBoxContainer"]
 margin_right = 412.0
 margin_bottom = 34.0
 text = "Calculate Stats"
 
-[node name="title" type="Label" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer"]
+[node name="title" type="Label" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Deck Statistics/VBoxContainer"]
 margin_top = 44.0
 margin_right = 412.0
 margin_bottom = 68.0
@@ -1335,7 +1335,7 @@ text = "CARD STATS"
 align = 1
 valign = 1
 
-[node name="cost" type="Label" parent="HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer"]
+[node name="cost" type="Label" parent="HBoxContainer/VBoxContainer/MainArea/cardTab/Deck Statistics/VBoxContainer"]
 margin_top = 78.0
 margin_right = 412.0
 margin_bottom = 102.0
@@ -1614,8 +1614,8 @@ text = "Don't load"
 [connection signal="button_up" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active_button_up"]
 [connection signal="mouse_entered" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active2_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/CardPreview/PreviewContainer/Card/Active" to="HBoxContainer/CardPreview/PreviewContainer/Card" method="_on_Active2_mouse_exited"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="_updatePre"]
 [connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="save_deck"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="_updatePre"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DSel" to="." method="load_deck"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DSelLine/DelBtn" to="." method="_on_DelBtn_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/DeckOptions/HBoxContainer/DeckOptions/VBoxContainer/DNameLine/Button" to="." method="save_deck_as"]
@@ -1638,9 +1638,10 @@ text = "Don't load"
 [connection signal="tab_changed" from="HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2/TabContainer" to="." method="_on_TabContainer_tab_changed"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2/TabContainer/Side Deck Select/HBoxContainer/PrefixType" to="." method="_on_PrefixType_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/MainArea/VBoxContainer/DeckPreview2/TabContainer/Side Deck Select/HBoxContainer/SDSel" to="." method="_on_SDSel_item_selected"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/LRButtonsContainer/LeftButton" to="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer" method="_on_LeftButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/LRButtonsContainer/RightButton" to="HBoxContainer/VBoxContainer/MainArea/TabContainer/Cards/VBoxContainer/ScrollContainer" method="_on_RightButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/MainArea/TabContainer/Deck Statistics/VBoxContainer/Button" to="." method="updateStats"]
+[connection signal="tab_changed" from="HBoxContainer/VBoxContainer/MainArea/cardTab" to="." method="_on_cardTab_tab_changed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/LRButtonsContainer/LeftButton" to="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/ScrollContainer" method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/LRButtonsContainer/RightButton" to="HBoxContainer/VBoxContainer/MainArea/cardTab/Cards/VBoxContainer/ScrollContainer" method="_on_RightButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MainArea/cardTab/Deck Statistics/VBoxContainer/Button" to="." method="updateStats"]
 [connection signal="id_pressed" from="JsonFromMenu" to="." method="_on_JsonFromMenu_id_pressed"]
 [connection signal="file_selected" from="FromFile" to="." method="_on_FromFile_file_selected"]
 [connection signal="pressed" from="FromURL/PanelContainer/VBoxContainer/HBoxContainer/URLDownloadBtn" to="." method="_on_URLDownloadBtn_pressed"]
