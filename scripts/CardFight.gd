@@ -469,6 +469,9 @@ func deckList(source, magpie = false):
 				texture.expand = true
 				texture.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
 				hBox.add_child(texture)
+		
+		hBox.name = card.replace(".","\\\\")
+		
 		$deckList/Panel/ScrollContainer/VBoxContainer.add_child(hBox)
 	$deckList.visible = true
 	
@@ -1314,11 +1317,15 @@ remote func add_remote_bones(bone_no):
 
 func _input(event):
 	if event is InputEventMouse or not $".".visible: return
-	if Input.is_action_just_released("endTurn") and not $WaitingBlocker.visible:
-		end_turn()
-	elif Input.is_action_just_released("surrender"):
+	
+	if Input.is_action_just_released("surrender"):
 		_on_ForfeitButton_pressed()
-	elif Input.is_action_just_released("hammer") and not $WaitingBlocker.visible:
+		
+	if $WaitingBlocker.visible or $deckList.visible: return
+	
+	if Input.is_action_just_released("endTurn"):
+		end_turn()
+	elif Input.is_action_just_released("hammer"):
 		# the hammer button is a toggle button and
 		# hammer mode is trigger before the toggle happen
 		hammer_mode()
@@ -1384,3 +1391,8 @@ func recountHand():
 
 func _on_closeButton_pressed() -> void:
 	$deckList.visible = false
+
+
+func _on_LineEdit_text_changed(new_text: String) -> void:
+	for card in $deckList/Panel/ScrollContainer/VBoxContainer.get_children():
+		card.visible = new_text.to_lower() in card.name.to_lower() if new_text != "" else true
