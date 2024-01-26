@@ -75,7 +75,7 @@ var options = {
 var keybindName = {
 	# optionName : [displayName, tooltip]
 	"quickHost": ["Quick Host", "Quickly host a lobby using your default info."],
-	"quickTest": ["Quick Test (!)", "Quickly open a test lobby using your default info."],
+	"quickTest": ["Quick Test", "Quickly open a test lobby using your default info."],
 	"endTurn":["End Turn", "Hit the bell and end turn"],
 	"surrender":["Surrender", "Surrender..."],
 	"hammer": ["Toggle Hammer", "Toggle the hammer if possible"],
@@ -100,16 +100,16 @@ var optionName = {
 	"cardNumber":["Card Number", "Show card number on top of card. Recommend with Card Quick select."],
 	"quickSlot": ["Slot Quick Select", "Select card slot using H,J,K,L."],
 	"slotLabel": ["Slot Label", "Show slot label to help with Slot Quick Select."],
-	"deckList": ["Deck List (!)", "Show a list of reminaing card when clicking on a deck pile."],
-	"deckPortraitColor": ["Deck List Portrait Color (!)", "Change the color of the portrait instead of adding a background in deck list."],
-	"improveDeckSearch": ["Improve Deck Search (!)", "Use the deck list when searching for card."],
-	"muteMusic": ["Enable Music (!)", "Enable music to play when starting up."],
+	"deckList": ["Deck List", "Show a list of reminaing card when clicking on a deck pile."],
+	"deckPortraitColor": ["Deck List Portrait Color", "Change the color of the portrait instead of adding a background in deck list."],
+	"improveDeckSearch": ["Improve Deck Search", "Use the deck list when searching for card."],
+	"muteMusic": ["Enable Music", "Enable music to play when starting up."],
 	"hideDeck":["Hide Deck Editor", "Hide the \"Deck Editor\" button on the title screen (reset to work)."],
 	"hideRuleset":["Hide Ruleset", "Hide the \"Select Ruleset\" button on the title screen (reset to work)."],
 	"hideDirectory":["Hide Open Directory", "Hide the \"Open Game Directory\" button on the title screen (reset to work)."],
 	"hideDiscord":["Hide Discord", "Hide the \"Inscryption Multiplayer Discord\" button on the title screen (reset to work)."],
 	"hideScroll": ["Hide Scroll", "Hide scroll button accessibility scroll button"],
-	"deckWarning": ["Deck Warning (!)", "Deck warning pop up when loading deck that was made for other format"]
+	"deckWarning": ["Deck Warning", "Deck warning pop up when loading deck that was made for other format"]
 }
 
 func read_options():
