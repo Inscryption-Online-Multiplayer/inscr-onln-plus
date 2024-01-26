@@ -2019,13 +2019,13 @@ size_flags_horizontal = 4
 enabled_focus_mode = 0
 text = "Play"
 
-[node name="whatLeft" type="Panel" parent="."]
+[node name="deckList" type="Panel" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
 
-[node name="Card" parent="whatLeft" instance=ExtResource( 6 )]
+[node name="Card" parent="deckList" instance=ExtResource( 6 )]
 anchor_left = 0.15
 anchor_top = 0.5
 anchor_right = 0.15
@@ -2035,7 +2035,7 @@ margin_top = 0.0
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="Panel" type="Panel" parent="whatLeft"]
+[node name="Panel" type="Panel" parent="deckList"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -2047,13 +2047,13 @@ margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="whatLeft/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="deckList/Panel"]
 anchor_right = 0.993
 anchor_bottom = 0.94
 margin_right = 4.0
 margin_bottom = 16.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="whatLeft/Panel/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="deckList/Panel/ScrollContainer"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 498.5
@@ -2061,7 +2061,7 @@ margin_bottom = 766.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="closeButton" type="Button" parent="whatLeft/Panel"]
+[node name="closeButton" type="Button" parent="deckList/Panel"]
 anchor_top = 0.958
 anchor_right = 1.0
 anchor_bottom = 0.972
@@ -2095,5 +2095,5 @@ default_color = Color( 1, 0, 0, 1 )
 [connection signal="pressed" from="surrenderConfirm/Panel/VBoxContainer/HBoxContainer/noSurrender" to="." method="_on_noSurrender_pressed"]
 [connection signal="pressed" from="passConfirm/Panel/VBoxContainer/HBoxContainer/pass" to="." method="end_turn"]
 [connection signal="pressed" from="passConfirm/Panel/VBoxContainer/HBoxContainer/noPass" to="." method="_on_noPass_pressed"]
-[connection signal="pressed" from="whatLeft/Panel/closeButton" to="." method="_on_whatLeft_pressed"]
+[connection signal="pressed" from="deckList/Panel/closeButton" to="." method="_on_closeButton_pressed"]
 [connection signal="timeout" from="DesyncWatcher" to="." method="_on_DesyncWatcher_timeout"]

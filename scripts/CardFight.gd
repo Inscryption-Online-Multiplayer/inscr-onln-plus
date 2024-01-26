@@ -103,9 +103,9 @@ func _ready():
 		for slot in $CardSlots/PlayerSlots.get_children():
 			slot.text = ""
 	
-	$whatLeft/Card.rect_scale = Vector2(GameOptions.options.plus.deckPreviewScale, GameOptions.options.plus.deckPreviewScale)
-	$whatLeft/Card.rect_position.y -= ($whatLeft/Card.rect_size.y*GameOptions.options.plus.deckPreviewScale) / 2
-	$whatLeft/Card.draw_from_data(CardInfo.from_name("49er"))
+	$deckList/Card.rect_scale = Vector2(GameOptions.options.plus.deckPreviewScale, GameOptions.options.plus.deckPreviewScale)
+	$deckList/Card.rect_position.y -= ($deckList/Card.rect_size.y*GameOptions.options.plus.deckPreviewScale) / 2
+	$deckList/Card.draw_from_data(CardInfo.from_name("49er"))
 	
 func _process(_delta):
 	if state == GameStates.SNIPE:
@@ -304,18 +304,18 @@ func end_turn():
 
 """func cardHover():
 	var card
-	for i in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children().size():
-		print($whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).is_hovered())
-		if $whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).is_hovered():
-			card = CardInfo.from_name($whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).name)
+	for i in $deckList/Panel/ScrollContainer/VBoxContainer.get_children().size():
+		print($deckList/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).is_hovered())
+		if $deckList/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).is_hovered():
+			card = CardInfo.from_name($deckList/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).name)
 			break
-	$whatLeft/Card.from_data(card)"""
+	$deckList/Card.from_data(card)"""
 
 func deckList(source, magpie = false):
-	$whatLeft/Panel/closeButton.visible = not magpie
+	$deckList/Panel/closeButton.visible = not magpie
 	# kill all child
-	for child in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children():
-		$whatLeft/Panel/ScrollContainer/VBoxContainer.remove_child(child)
+	for child in $deckList/Panel/ScrollContainer/VBoxContainer.get_children():
+		$deckList/Panel/ScrollContainer/VBoxContainer.remove_child(child)
 		child.queue_free()
 		
 	# make a duplicate look up
@@ -469,8 +469,8 @@ func deckList(source, magpie = false):
 				texture.expand = true
 				texture.stretch_mode = TextureRect.STRETCH_SCALE_ON_EXPAND
 				hBox.add_child(texture)
-		$whatLeft/Panel/ScrollContainer/VBoxContainer.add_child(hBox)
-	$whatLeft.visible = true
+		$deckList/Panel/ScrollContainer/VBoxContainer.add_child(hBox)
+	$deckList.visible = true
 	
 func draw_maindeck():
 	if state == GameStates.DRAWPILE:
@@ -524,8 +524,8 @@ func search_deck():
 
 func search_callback(index=0):
 	if GameOptions.options.plus.improveDeckSearch:
-		for i in $whatLeft/Panel/ScrollContainer/VBoxContainer.get_children().size():
-			if $whatLeft/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).pressed:
+		for i in $deckList/Panel/ScrollContainer/VBoxContainer.get_children().size():
+			if $deckList/Panel/ScrollContainer/VBoxContainer.get_child(i).get_child(2).pressed:
 				index = i + 1
 				break
 
@@ -540,7 +540,7 @@ func search_callback(index=0):
 
 	deck.shuffle()
 	
-	if GameOptions.options.plus.improveDeckSearch: $whatLeft.visible = false
+	if GameOptions.options.plus.improveDeckSearch: $deckList.visible = false
 	else: $DeckSearch.visible = false
 func starve_check(soft_rpc = true):
 	if deck.size() == 0 and side_deck.size() == 0:
@@ -1382,6 +1382,5 @@ func recountHand():
 		for i in range(hand.size()):
 			hand[i].get_child(0).text = str(i + 1)
 
-
-func _on_whatLeft_pressed():
-	$whatLeft.visible = false
+func _on_closeButton_pressed() -> void:
+	$deckList.visible = false
