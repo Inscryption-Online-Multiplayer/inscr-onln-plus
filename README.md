@@ -21,7 +21,9 @@ Original README:
 > IMF+ have 2 type of release [`Pres`][pres-link] and [`Plus`][plus-link].
 >
 > -   [`Plus`][plus-link] is the release and staple version of IMF+, have fewer bug and update less often.
-> -   [`Pres`][pres-link] is the pre-release version of IMF+ with unstable feature that may mess with your config and bugs are expected.
+> -   [`Pres`][pres-link] is the pre-release version of IMF+ with unstable features that may mess with your config and bugs are expected.
+>
+> IMF+ release follow the version number like so: `Main.Major.Minor`. A new `Main` version usually happen everytime the IMF or vanilla client update, `Major` is every `Plus` release and `Minor` is every `Pres` release. Versions also may include a letter to indicate a hotfix for major bug that slip by.
 
 > [!IMPORTANT]
 > List here is sync with the latest [`Pres`][pres-link] version. [`Plus`][plus-link] version may not have these feature yet. Feature mark with a :test_tube: are [`Pres`][pres-link] feature. Check out latest [`Pres`][pres-link] to have access to all these features.
