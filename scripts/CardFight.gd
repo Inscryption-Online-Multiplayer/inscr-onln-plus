@@ -16,7 +16,7 @@ var cardPrefab = preload("res://packed/playingCard.tscn")
 # Signals
 signal sigil_event(event, params)
 #signal snipe_complete(card)
-signal snipe_complete(friendly, slot)
+signal snipe_complete(from_side, from_slot, to_side, to_slot)
 
 # Move format:
 
@@ -79,6 +79,7 @@ var enemy_no_energy_deplete = false
 var sniper: Control = null
 var snipe_is_attack = false
 var sniper_target: Control = null
+var pre_snipe_state = null
 
 # Network match state
 var want_rematch = false
@@ -128,6 +129,10 @@ func init_match(opp_id: int, do_go_first: bool):
 	want_rematch = false
 	$WinScreen/Panel/VBoxContainer/HBoxContainer/RematchBtn.text = "Rematch (0/2)"
 	
+	# Other UI
+	$DeckSearch.hide()
+	$deckList.hide()
+	
 	# Clean up hands and field
 	handManager.clear_hands()
 	slotManager.clear_slots()
@@ -141,6 +146,8 @@ func init_match(opp_id: int, do_go_first: bool):
 	$DrawPiles/YourDecks/Deck.visible = true
 	$DrawPiles/YourDecks/SideDeck.visible = true
 	$DrawPiles/Notify.visible = false
+	
+	
 	
 	# TODO: Clean up. This is spaghetti city
 
@@ -524,6 +531,7 @@ func search_deck():
 			$DeckSearch/Panel/VBoxContainer/OptionButton.add_item(card)
 
 		$DeckSearch.visible = true
+		$DeckSearch.visible = true
 
 func search_callback(index=0):
 	if GameOptions.options.plus.improveDeckSearch:
@@ -660,7 +668,7 @@ func play_card(slot: Node):
 				add_bones(-playedCard.card_data["bone_cost"])
 			
 			# Energy cost
-			if "energy_cost" in playedCard.card_data:
+			if "energy_cost" in playedCard.card_data and not no_energy_deplete:
 				set_energy(energy -playedCard.card_data["energy_cost"])
 			
 			playedCard.move_to_parent(slot)
@@ -856,11 +864,11 @@ func parse_next_move():
 				print("Opponent card ", move.index, " changed to ", move.data)
 				slotManager.remote_card_data(move.index, move.data)
 			"snipe_target":
-				print("Opponent sniped from ", move.from_slot, " to slot ", move.to_slot, " friendly: ", move.friendly)
+				print("Opponent sniped from ", move.from_slot, " on side ", move.from_side, " to slot ", move.to_slot, " on side ", move.to_side)
 				# Trigger the signal
-				var nt = slotManager.get_enemy_card(move.to_slot) if move.friendly else slotManager.get_friendly_card(move.to_slot)
+				var nt = slotManager.get_enemy_card(move.to_slot) if move.to_side else slotManager.get_friendly_card(move.to_slot)
 				sniper_target = nt if nt else null
-				emit_signal("snipe_complete", move.friendly, move.to_slot)
+				emit_signal("snipe_complete", not move.from_side, move.from_slot, not move.to_side, move.to_slot)
 				
 				move_done()
 			"snuff_candle":
@@ -1046,7 +1054,7 @@ remote func force_draw_starv(strength):
 
 	var starv_card = draw_card(0, $DrawPiles/YourDecks/Deck, false)
 	
-	var starv_data = CardInfo.all_cards[0]
+	var starv_data = CardInfo.all_cards[0].duplicate()
 	starv_data["attack"] = strength
 	if strength >= 5:
 		starv_data["sigils"] = ["Repulsive", "Mighty Leap"]
@@ -1107,11 +1115,12 @@ func clicked_enemy_slot(slot):
 			"type": "snipe_target",
 			"from_slot": sniper.slot_idx(),
 			"to_slot": slot.get_position_in_parent(),
-			"friendly": false
+			"from_side": true,
+			"to_side": false
 		})
 		
 		# Do the snipe
-		emit_signal("snipe_complete", false, slot.get_position_in_parent())
+		emit_signal("snipe_complete", true, sniper.slot_idx(), false, slot.get_position_in_parent())
 
 
 # Resource visualisation and management

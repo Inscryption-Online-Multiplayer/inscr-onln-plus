@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION = "v0.3.8"
+const VERSION = "v0.3.9"
 const PLUS = "v1.2.1"
 
 var all_data = {}
@@ -13,21 +13,21 @@ var side_decks = {}
 
 #var data_path = OS.get_user_data_dir() # if OS.get_name() != "Android" else "/sdcard/IMF/"
 
-var data_path = "user:/"
+const data_path = "user:/"
 
-var deck_path = data_path + "/decks/"
+const deck_path = data_path + "/decks/"
 var deck_backup_path = data_path + "/decks/undef/"
 # V Update this! V
 var rules_path = ""
-var theme_path = data_path + "/theme.json"
-var options_path = data_path + "/options.json"
-var tunnellog_path = data_path + "/lhrlog.txt"
-var custom_portrait_path = data_path + "/custom_portraits/"
-var custom_icon_path = data_path + "/custom_sigil_icons/"
-var portrait_override_path = data_path + "/portrait_overrides/"
-var icon_override_path = data_path + "/sigil_icon_overrides/"
-var replay_path = data_path + "/replays/"
-var rulesets_path = data_path + "/rulesets/"
+const theme_path = data_path + "/theme.json"
+const options_path = data_path + "/options.json"
+const custom_portrait_path = data_path + "/custom_portraits/"
+const custom_icon_path = data_path + "/custom_sigil_icons/"
+const portrait_override_path = data_path + "/portrait_overrides/"
+const icon_override_path = data_path + "/sigil_icon_overrides/"
+const replay_path = data_path + "/replays/"
+const rulesets_path = data_path + "/rulesets/"
+const scripts_path = data_path + "/scripts/"
 
 # CB
 var background_texture = null
@@ -43,8 +43,8 @@ func _enter_tree():
 	var d = Directory.new()
 	
 	# Hot-patch the game
-	if d.file_exists("user://patch.pck"):
-		ProjectSettings.load_resource_pack("user://patch.pck")
+#	if d.file_exists("user://patch.pck"):
+#		ProjectSettings.load_resource_pack("user://patch.pck")
 		
 	
 	if OS.get_name() == "Android":
@@ -84,6 +84,10 @@ func from_game_info_json(content_as_object):
 #	all_sigils = all_data["sigils"]
 	all_cards = all_data["cards"]
 #	working_sigils = all_data["working_sigils"]
+
+	if "custom_sigils" in all_data:
+		for sig in all_data.custom_sigils:
+			all_sigils[sig] = all_data.custom_sigils[sig].description
 	
 	side_decks = all_data["side_decks"] if "side_decks" in all_data else []
 	
@@ -126,8 +130,9 @@ func idx_from_name(cName):
 
 const all_sigils = {
 	# COMMENT THIS OUT
-	"Amalgamation": "A card bearing this sigil assimilates the owner's other creatures, gaining their health, power and sigils.",
+	"Acupuncture": "Pay 3 bones: Choose a creature to gain the Stitched sigil and give this card Armor.",
 	"Airborne": "A card bearing this sigil will strike an opponent directly, even if there is a creature opposing it.",
+	"Amalgamation": "A card bearing this sigil assimilates the owner's other creatures, gaining their health, power and sigils.",
 	"Annoying": "The creature opposing a card bearing this sigil gains 1 Power.",
 	"Ant Spawner": "When a card bearing this sigil is played, an ant is created in your hand.",
 	"Armored": "The first time a card bearing this sigil would take damage, prevent that damage.",
@@ -212,6 +217,7 @@ const all_sigils = {
 	"Stinky": "The creature opposing a card bearing this sigil loses 1 Power.",
 	"Stimulate": "Pay 3 energy to increase the power and health of a card bearing this sigil by 1.",
 	"Stimulate (4)": "Pay 4 energy to increase the power and health of a card bearing this sigil by 1.",
+	"Stitched": "Whenever a card bearing the Acupuncture sigil is damaged, this card recieves that damage, and the Acupuncture card recieves 1 damage instead.",
 	"Tentacle": "Includes effect of Waterborne. In addition, a card bearing this sigil will transform into a random tentacle at the start of each turn.",
 	"Thick": "A card bearing this sigil is juicy, and takes up 2 spaces.",
 	"Touch of Death": "When a card bearing this sigil damages another creature, that creature perishes.",
@@ -221,6 +227,7 @@ const all_sigils = {
 	"Unkillable": "When a card bearing this sigil perishes, a copy of it is created in your hand.",
 	"Unkillable (Eternal)": "When a card bearing this sigil perishes, a copy of it is created in your hand without this sigil.",
 	"Vessel Printer": "Once a card bearing this sigil is struck, draw a card from your side deck.",
+	"Warded": "A card bearing this sigil takes only 1 damage from attacks and card effects.",
 	"Waterborne": "A card bearing this sigil submerges itself during its opponent's turn. while submerged, opposing creatures attack its owner directly.",
 	"Worthy Sacrifice": "A card bearing this sigil is counted as 3 blood rather than 1 blood when sacrificed."
 }
@@ -322,7 +329,10 @@ const working_sigils = [
 	"Bomb Latch",
 	"Shield Latch",
 	"Fledgling 2",
-	"Energy Sniper"
+	"Energy Sniper",
+	"Warded",
+	"Acupuncture",
+	"Stitched"
 ]
 
 const keywords = {

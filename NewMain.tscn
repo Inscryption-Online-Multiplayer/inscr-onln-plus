@@ -1220,6 +1220,9 @@ text = "Live theme update"
 margin_top = 102.0
 margin_right = 842.0
 margin_bottom = 136.0
+margin_top = 102.0
+margin_right = 842.0
+margin_bottom = 136.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Built-in Ruleset Editor (Garbage)"
@@ -1613,6 +1616,14 @@ margin_bottom = 87.0
 text = "Press Any Key"
 align = 1
 percent_visible = 0.789474
+
+[node name="improveSearch" type="CheckButton" parent="Options/TabContainer/Experimental"]
+margin_top = 136.0
+margin_right = 842.0
+margin_bottom = 170.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Improve Deck Search UI"
 
 [node name="ThemeEditor" parent="." instance=ExtResource( 6 )]
 process_priority = 1

@@ -19,8 +19,10 @@ var options = {
 	"live_theme_update": false,
 	"default_ruleset": "",
 	"ruleset_editor": false,
+	"improveSearch": true,
 	"vsync": true,
 	"lock_fps": true,
+	"allow_all_scripts": false,
 	"test": false,
 	"plus": {
 		"scrollReminder": true,
