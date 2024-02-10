@@ -1,7 +1,7 @@
 extends Node
 
 const VERSION = "v0.3.9"
-const PLUS = "v1.2.1"
+const PLUS = "v1.2.2"
 
 var all_data = {}
 var ruleset = "undefined ruleset"
