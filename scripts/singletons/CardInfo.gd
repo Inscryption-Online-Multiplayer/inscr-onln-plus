@@ -80,7 +80,7 @@ func load_background_texture():
 func from_game_info_json(content_as_object):
 	all_data = content_as_object
 	
-#	all_sigils = all_data["sigils"]
+	all_sigils.merge(all_data["sigils"], true)
 	all_cards = all_data["cards"]
 #	working_sigils = all_data["working_sigils"]
 
@@ -127,7 +127,7 @@ func idx_from_name(cName):
 
 
 
-const all_sigils = {
+var all_sigils = {
 	# COMMENT THIS OUT
 	"Acupuncture": "Pay 3 bones: Choose a creature to gain the Stitched sigil and give this card Armor.",
 	"Airborne": "A card bearing this sigil will strike an opponent directly, even if there is a creature opposing it.",

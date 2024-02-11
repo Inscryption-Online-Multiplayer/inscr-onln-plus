@@ -58,15 +58,7 @@ func draw_tooltip(cDat):
 	if not GameOptions.options.show_card_tooltips:
 		return
 		
-	target.hint_tooltip = \
-"""
-%s
-%d/%d
-""" % [
-	cDat.name,
-	cDat.attack,
-	cDat.health,
-	]
+	target.hint_tooltip = "%s\n%d/%d\n"% [cDat.name, cDat.attack, cDat.health,]
 	
 	# Keywords
 	for keyword in CardInfo.keywords:
@@ -78,11 +70,17 @@ func draw_tooltip(cDat):
 		return
 	
 	for sigil in cDat.sigils:
-		target.hint_tooltip += \
-"""
-%s:
-%s
-""" % [sigil, wrap_string(CardInfo.all_sigils[sigil])]
+		var sigil_str = CardInfo.all_sigils[sigil]
+		var sigil_val = []
+		
+		var sigil_regex = RegEx.new()
+		sigil_regex.compile('\\$\\{(\\w+)\\}')
+		
+		for result in sigil_regex.search_all(sigil_str):
+			sigil_val.push_back(cDat[result.get_string(1)])
+		
+		sigil_str = sigil_regex.sub(sigil_str, "%s", true) % sigil_val
+		target.hint_tooltip += "%s:\n%s\n" % [sigil, wrap_string(sigil_str)]
 	
 	if "evolution" in cDat:
 		target.hint_tooltip += "\nThis card transforms into / releases:\n" + cDat.evolution
