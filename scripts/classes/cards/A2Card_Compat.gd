@@ -80,7 +80,7 @@ func draw_tooltip(cDat):
 			sigil_val.push_back(cDat[result.get_string(1)])
 		
 		sigil_str = sigil_regex.sub(sigil_str, "%s", true) % sigil_val
-		target.hint_tooltip += "%s:\n%s\n" % [sigil, wrap_string(sigil_str)]
+		target.hint_tooltip += "%s:\n%s\n" % [CardInfo.sigil_map[sigil] if sigil in CardInfo.sigil_map else sigil, wrap_string(sigil_str)]
 	
 	if "evolution" in cDat:
 		target.hint_tooltip += "\nThis card transforms into / releases:\n" + cDat.evolution

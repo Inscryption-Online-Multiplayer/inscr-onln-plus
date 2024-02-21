@@ -101,8 +101,20 @@ func _on_Card_mouse_entered():
 			sd.get_child(1).texture = $Active/ActiveIcon.texture
 		else:
 			sd.get_child(1).texture = $Sigils/Row1.get_child(sigIdx).texture
-
-		sd.get_child(2).text = sigdat + ":\n" + CardInfo.all_sigils[sigdat]
+		
+		var sigil_name = CardInfo.sigil_map[sigdat] if sigdat in CardInfo.sigil_map else sigdat
+		
+		var sigil_str = CardInfo.all_sigils[sigdat]
+		var sigil_val = []
+		var sigil_regex = RegEx.new()
+		sigil_regex.compile('\\$\\{(\\w+)\\}')
+		
+		for result in sigil_regex.search_all(sigil_str):
+			sigil_val.push_back(card_data[result.get_string(1)])
+		
+		sigil_str = sigil_regex.sub(sigil_str, "%s", true) % sigil_val
+		
+		sd.get_child(2).text = sigil_name + ":\n" + sigil_str
 
 		if "custom_sigils" in CardInfo.all_data and sigdat in CardInfo.all_data.custom_sigils:
 			sd.get_child(2).text += "\nThis is a trusted custom sigil created by " + CardInfo.all_data.custom_sigils[sigdat].author
