@@ -18,6 +18,7 @@
 [ext_resource path="res://packed/BattlePass.tscn" type="PackedScene" id=16]
 [ext_resource path="res://packed/Plus/plusOptionButton.tscn" type="PackedScene" id=17]
 [ext_resource path="res://ARG/scripts/ButtonScroll.gd" type="Script" id=18]
+[ext_resource path="res://scripts/UI/VersionLabel.gd" type="Script" id=17]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 8 )
@@ -230,18 +231,18 @@ custom_constants/separation = 35
 alignment = 1
 
 [node name="HostBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 240.0
+margin_top = 195.0
 margin_right = 810.0
-margin_bottom = 295.0
+margin_bottom = 250.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Host Game"
 
 [node name="JoinBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 330.0
+margin_top = 285.0
 margin_right = 810.0
-margin_bottom = 385.0
+margin_bottom = 340.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
@@ -258,18 +259,18 @@ enabled_focus_mode = 0
 text = "Duel Pass"
 
 [node name="DeckEditorBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 420.0
+margin_top = 375.0
 margin_right = 810.0
-margin_bottom = 475.0
+margin_bottom = 430.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Deck Editor"
 
 [node name="SelectVersionBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 510.0
+margin_top = 465.0
 margin_right = 810.0
-margin_bottom = 565.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
@@ -286,27 +287,36 @@ enabled_focus_mode = 0
 text = "Theme Editor"
 
 [node name="OptionsBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 600.0
+margin_top = 555.0
 margin_right = 810.0
-margin_bottom = 655.0
+margin_bottom = 610.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Options"
 
 [node name="LogFolder" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 690.0
+margin_top = 645.0
 margin_right = 810.0
-margin_bottom = 745.0
+margin_bottom = 700.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Open Game Directory"
 
-[node name="DiscordBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
-margin_top = 780.0
+[node name="CreditsBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
+margin_top = 735.0
 margin_right = 810.0
-margin_bottom = 835.0
+margin_bottom = 790.0
+rect_min_size = Vector2( 0, 55 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Wiki / Credits"
+
+[node name="DiscordBtn" type="Button" parent="TitleScreen/Menu/VBoxContainer"]
+margin_top = 825.0
+margin_right = 810.0
+margin_bottom = 880.0
 rect_min_size = Vector2( 0, 55 )
 focus_mode = 0
 enabled_focus_mode = 0
@@ -923,9 +933,6 @@ text = "Quit"
 
 [node name="PollTimer" type="Timer" parent="TitleScreen/InLobby"]
 wait_time = 15.0
-
-[node name="BattlePass" parent="TitleScreen" instance=ExtResource( 16 )]
-visible = false
 
 [node name="LoadingScreen" type="PanelContainer" parent="TitleScreen"]
 visible = false
@@ -1634,6 +1641,7 @@ margin_top = -55.0
 margin_right = -1.0
 margin_bottom = -31.0
 text = "version"
+script = ExtResource( 17 )
 
 [node name="RulesetLabel" type="Label" parent="."]
 anchor_top = 1.0
@@ -1664,6 +1672,7 @@ autoplay = true
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/ThemeEditorBtn" to="TitleScreen" method="_on_ThemeEditorBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/OptionsBtn" to="Options" method="_on_OptionsBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/LogFolder" to="TitleScreen" method="_on_LogFolder_pressed"]
+[connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/CreditsBtn" to="TitleScreen" method="_on_CreditsBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/Menu/VBoxContainer/DiscordBtn" to="TitleScreen" method="_on_DiscordBtn_pressed"]
 [connection signal="pressed" from="TitleScreen/PullInfo/PatchStoats/Notes/Button" to="TitleScreen/PullInfo" method="_on_Button_pressed"]
 [connection signal="request_completed" from="TitleScreen/PullInfo/HTTPRequest" to="TitleScreen/PullInfo" method="_on_HTTPRequest_request_completed"]
