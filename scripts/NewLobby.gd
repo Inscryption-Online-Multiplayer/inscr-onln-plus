@@ -658,6 +658,10 @@ func _on_PollTimer_timeout():
 remote func _polled():
 	print("Polled by host")
 
+
+func _on_CreditsBtn_pressed():
+	OS.shell_open("https://github.com/107zxz/inscr-onln/wiki")
+
 func _input(_event):
 	if Input.is_action_just_released("quickHost") and not $Blocker.visible:
 		_on_HostBtn_pressed()

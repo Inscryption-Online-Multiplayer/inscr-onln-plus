@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION = "v0.3.9"
+const VERSION = "v0.3.999" # I still manually updating this
 const PLUS = "v1.2.2"
 
 var all_data = {}
