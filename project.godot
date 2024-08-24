@@ -89,6 +89,10 @@ enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
 
 singletons=[  ]
 
+[global]
+
+export=false
+
 [importer_defaults]
 
 texture={
